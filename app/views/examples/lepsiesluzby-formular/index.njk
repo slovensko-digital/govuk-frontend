@@ -8,19 +8,33 @@
   <!--<![endif]-->
   <!--[if IE 8]> <link rel="stylesheet" href="/public/app-ie8.css"> <![endif]-->
   <!--[if lt IE 9]> <script src="/vendor/html5-shiv/html5shiv.js"></script> <![endif]-->
+  <script src="https://www.google.com/recaptcha/api.js?render=6Len1KcUAAAAAMYeenXLlLflZFGlRxzDISyyeqX5"></script>
+  <script src="./confetti.js"></script>
+  <script>
+    let recatpcha_token = null;
+    grecaptcha.ready(function () {
+      grecaptcha
+        .execute('6Len1KcUAAAAAMYeenXLlLflZFGlRxzDISyyeqX5', {action: 'homepage'})
+        .then(function (token) {
+          recatpcha_token = token;
+          return token;
+        });
+    });
+  </script>
+
 {% endblock %}
 
 {% block main %}
 
-<div class="govuk-width-container">
-  <main class="govuk-main-wrapper">
-    <div class="govuk-grid-column-full">
-      <h2 class="govuk-heading-l">Máte nápad ako zlepšiť elektronické služby ?</h2>
-      <p>Poďme do toho spolu a ukážme, kde je priestor na zlepšenie.</p>
-    </div>
-    <div class="govuk-grid-column-two-thirds">
+  <div class="govuk-width-container">
+    <main class="govuk-main-wrapper">
+      <div class="govuk-grid-column-full">
+        <h2 class="govuk-heading-l">Máte nápad ako zlepšiť elektronické služby ?</h2>
+        <p>Poďme do toho spolu a ukážme, kde je priestor na zlepšenie.</p>
+      </div>
+      <div class="govuk-grid-column-two-thirds">
 
-        <form action="/" method="post">
+        <form action="/" method="post" id="submit-form">
           <fieldset class="govuk-fieldset">
             <div class="govuk-form-group">
               <label class="govuk-label" for="govuk-input-summary">
@@ -38,7 +52,8 @@
 
             <div class="govuk-form-group">
               <label class="govuk-label" for="select-category">
-                Kategória <em>(nepovinné)</em>
+                Kategória
+                <em>(nepovinné)</em>
               </label>
               <select class="govuk-select govuk-!-width-one-third" id="select-category" name="select-category">
                 <option value="0">Žiadne</option>
@@ -57,7 +72,8 @@
 
             <div class="govuk-form-group">
               <label class="govuk-label" for="file-upload">
-                Príloha <em>(nepovinné)</em>
+                Príloha
+                <em>(nepovinné)</em>
               </label>
               <input class="govuk-file-upload" id="file-upload" name="file-upload" type="file">
             </div>
@@ -84,6 +100,87 @@
 
       </div>
     </div>
+
+    <script>
+
+      function celebrationComeOn() {
+        confetti.start()
+        setTimeout(() => {
+          confetti.stop()
+        }, 3000)
+      }
+
+      function postData(data) {
+        const body = JSON.stringify(data);
+        const postURL = "https://lepsiesluzby.sk/jira/rest/api/2/issue";
+        const headers = new Headers()
+        //{'Content-Type': 'application/json', 'recaptcha-token': recatpcha_token, 'Content-Length': body.length.toString()}
+        headers.set('Content-Type', 'application/json; charset=utf8')
+        headers.set('Accept', 'application/json')
+        headers.set('recaptcha-token', recatpcha_token)
+        headers.set('Origin', 'https://lepsiesluzby.sk')
+        headers.set('Content-Length', body.length.toString())
+        // headers.append('X-nieco', 'nieco');
+
+        /*for (var pair of headers.entries()) {
+          console.log(pair[0] + ': ' + pair[1]);
+        }*/
+        
+        fetch(postURL, {
+          method: 'POST',
+          mode: 'cors',
+          //cache: 'no-cache',
+          headers,
+          //redirect: 'follow',
+          //referrer: 'no-referrer',
+          body
+        })
+          .then(x => console.log(x))
+          .catch(x => console.error(x))
+        };
+
+      function onSubmit(e) {
+        e.preventDefault();
+        //var gReResponse = grecaptcha.getResponse();
+
+        console.log(e, recatpcha_token);
+
+        const form = e.srcElement;
+        const val = (el) => el.value
+
+        const output = {
+          "fields": {
+            "project": {
+              "key": "SDM"
+            },
+            "issuetype": {
+              "name": "Bug"
+            },
+            "summary": val(form['govuk-input-summary']),
+            "description": val(form['govuk-textarea-description']),
+            "components": [
+              {
+                "name": "e-services"
+              }
+            ],
+            "customfield_10200": val(form['govuk-input-email']),
+            "customfield_10116": val(form['govuk-input-name'])
+          }
+        }
+
+        postData(output);
+
+        celebrationComeOn();
+        //        debugger;
+
+        return false;
+
+      }
+
+      document
+        .getElementById('submit-form')
+        .addEventListener('submit', onSubmit)
+    </script>
 
   </main>
 </div>

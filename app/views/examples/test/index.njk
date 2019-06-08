@@ -1,0 +1,26 @@
+{% extends "template-navody.njk" %}
+
+{% from "_custom/timeline/macro.njk" import govukTimeline %}
+{% from "_custom/headline/macro.njk" import govukHeadline %}
+{% from "_custom/todo-list/macro.njk" import govukTodoList %}
+{% from "_custom/next-link/macro.njk" import govukNextLink %}
+
+{% block head %}
+  <!--[if !IE 8]><!-->
+  <link rel="stylesheet" href="/public/app.css">
+  <!--<![endif]-->
+  <!--[if IE 8]> <link rel="stylesheet" href="/public/app-ie8.css"> <![endif]-->
+  <!--[if lt IE 9]> <script src="/vendor/html5-shiv/html5shiv.js"></script> <![endif]-->
+
+{% endblock %}
+
+{% block main %}{% endblock %}
+
+{% block bodyEnd %}
+  <script src="/public/all.js"></script>
+  <script>
+    window
+      .navodyDigitalFrontend
+      .initAll()
+  </script>
+{% endblock %}
