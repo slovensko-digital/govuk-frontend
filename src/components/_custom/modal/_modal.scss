@@ -1,0 +1,148 @@
+@import "../../../settings/all";
+@import "../../../tools/all";
+@import "../../../helpers/all";
+@import "../_partials/gradient-background";
+
+
+@include govuk-exports("sdn/component/modal") {
+
+  $sdn-modal-bg-color: rgba(6, 7, 11, .2);
+  $sdn-modal-width: 100%;
+  $sdn-modal-height: 100%;
+  $sdn-modal-title-margin-bottom: 0;
+  $sdn-modal-dialog-margin: .5rem;
+  $sdn-modal-content-bg-color: #ffffff;
+  $sdn-modal-content-width-desktop: 500px;
+  $sdn-modal-content-width-mobile: 1000px;
+  $sdn-modal-content-margin: 1.75em auto;
+  $sdn-modal-content-border-radius: 3px;
+  $sdn-modal-content-transition: .3s;
+  $sdn-modal-content-box-shadow: 0 15px 35px rgba(50, 50, 93, .2), 0 5px 15px rgba(0, 0, 0, .17);
+  $sdn-modal-header-border: 1px solid rgba(33, 33, 33, .1);
+  $sdn-modal-footer-border: 1px solid rgba(33, 33, 33, .1);
+  $sdn-modal-close-color: rgba(6, 7, 11, .2);
+  $sdn-modal-close-opacity: .5;
+  $sdn-modal-close-opacity-hover: 1;
+
+  $sdn-modal-button-link-bg-color: transparent;
+  $sdn-modal-button-link-border-color: rgba(0, 0, 0, .7);
+  $sdn-modal-button-link-color: rgba(0, 0, 0, .7);
+  $sdn-modal-button-link-border-color-hover: rgba(0, 0, 0, .9);
+  $sdn-modal-button-link-color-hover: rgba(0, 0, 0, .9);
+  $sdn-modal-button-link-bg-color-hover: transparent;
+
+
+  .sdn-modal {
+    display: none;
+    position: fixed;
+    z-index: 1050;
+    top: 0;
+    left: 0;
+    width: $sdn-modal-width;
+    height: $sdn-modal-height;
+    overflow: hidden;
+    transform: none;
+    outline: 0;
+    background-color: $sdn-modal-bg-color;
+
+    &.sdn-modal-open {
+      display: block;
+    }
+  }
+
+  .sdn-modal-dialog {
+    margin: $sdn-modal-dialog-margin;
+  }
+
+  .sdn-modal-content {
+    display: flex;
+    position: relative;
+    width: 100%;
+    margin: $sdn-modal-content-margin;
+    border-radius: $sdn-modal-content-border-radius;
+    background-color: $sdn-modal-content-bg-color;
+    box-shadow: $sdn-modal-content-box-shadow;
+    flex-direction: column;
+    pointer-events: auto;
+    background-clip: padding-box;
+  }
+
+  .sdn-modal-header,
+  .sdn-modal-body,
+  .sdn-modal-footer {
+    padding: 1rem;
+  }
+
+  .sdn-modal-header {
+    display: flex;
+    padding: 1rem;
+    border-bottom: $sdn-modal-header-border;
+    align-items: flex-start;
+    justify-content: space-between;
+  }
+
+  .sdn-modal-title {
+    margin-bottom: $sdn-modal-title-margin-bottom;
+  }
+
+  .sdn-modal-footer {
+    display: flex;
+    border-top: $sdn-modal-footer-border;
+    align-items: center;
+    justify-content: flex-end;
+
+    & .govuk-button {
+      margin-bottom: 0;
+    }
+
+    & .govuk-button:not(:last-child) {
+      margin-right: .5rem;
+    }
+  }
+
+  .sdn-close {
+    padding: 0;
+    float: right;
+    border: 0;
+    outline: none;
+    opacity: $sdn-modal-close-opacity;
+    color: $sdn-modal-close-color;
+    background-color: transparent;
+    font-size: 1.5rem;
+    font-weight: 600;
+    line-height: 1;
+    text-shadow: none;
+    -webkit-appearance: none;
+
+    &:hover,
+    &:focus {
+      opacity: $sdn-modal-close-opacity-hover;
+    }
+  }
+
+  .sdn-button-link {
+    border-width: 2px;
+    border-color: $sdn-modal-button-link-border-color;
+    color: $sdn-modal-button-link-color;
+    background-color: $sdn-modal-button-link-bg-color;
+
+    &:hover,
+    &:focus {
+      border-color: $sdn-modal-button-link-border-color-hover;
+      color: $sdn-modal-button-link-color-hover;
+      background-color: $sdn-modal-button-link-bg-color-hover;
+    }
+  }
+
+  @include govuk-media-query($from: desktop) {
+    .sdn-modal-content {
+      max-width: $sdn-modal-content-width-desktop;
+    }
+  }
+
+  @include govuk-media-query($until: desktop) {
+    .sdn-modal-content {
+      max-width: $sdn-modal-content-width-mobile;
+    }
+  }
+}
