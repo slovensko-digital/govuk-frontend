@@ -4,15 +4,20 @@
 {% set step = 3 %}
 
 {% block main %}
-  <h1 class="govuk-heading-l">Mate organizacnu jednotku?</h1>
 
-  {{ govukButton({
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <h1 class="govuk-heading-l">Mate organizacnu jednotku?</h1>
+
+      {{ govukButton({
   "text": "Ano",
   "href": "screen-6-org-info"
 }) }}
-  {{ govukButton({
+      {{ govukButton({
   "text": "Nie",
   "href": "screen-6-org-info"
 }) }}
 
+    </div>
+  </div>
 {% endblock %}

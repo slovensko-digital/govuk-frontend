@@ -4,12 +4,18 @@
 {% set step = 1 %}
 
 {% block main %}
-  <h1 class="govuk-heading-l">Úvod</h1>
 
-  {{ govukButton({
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-l">Úvod</h1>
+
+      {{ govukButton({
   "text": "Začni",
   "href": "screen-2-name",
   "classes": "govuk-button--start"
 }) }}
 
+    </div>
+  </div>
 {% endblock %}

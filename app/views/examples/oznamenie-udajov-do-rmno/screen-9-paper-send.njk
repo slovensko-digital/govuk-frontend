@@ -7,8 +7,10 @@
 
 {% block main %}
 
-  <h1 class="govuk-heading-l">Vytlačte a odošlite na:</h1>
-  {{ govukSummaryList({
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <h1 class="govuk-heading-l">Vytlačte a odošlite na:</h1>
+      {{ govukSummaryList({
   "rows": [
     {
       "key": {
@@ -45,9 +47,11 @@
   ]
 }) }}
 
-  {{ govukButton({
+      {{ govukButton({
   "text": "Hotovo",
   "href": "/"
 }) }}
 
+    </div>
+  </div>
 {% endblock %}
