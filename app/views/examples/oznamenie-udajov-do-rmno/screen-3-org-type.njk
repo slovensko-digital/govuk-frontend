@@ -59,6 +59,7 @@
     {{ govukButton({"text": "Ďalej"}) }}
   </form>
 
+<script src="/public/vendor/app-oznamenie-udajov-rmno/js/storage.js"></script>
   <script>
     function init() {
       const form = document.getElementById("form");
@@ -69,6 +70,10 @@
       e.preventDefault();
 
       const form = e.target;
+      storage.edit(data => {
+        data['org']['type'] = form['org-type'].value
+        return data
+      })
       switch (form['org-type'].value) {
         case "obcianske-zdruzenie":
         case "odborova-organizacia":

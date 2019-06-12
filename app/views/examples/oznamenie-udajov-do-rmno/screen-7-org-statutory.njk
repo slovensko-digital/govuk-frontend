@@ -1,5 +1,6 @@
 {% extends "template-app.njk" %}
 {% from "button/macro.njk" import govukButton %}
+{% from "input/macro.njk" import govukInput %}
 
 {% set step = 3 %}
 
@@ -8,19 +9,82 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
-  <h1 class="govuk-heading-l">Informácie o štatutárovi</h1>
-
-  {{ govukButton({
-  "text": "Pridať ďalšieho",
-  "href": "screen-7-org-statutory"
+      <h1 class="govuk-heading-l">Informácie o štatutárovi</h1>
+      <form action="search" method="post" id="form">
+        {{ govukInput({
+  "label": {"text": "Meno a priezvisko"},
+  "id": "input-name"
 }) }}
 
-  {{ govukButton({
-  "text": "Všetci pridaní",
+        {{ govukInput({
+  "label": {"text": "Adresa"},
+  "id": "input-address"
+}) }}
+
+        {{ govukInput({
+  "label": {"text": "Dátum narodenia"},
+  "id": "input-dateOfBirth"
+}) }}
+
+        {{ govukInput({
+  "label": {"text": "Rodné číslo"},
+  "id": "input-rc"
+}) }}
+
+        {{ govukInput({
+  "label": {"text": "Dátum nástupu do funkcie"},
+  "id": "input-dateStart"
+}) }}
+
+        {{ govukButton({
+  "text": "Pridať ďalšieho"
+}) }}
+
+
+        {{ govukButton({
+  "text": "Nepridať dalšieho",
   "href": "screen-8-pdf"
 }) }}
+
+      </form>
 
 
     </div>
   </div>
+
+  <script src="/public/vendor/app-oznamenie-udajov-rmno/js/storage.js"></script>
+  <script>
+    function init() {
+      const form = document.getElementById("form");
+      form.addEventListener('submit', handleSubmit);
+    }
+
+    function handleSubmit(e) {
+      e.preventDefault();
+
+      const form = e.target;
+      storage.edit(data => {
+        const newPerson = {
+          name: form['input-name'].value,
+          address: form['input-address'].value,
+          dateOfBirth: form['input-dateOfBirth'].value,
+          rc: form['input-rc'].value,
+          dateStart: form['input-dateStart'].value
+        }
+
+        if (!data['persons']) {
+          data['persons'] = [];
+        }
+        data['persons'] = [
+          ...data['persons'],
+          newPerson
+        ];
+        return data
+      })
+      window.location = 'screen-7-org-statutory'
+
+    }
+    init();
+  </script>
+
 {% endblock %}

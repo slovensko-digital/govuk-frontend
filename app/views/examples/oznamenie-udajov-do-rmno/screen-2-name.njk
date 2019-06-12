@@ -13,7 +13,7 @@
         {{ govukInput({
   "label": {"text": "Zadajte meno alebo IČO"},
   "id": "input-example",
-  "name": "test-name"
+  "name": "name"
 }) }}
 
         {{ govukButton({
@@ -21,6 +21,7 @@
 }) }}
       </form>
 
+      <script src="/public/vendor/app-oznamenie-udajov-rmno/js/storage.js"></script>
       <script>
         function init() {
           const form = document.getElementById("form");
@@ -29,6 +30,13 @@
 
         function handleSubmit(e) {
           e.preventDefault();
+
+          storage.edit((data) => {
+            data['org']['name'] = e
+              .target['name']
+              .value
+            return data;
+          })
 
           const r = confirm("Nasli moji radcove?")
 

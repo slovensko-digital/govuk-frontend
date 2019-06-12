@@ -13,43 +13,83 @@
 
   <form action="search" method="post" id="form">
     {{ govukInput({
-  "label": {"text": "Názov organizácie (to uz mame ci nie?)"},
-  "id": "input-example",
+  "label": {"text": "Názov organizácie"},
+  "id": "input-name",
   "name": "test-name"
 }) }}
 
     {{ govukInput({
   "label": {"text": "Adresa"},
-  "id": "input-example",
+  "id": "input-address",
   "name": "test-name"
 }) }}
 
     {{ govukInput({
-  "label": {"text": "IČO (aj toto možno máme)"},
-  "id": "input-example",
+  "label": {"text": "IČO"},
+  "id": "input-cin",
+  "name": "test-name"
+}) }}
+
+
+    {{ govukInput({
+  "label": {"text": "VVS"},
+  "id": "input-vvs",
   "name": "test-name"
 }) }}
 
     {{ govukInput({
   "label": {"text": "Registračné číslo"},
-  "id": "input-example",
+  "id": "input-regn",
   "name": "test-name"
 }) }}
 
     {{ govukInput({
   "label": {"text": "Dátum registrácie"},
-  "id": "input-example",
+  "id": "input-dateOfReg",
   "name": "test-name"
 }) }}
 
     {{ govukButton({
-  "text": "Ďalej",
-  "href": "screen-7-org-statutory"
+  "text": "Ďalej"
 }) }}
   </form>
 
 
     </div>
   </div>
+
+
+
+  <script src="/public/vendor/app-oznamenie-udajov-rmno/js/storage.js"></script>
+  <script>
+    function init() {
+      const form = document.getElementById("form");
+      form.addEventListener('submit', handleSubmit);
+
+      storage.load('input-name', d => d.org.name);
+      storage.load('input-cin', d => d.org.cin);
+      storage.load('input-address', d => d.org.address);
+      storage.load('input-regn', d => d.org.regn);
+      storage.load('input-vvs', d => d.org.vvs);
+      storage.load('input-dateOfReg', d => d.org.dateOfReg);
+    }
+
+    function handleSubmit(e) {
+      e.preventDefault();
+
+      const form = e.target;
+      storage.edit(data => {
+        data['org']['name'] = form['input-name'].value;
+        data['org']['cin'] = form['input-cin'].value;
+        data['org']['address'] = form['input-address'].value;
+        data['org']['regn'] = form['input-regn'].value;
+        data['org']['vvs'] = form['input-vvs'].value;
+        data['org']['dateOfReg'] = form['input-dateOfReg'].value;
+        return data
+      })
+      window.location = 'screen-7-org-statutory'
+    }
+    init();
+  </script>
 
 {% endblock %}

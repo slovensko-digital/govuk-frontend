@@ -1,5 +1,6 @@
 {% extends "template-app.njk" %}
 {% from "button/macro.njk" import govukButton %}
+{% from "radios/macro.njk" import govukRadios %}
 
 {% set step = 3 %}
 
@@ -7,17 +8,55 @@
 
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
-      <h1 class="govuk-heading-l">Mate organizacnu jednotku?</h1>
 
-      {{ govukButton({
-  "text": "Ano",
-  "href": "screen-6-org-info"
-}) }}
-      {{ govukButton({
-  "text": "Nie",
-  "href": "screen-6-org-info"
-}) }}
+      <form action="" method="post" id="form">
+        {{ govukRadios({
+  "idPrefix": "rmno",
+  "name": "org-unit",
+  "fieldset": {
+    "legend": {
+      "text": "Máte organizačnú jednotku?",
+      "classes": "govuk-fieldset__legend--l",
+      "isPageHeading": true
+    }
+  },
+  "hint": {
+    "text": "Vyberte jednu z možností."
+  },
+  "items": [
+    {
+      "value": "yes",
+      "html": "<span class=\"govuk-heading-s govuk-!-margin-bottom-1\">Áno</span>"
+    },
 
+    {
+      "value": "no",
+      "html": "<span class=\"govuk-heading-s govuk-!-margin-bottom-1\">Nie</span>"
+    }]
+    }) }}
+
+        {{ govukButton({"text": "Ďalej"}) }}
+      </form>
     </div>
   </div>
+
+  <script src="/public/vendor/app-oznamenie-udajov-rmno/js/storage.js"></script>
+  <script>
+    function init() {
+      const form = document.getElementById("form");
+      form.addEventListener('submit', handleSubmit);
+    }
+
+    function handleSubmit(e) {
+      e.preventDefault();
+
+      const form = e.target;
+      storage.edit(data => {
+        data['org']['unit'] = form['org-unit'].value
+        return data
+      })
+      window.location = 'screen-6-org-info'
+    }
+    init()
+  </script>
 {% endblock %}
