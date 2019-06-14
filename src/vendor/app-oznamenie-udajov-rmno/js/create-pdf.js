@@ -1,8 +1,5 @@
 
 function createPdf(data){
-	function th (t){
-		return ({text: t, style: 'tableHeader'})
-	}
 	function ds (t){
 		return {text: t, style: 'dataLine'};
 	}
@@ -21,37 +18,18 @@ var documentDefinition = {
  ' IČO: ',{text: data.org.cin, style: 'data'}, ' registrovaného Ministerstvom vnútra SR dňa ',
  {text: data.org.dateOfReg, style: 'data'}, ' pod č. VVS/',
  {text: data.org.vvs, style: 'data'}, ' je:']},
- 'Tabulka:',
- {
-	style: ['tableOfPersons'],
+...data.persons.map(p => ({
+	style: ['tableDetail'],
 	table: {
-		headerRows: 1,
-		body: [
-			['Meno a priezvisko', 'Adresa trvalého pobytu', 'Dátum narodenia', 'Rodné číslo', 'Deň vzniku funkcie'].map(th),
-			...data.persons.map(p => [p.name, p.address, p.dateOfBirth, p.rc, p.dateStart])
-		]
-	}
-},
-'Vedla seba:',
-...data.persons.map(p => ({
-	style: ['personDetail'],
-		stack: [
-			{text: ['Meno a priezvisko: ',ds(p.name),]},
-			{text: ['Adresa trvalého pobytu: ',ds(p.address),]},
-			{text: ['Dátum narodenia: ',ds(p.dateOfBirth),]},
-			{text: ['Rodné číslo: ',ds(p.rc),]},
-			{text: ['Deň vzniku funkcie: ',ds(p.dateStart),]},
-	]})),
-	'Pod sebou:',
-...data.persons.map(p => ({
-	style: ['personDetail'],
-		stack: [
-			{stack: ['Meno a priezvisko: ',ds(p.name),]},
-			{stack: ['Adresa trvalého pobytu: ',ds(p.address),]},
-			{stack: ['Dátum narodenia: ',ds(p.dateOfBirth),]},
-			{stack: ['Rodné číslo: ',ds(p.rc),]},
-			{stack: ['Deň vzniku funkcie: ',ds(p.dateStart),]},
-	]}))
+		widths: ['auto', '*'],
+		body:[
+		['Meno a priezvisko: ',ds(p.name),],
+		['Adresa trvalého pobytu: ',ds(p.address),],
+		['Dátum narodenia: ',ds(p.dateOfBirth),],
+		['Rodné číslo: ',ds(p.rc),],
+		['Deň vzniku funkcie: ',ds(p.dateStart),],
+]
+}})),
 	],
 	styles: {
 		header: {
@@ -64,16 +42,8 @@ var documentDefinition = {
 			bold: true,
 			margin: [0, 10, 0, 5]
 		},
-		tableOfPersons: {
-			margin: [10, 20]
-		},
-		personDetail: {
-			margin: [20, 10, 5, 10]
-		},
-		tableHeader: {
-			bold: true,
-			fontSize: 13,
-			color: 'black'
+		tableDetail: {
+			margin: [20, 8, 5, 5]
 		},
 		data: {
 			bold: true,
@@ -110,7 +80,9 @@ document.querySelector('.getpdf').addEventListener('click', function(){
 
 
 	const dd = createPdf(storage.get());
-	pdfMake.createPdf(dd).open();
+	const pdf = pdfMake.createPdf(dd)
+	// pdf.open();
+	pdf.download('Oznamenie_udajov_do_RMNO.pdf');
 
 
 		/* 
