@@ -11,6 +11,7 @@ import Tabs from './components/tabs/tabs'
 import SdnHeader from './components/_custom/header/header'
 import SdnTimeline from './components/_custom/timeline/timeline'
 import SdnAppearLink from './utilities/appear-link/appear-link'
+import SdnInputRodneCislo from './components/_custom/input-rodne-cislo/intput-rodne-cislo'
 
 function initAll (options) {
   // Set the options to an empty object by default if no options are passed.
@@ -73,6 +74,11 @@ function initAll (options) {
   nodeListForEach($appearLinks, function ($link) {
     new SdnAppearLink($link).init()
   })
+  var $inputsRodneCislo = document.querySelectorAll('[data-module="sdn-input-rodne-cislo"]')
+  nodeListForEach($inputsRodneCislo, function ($inputRodneCislo) {
+    new SdnInputRodneCislo($inputRodneCislo).init()
+  })
+  
 }
 
 export {
@@ -87,5 +93,6 @@ export {
   Radios,
   Tabs,
   SdnHeader,
-  SdnTimeline
+  SdnTimeline,
+  SdnInputRodneCislo
 }
