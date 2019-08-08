@@ -7,7 +7,7 @@
 
 {% block main %}
     <h1>
-      Všeobecné podanie
+        Všeobecné podanie
     </h1>
 
     <form action="/podanie-submit" method="post" enctype="multipart/form-data">
@@ -44,14 +44,35 @@
 
 {% block js %}
     <script>
-        $(document).ready(function() {
-          $('form').submit(function(event) {
-            // var formData = new FormData(this);
-            //
-            // console.log(this, formData.get('file'));
-            //
-            // event.preventDefault();
-          });
-        });
+      $(document).ready(function () {
+        $('form').submit(function (event) {
+          event.preventDefault();
+
+          var formData = new FormData(this)
+
+          $.ajax({
+              type: 'POST',
+              url: $(this).attr('action'),
+              enctype: 'multipart/form-data',
+              data: formData,
+              processData: false,
+              contentType: false,
+              success: function (response) {
+
+                if (response.file)
+                {
+                    localStorage.setItem('podanie-form-data', JSON.stringify({
+                      subject: formData.get('subject'),
+                      message: formData.get('message'),
+                      file: response.file
+                    }))
+                }
+
+                window.location = '/examples/podanie/udelenie-opravneni'
+              }
+            }
+          );
+        })
+      })
     </script>
 {% endblock %}

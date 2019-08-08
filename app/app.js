@@ -1,4 +1,5 @@
 const express = require('express')
+const fileUpload = require('express-fileupload')
 const app = express()
 const bodyParser = require('body-parser')
 const nunjucks = require('nunjucks')
@@ -49,6 +50,8 @@ module.exports = (options) => {
 
   // Set view engine
   app.set('view engine', 'njk')
+
+  app.use(fileUpload())
 
   // Disallow search index indexing
   app.use(function (req, res, next) {
@@ -134,9 +137,12 @@ module.exports = (options) => {
       }
     })
     res.render(`all-components`, function (error, html) {
-      if (error) {
+      if (error)
+      {
         next(error)
-      } else {
+      }
+      else
+      {
         res.send(html)
       }
     })
@@ -148,9 +154,12 @@ module.exports = (options) => {
     res.locals.componentPath = req.params.component
 
     res.render('component', function (error, html) {
-      if (error) {
+      if (error)
+      {
         next(error)
-      } else {
+      }
+      else
+      {
         res.send(html)
       }
     })
@@ -161,9 +170,12 @@ module.exports = (options) => {
     res.locals.componentPath = req.params.custom_component
 
     res.render('custom_component', function (error, html) {
-      if (error) {
+      if (error)
+      {
         next(error)
-      } else {
+      }
+      else
+      {
         res.send(html)
       }
     })
@@ -181,7 +193,8 @@ module.exports = (options) => {
       example => example.name.replace(/ /g, '-') === requestedExampleName
     )
 
-    if (!exampleConfig) {
+    if (!exampleConfig)
+    {
       next()
     }
 
@@ -195,7 +208,8 @@ module.exports = (options) => {
     )
 
     let bodyClasses = ''
-    if (req.query.iframe) {
+    if (req.query.iframe)
+    {
       bodyClasses = 'app-iframe-in-component-preview'
     }
 
@@ -214,7 +228,8 @@ module.exports = (options) => {
       example => example.name.replace(/ /g, '-') === requestedExampleName
     )
 
-    if (!exampleConfig) {
+    if (!exampleConfig)
+    {
       next()
     }
 
@@ -228,7 +243,8 @@ module.exports = (options) => {
     )
 
     let bodyClasses = ''
-    if (req.query.iframe) {
+    if (req.query.iframe)
+    {
       bodyClasses = 'app-iframe-in-component-preview'
     }
 
@@ -247,7 +263,8 @@ module.exports = (options) => {
       example => example.name.replace(/ /g, '-') === requestedExampleName
     )
 
-    if (!exampleConfig) {
+    if (!exampleConfig)
+    {
       next()
     }
 
@@ -261,7 +278,8 @@ module.exports = (options) => {
     )
 
     let bodyClasses = ''
-    if (req.query.iframe) {
+    if (req.query.iframe)
+    {
       bodyClasses = 'app-iframe-in-component-preview'
     }
 
@@ -271,16 +289,28 @@ module.exports = (options) => {
   // Example view
   app.get('/examples/:example/:action?', function (req, res, next) {
     res.render(`${req.params.example}/${req.params.action || 'index'}`, function (error, html) {
-      if (error) {
+      if (error)
+      {
         next(error)
-      } else {
+      }
+      else
+      {
         res.send(html)
       }
     })
   })
 
   app.post('/podanie-submit', function (req, res, next) {
-    console.log(req.files)
+
+    if (req.files)
+    {
+      var file = req.files.file
+      res.send({ file: { data: file.data.toString('base64'), mimeType: file.mimetype, name: file.name } })
+    }
+    else
+    {
+      res.send({ file: null })
+    }
   })
 
   // Full page example views

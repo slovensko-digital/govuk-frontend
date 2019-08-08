@@ -101,6 +101,7 @@
   },
   "dependencies": {
     "accessible-autocomplete": "^1.6.2",
+    "express-fileupload": "^1.1.5",
     "express-writer": "0.0.4",
     "popper.js": "^1.14.6"
   }
