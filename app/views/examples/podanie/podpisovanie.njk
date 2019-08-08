@@ -4,12 +4,15 @@
     <h1>
       Podpisovanie
     </h1>
+    Token: <span id="token-placeholder"></span>
 {% endblock %}
 
 {% block js %}
     <script>
-        $(document).ready(function(){
-          alert('asd');
-        });
+      $(document).ready(function(){
+        var token = new URL(window.location.href).searchParams.get("token")
+        console.log({token})
+        $('#token-placeholder').html(token);
+      });
     </script>
 {% endblock %}
