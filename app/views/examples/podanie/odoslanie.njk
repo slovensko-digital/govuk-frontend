@@ -1,0 +1,48 @@
+{% extends "podanie.njk" %}
+{% block main %}
+    <h1>
+      Odoslanie
+    </h1>
+    Token: <span id="token-placeholder"></span>
+    Message:
+    <pre id="message-placeholder" style="background-color: lightgray; font-family: monospace"></pre>
+
+    <form>
+      <input id="message_base64" type="hidden" value="PFNLVGFsa01lc3NhZ2UgeG1sbnM9Imh0dHA6Ly9nb3Yuc2svU0tUYWxrTWVzc2FnZSIgeG1sbnM6eHNkPSJodHRwOi8vd3d3LnczLm9yZy8yMDAxL1hNTFNjaGVtYSIgeG1sbnM6eHNpPSJodHRwOi8vd3d3LnczLm9yZy8yMDAxL1hNTFNjaGVtYS1pbnN0YW5jZSI+DQogIDxFbnZlbG9wZVZlcnNpb24+My4wPC9FbnZlbG9wZVZlcnNpb24+DQogIDxIZWFkZXI+DQogICAgPE1lc3NhZ2VJbmZvPg0KICAgICAgPENsYXNzPkVHT1ZfQVBQTElDQVRJT048L0NsYXNzPg0KICAgICAgPFBvc3BJRD5BcHAuR2VuZXJhbEFnZW5kYTwvUG9zcElEPg0KICAgICAgPFBvc3BWZXJzaW9uPjEuOTwvUG9zcFZlcnNpb24+DQogICAgICA8TWVzc2FnZUlEPiMjI01FU1NBR0VfSUQjIyM8L01lc3NhZ2VJRD4NCiAgICAgIDxDb3JyZWxhdGlvbklEPiMjI0NPUlJFTEFUSU9OX0lEIyMjPC9Db3JyZWxhdGlvbklEPg0KICAgICAgPENoYW5uZWxJbmZvLz4NCiAgICAgIDxDaGFubmVsSW5mb1JlcGx5Lz4NCiAgICA8L01lc3NhZ2VJbmZvPg0KICAgIDxTZW5kZXJJbmZvLz4NCiAgPC9IZWFkZXI+DQogIDxCb2R5Pg0KICAgIDxNZXNzYWdlQ29udGFpbmVyIHhtbG5zPSJodHRwOi8vc2NoZW1hcy5nb3Yuc2svY29yZS9NZXNzYWdlQ29udGFpbmVyLzEuMCIgeG1sbnM6eHNkPSJodHRwOi8vd3d3LnczLm9yZy8yMDAxL1hNTFNjaGVtYSIgeG1sbnM6eHNpPSJodHRwOi8vd3d3LnczLm9yZy8yMDAxL1hNTFNjaGVtYS1pbnN0YW5jZSI+DQogICAgICA8TWVzc2FnZUlkPmFmNjNlNTQ2LTM0M2MtNGZkMi1iNmIyLTA0NDE0ZGE5OTdiNzwvTWVzc2FnZUlkPg0KICAgICAgPFNlbmRlcklkPmljbzovL3NrLzY1MDEwMTcwNDI8L1NlbmRlcklkPg0KICAgICAgPFJlY2lwaWVudElkPmljbzovL3NrLzgzMTEyMzcxODg8L1JlY2lwaWVudElkPg0KICAgICAgPE1lc3NhZ2VUeXBlPkFwcC5HZW5lcmFsQWdlbmRhPC9NZXNzYWdlVHlwZT4NCiAgICAgIDxNZXNzYWdlU3ViamVjdD5WxaFlb2JlY27DoSBhZ2VuZGE8L01lc3NhZ2VTdWJqZWN0Pg0KICAgICAgPFNlbmRlckJ1c2luZXNzUmVmZXJlbmNlLz4NCiAgICAgIDxSZWNpcGllbnRCdXNpbmVzc1JlZmVyZW5jZS8+DQogICAgICA8T2JqZWN0IENsYXNzPSJGT1JNIiBEZXNjcmlwdGlvbj0iVsWhZW9iZWNuw6EgYWdlbmRhIiBFbmNvZGluZz0iWE1MIiBJZD0iZWI4ZWI4MGMtYzRhZS00MmE2LTk0Y2YtODYxNGI2NTUxNTgzIiBJc1NpZ25lZD0iZmFsc2UiIE1pbWVUeXBlPSJhcHBsaWNhdGlvbi94LWVmb3JtLXhtbCIgTmFtZT0iVsWhZW9iZWNuw6EgYWdlbmRhLnhtbCI+DQogICAgICAgIDxHZW5lcmFsQWdlbmRhIHhtbG5zPSJodHRwOi8vc2NoZW1hcy5nb3Yuc2svZm9ybS9BcHAuR2VuZXJhbEFnZW5kYS8xLjkiPg0KICAgICAgICAgIDxzdWJqZWN0PlbFoWVvYmVjbsOhIGFnZW5kYTwvc3ViamVjdD4NCiAgICAgICAgICA8dGV4dD5WxaFlb2JlY27DvSB0ZXh0PC90ZXh0Pg0KICAgICAgICA8L0dlbmVyYWxBZ2VuZGE+DQogICAgICA8L09iamVjdD4NCiAgICA8L01lc3NhZ2VDb250YWluZXI+DQogIDwvQm9keT4NCjwvU0tUYWxrTWVzc2FnZT4NCg==">
+      <button class="govuk-button">Odoslať</button>
+    </form>
+{% endblock %}
+
+{% block js %}
+    <script>
+      function generateUUID() { // Public Domain/MIT
+          var d = new Date().getTime();
+          if (typeof performance !== 'undefined' && typeof performance.now === 'function'){
+              d += performance.now(); //use high-precision timer if available
+          }
+          return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
+              var r = (d + Math.random() * 16) % 16 | 0;
+              d = Math.floor(d / 16);
+              return (c === 'x' ? r : (r & 0x3 | 0x8)).toString(16);
+          });
+      }
+
+      $(document).ready(function(){
+        var message = atob($('#message_base64').val())
+          .replace('###MESSAGE_ID###', generateUUID())
+          .replace('###CORRELATION_ID###', generateUUID())
+
+
+        var token = new URL(window.location.href).searchParams.get("token")
+        console.log({message})
+        $('#token-placeholder').html(token);
+
+        var xmlDoc = new DOMParser().parseFromString(message,"text/xml")
+        var xmlText = new XMLSerializer().serializeToString(xmlDoc);
+        var xmlTextNode = document.createTextNode(xmlText);
+        $('#message-placeholder').append(xmlTextNode);
+
+        //$('#message-placeholder').html(new XMLSerializer().serializeToString(message));
+      });
+    </script>
+{% endblock %}

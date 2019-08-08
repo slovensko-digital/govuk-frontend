@@ -1,0 +1,20 @@
+{% extends "podanie.njk" %}
+
+{% block main %}
+    <h4>podatelna.slovensko.digital</h4>
+    <h1>
+      Udelenie oprávnení
+    </h1>
+    <p>
+      V ďalšom kroku sa prihlásite pomocou elektronického občianskeho preukazu cez portál slovensko.sk a následne budete pokračovať v odoslaní podania.
+    </p>
+    <p>
+      Blabla = udelenie opravnenia
+    </p>
+    {# <form action="https://podaas.ekosystem.staging.slovensko.digital/login"> #}
+    <form action="http://localhost:3000/examples/podanie/prihlasenie-fake">
+      <input type="hidden" name="callback" value="http://localhost:3000/examples/podanie/odoslanie?session=123">
+      <button class="govuk-button">Prihlásiť sa cez slovensko.sk</button>
+    </form>
+    <a href="#">Nesúhlasím</a>
+{% endblock %}
