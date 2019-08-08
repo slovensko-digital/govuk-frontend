@@ -279,6 +279,10 @@ module.exports = (options) => {
     })
   })
 
+  app.post('/podanie-submit', function (req, res, next) {
+    console.log(req.files)
+  })
+
   // Full page example views
   require('./full-page-examples.js')(app)
 

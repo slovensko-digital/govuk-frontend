@@ -1,7 +1,14 @@
 {% extends "podanie.njk" %}
 
+{% block header %}
+    {{ govukHeader({
+        productName: '🇸🇰 Slovensko.sk',
+        homepageUrl: '/examples/podanie'
+    }) }}
+{% endblock %}
+
+
 {% block main %}
-    <h4>🇸🇰 Slovensko.sk</h4>
     <h1>
       Prihláste sa
     </h1>

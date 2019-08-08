@@ -1,7 +1,13 @@
 {% extends "podanie.njk" %}
 
+{% block header %}
+    {{ govukHeader({
+        productName: 'podatelna.slovensko.digital',
+        homepageUrl: '/examples/podanie'
+    }) }}
+{% endblock %}
+
 {% block main %}
-    <h4>podatelna.slovensko.digital</h4>
     <h1>
       Udelenie oprávnení
     </h1>
@@ -16,5 +22,5 @@
       <input type="hidden" name="callback" value="http://localhost:3000/examples/podanie/odoslanie?session=123">
       <button class="govuk-button">Prihlásiť sa cez slovensko.sk</button>
     </form>
-    <a href="#">Nesúhlasím</a>
+    <a href="/examples/podanie">Nesúhlasím</a>
 {% endblock %}

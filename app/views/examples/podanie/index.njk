@@ -1,7 +1,57 @@
 {% extends "podanie.njk" %}
 
+{% from "input/macro.njk" import govukInput %}
+{% from "textarea/macro.njk" import govukTextarea %}
+{% from "file-upload/macro.njk" import govukFileUpload %}
+{% from "button/macro.njk" import govukButton %}
+
 {% block main %}
     <h1>
-      Podanie
+      Všeobecné podanie
     </h1>
+
+    <form action="/podanie-submit" method="post" enctype="multipart/form-data">
+
+        {{ govukInput({
+            "label": {
+                "text": "Predmet"
+            },
+            "id": "subject",
+            "name": "subject"
+        }) }}
+
+        {{ govukTextarea({
+            "name": "message",
+            "id": "message",
+            "label": {
+                "text": "Správa"
+            }
+        }) }}
+
+        {{ govukFileUpload({
+            "id": "file",
+            "name": "file",
+            "label": {
+                "text": "Príloha"
+            }
+        }) }}
+
+        {{ govukButton({
+            "text": "Odoslať"
+        }) }}
+    </form>
+{% endblock %}
+
+{% block js %}
+    <script>
+        $(document).ready(function() {
+          $('form').submit(function(event) {
+            // var formData = new FormData(this);
+            //
+            // console.log(this, formData.get('file'));
+            //
+            // event.preventDefault();
+          });
+        });
+    </script>
 {% endblock %}
