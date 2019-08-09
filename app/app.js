@@ -8,6 +8,11 @@ const fs = require('fs')
 const path = require('path')
 const writer = require('express-writer')
 
+// for examples/podanie/odoslanie
+const jwt = require('jsonwebtoken')
+const uuidv1 = require('uuid/v1')
+const axios = require('axios')
+
 const readdir = util.promisify(fs.readdir)
 
 const helperFunctions = require('../lib/helper-functions')
@@ -311,6 +316,42 @@ module.exports = (options) => {
     {
       res.send({ file: null })
     }
+  })
+
+
+  app.post('/examples/podanie/odoslanie', function (req, res, next) {
+    var { subject, text, oboToken } = req.body
+
+    privateKey = fs.readFileSync(path.join(configPaths.examples, 'podanie', 'api-key.pem'))
+    var token = jwt.sign({
+        obo: oboToken,
+        exp: Math.floor(Date.now() / 1000) + 1000,
+        jti: uuidv1()
+      },
+      privateKey,
+      {
+        algorithm: 'RS256',
+        header: {
+          cty: 'JWT',
+        }
+      }
+    )
+
+    var message = nunjucks.render(path.join('podanie', 'general_agenda.xml.njk'), {
+      messageId: uuidv1(),
+      correlationId: uuidv1(),
+      senderId: jwt.decode(oboToken).sub
+    })
+
+    axios.post(
+      'https://podaas.ekosystem.staging.slovensko.digital/api/sktalk/receive_and_save_to_outbox',
+      { message },
+      { headers: { Authorization: `Bearer ${token}`} }
+    ).then(({data}) => {
+      res.send(data)
+    }).catch(({response: {status, data}}) => {
+      res.status(status).send(data)
+    })
   })
 
   // Full page example views
