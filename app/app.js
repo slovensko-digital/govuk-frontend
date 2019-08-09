@@ -320,7 +320,7 @@ module.exports = (options) => {
 
 
   app.post('/examples/podanie/odoslanie', function (req, res, next) {
-    var { subject, text, oboToken } = req.body
+    var { oboToken, message: { subject, text } } = req.body
 
     privateKey = fs.readFileSync(path.join(configPaths.examples, 'podanie', 'api-key.pem'))
     var token = jwt.sign({
@@ -340,7 +340,9 @@ module.exports = (options) => {
     var message = nunjucks.render(path.join('podanie', 'general_agenda.xml.njk'), {
       messageId: uuidv1(),
       correlationId: uuidv1(),
-      senderId: jwt.decode(oboToken).sub
+      senderId: jwt.decode(oboToken).sub,
+      messageSubject: subject,
+      messageText: text
     })
 
     axios.post(

@@ -18,13 +18,13 @@
       <SenderId>{{ senderId }}</SenderId>
       <RecipientId>ico://sk/83136952</RecipientId>
       <MessageType>App.GeneralAgenda</MessageType>
-      <MessageSubject>Všeobecná agenda</MessageSubject>
+      <MessageSubject>{{ messageSubject }}</MessageSubject>
       <SenderBusinessReference/>
       <RecipientBusinessReference/>
       <Object Class="FORM" Description="Všeobecná agenda" Encoding="XML" Id="eb8eb80c-c4ae-42a6-94cf-8614b6551583" IsSigned="false" MimeType="application/x-eform-xml" Name="Všeobecná agenda.xml">
         <GeneralAgenda xmlns="http://schemas.gov.sk/form/App.GeneralAgenda/1.9">
-          <subject>Všeobecná agenda</subject>
-          <text>Všeobecný text</text>
+          <subject>{{ messageSubject }}</subject>
+          <text>{{ messageText }}</text>
         </GeneralAgenda>
       </Object>
     </MessageContainer>

@@ -10,6 +10,15 @@
       Odoslanie
     </h1>
 
+    <strong>Predmet</strong><br>
+    <p id="message-subject-placeholder"></p>
+
+    <strong>Správa</strong><br>
+    <p id="message-body-placeholder"></p>
+
+    <strong>Prílohy</strong><br>
+    <p id="message-file-placeholder"></p>
+
     <form>
       <input id="obo_token" type="hidden" name="obo_token">
       <button class="govuk-button">Odoslať</button>
@@ -32,8 +41,13 @@
 
       $(document).ready(function(){
         var oboToken = new URL(window.location.href).searchParams.get("token")
+        var { message, subject, file } = JSON.parse(localStorage.getItem('podanie-form-data'))
 
         $('#user-placeholder').html(parseJwt(oboToken).name)
+        $('#message-subject-placeholder').html(subject)
+        $('#message-body-placeholder').html(message)
+        $('#message-file-placeholder').html(`${file.name} (${file.mimeType})`)
+
 
         $('form').on('submit', function(event){
           $('form > button').prop('disabled', true).html('Odosielam...')
@@ -41,7 +55,11 @@
           $.ajax({
             type: 'post',
             data: {
-              oboToken
+              oboToken,
+              message: {
+                subject: subject,
+                text: message,
+              }
             },
             success: function(data) {
               $('#flash-success').html(`Vaša správa bola úspešne odoslaná!`)
