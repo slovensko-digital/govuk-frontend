@@ -356,8 +356,8 @@ module.exports = (options) => {
     })
 
     axios.post(
-      'https://podaas.ekosystem.staging.slovensko.digital/api/sktalk/receive_and_save_to_outbox',
-      // 'https://slovensko-sk-api.ekosystem.staging.slovensko.digital/api/sktalk/receive_and_save_to_outbox',
+      // 'https://podaas.ekosystem.staging.slovensko.digital/api/sktalk/receive_and_save_to_outbox', //FIX
+      'https://slovensko-sk-api.ekosystem.staging.slovensko.digital/api/sktalk/receive_and_save_to_outbox', //DEV
       { message },
       { headers: { Authorization: `Bearer ${token}`} }
     ).then(({data}) => {
