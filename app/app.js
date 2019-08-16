@@ -78,7 +78,7 @@ module.exports = (options) => {
   app.use('/assets', express.static(path.join(configPaths.src, 'assets')))
 
   // Turn form POSTs into data that can be used for validation.
-  app.use(bodyParser.urlencoded({ extended: true }))
+  app.use(bodyParser.urlencoded({ extended: true, limit: '50mb' }))
 
   // Handle the banner component serverside.
   require('./banner.js')(app)
@@ -306,21 +306,30 @@ module.exports = (options) => {
   })
 
   app.post('/podanie-submit', function (req, res, next) {
+    const response = {}
+    const { subject, message } = req.body
+
+    response.xml = {
+      data: Buffer.from(nunjucks.render(path.join('podanie', 'templates', 'general_agenda.xml.njk'), { subject, text: message })).toString('base64'),
+      mimeType: 'application/xml',
+      name: 'form.xml',
+    }
 
     if (req.files)
     {
       var file = req.files.file
-      res.send({ file: { data: file.data.toString('base64'), mimeType: file.mimetype, name: file.name } })
+      response.file = { data: file.data.toString('base64'), mimeType: file.mimetype, name: file.name }
     }
     else
     {
-      res.send({ file: null })
+      response.file = null
     }
+
+    res.send(response)
   })
 
-
   app.post('/examples/podanie/odoslanie', function (req, res, next) {
-    var { oboToken, message: { subject, text } } = req.body
+    var { oboToken, messageSubject, objects: { form, attachments } } = req.body
 
     privateKey = fs.readFileSync(path.join(configPaths.examples, 'podanie', 'api-key.pem'))
     var token = jwt.sign({
@@ -337,16 +346,18 @@ module.exports = (options) => {
       }
     )
 
-    var message = nunjucks.render(path.join('podanie', 'general_agenda.xml.njk'), {
+    var message = nunjucks.render(path.join('podanie', 'templates', 'sktalk_envelope.xml.njk'), {
       messageId: uuidv1(),
       correlationId: uuidv1(),
       senderId: jwt.decode(oboToken).sub,
-      messageSubject: subject,
-      messageText: text
+      messageSubject,
+      form: {id: uuidv1(), ...form},
+      attachments: attachments.map(attachment => ({id: uuidv1(), ...attachment})),
     })
 
     axios.post(
       'https://podaas.ekosystem.staging.slovensko.digital/api/sktalk/receive_and_save_to_outbox',
+      // 'https://slovensko-sk-api.ekosystem.staging.slovensko.digital/api/sktalk/receive_and_save_to_outbox',
       { message },
       { headers: { Authorization: `Bearer ${token}`} }
     ).then(({data}) => {

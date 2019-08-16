@@ -1,7 +1,7 @@
 {% extends "podanie.njk" %}
 {% block main %}
     <p>
-      Ste prihlásený ako: <strong id="user-placeholder">TODO</strong>
+      Ste prihlásený/á ako: <strong id="user-placeholder">TODO</strong>
       <br>
       <a href="#" class="govuk-link--muted">Odhlásiť</a>
     </p>
@@ -20,7 +20,6 @@
     <p id="message-file-placeholder"></p>
 
     <form>
-      <input id="obo_token" type="hidden" name="obo_token">
       <button class="govuk-button">Odoslať</button>
     </form>
     <p id="flash-success" style="color: green"></p>
@@ -39,15 +38,26 @@
         return JSON.parse(jsonPayload);
       };
 
+      function buildMessageObjectFromSignedFile(file) {
+        return {
+          name: file.name,
+          description: file.name,
+          encoding: 'Base64',
+          mimeType: file.mediaType,
+          isSigned: "true",
+          content: file.binaryData,
+        }
+      }
+
       $(document).ready(function(){
         var oboToken = new URL(window.location.href).searchParams.get("token")
         var { message, subject, file } = JSON.parse(localStorage.getItem('podanie-form-data'))
+        const signedFiles = JSON.parse(localStorage.getItem('podanie-signed-data')).files
 
         $('#user-placeholder').html(parseJwt(oboToken).name)
         $('#message-subject-placeholder').html(subject)
         $('#message-body-placeholder').html(message)
         $('#message-file-placeholder').html(`${file.name} (${file.mimeType})`)
-
 
         $('form').on('submit', function(event){
           $('form > button').prop('disabled', true).html('Odosielam...')
@@ -56,16 +66,17 @@
             type: 'post',
             data: {
               oboToken,
-              message: {
-                subject: subject,
-                text: message,
-              }
+              objects: {
+                form: buildMessageObjectFromSignedFile(signedFiles[0]),
+                attachments: signedFiles.slice(1).map(buildMessageObjectFromSignedFile),
+              },
+              messageSubject: subject,
             },
             success: function(data) {
               $('#flash-success').html(`Vaša správa bola úspešne odoslaná!`)
             },
             error: function(data) {
-              $('#flash-error').html(`Pri odosielaní sa vyskytol problém: ${data.responseJSON.message}`)
+              $('#flash-error').html(`Pri odosielaní sa vyskytol problém: ${data.responseJSON ? data.responseJSON.message : data.statusText}`)
             },
             complete: function(data) {
               $('form > button').attr('disabled', false).html('Odoslať')

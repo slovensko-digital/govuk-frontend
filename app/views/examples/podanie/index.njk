@@ -59,14 +59,12 @@
               contentType: false,
               success: function (response) {
 
-                if (response.file)
-                {
-                    localStorage.setItem('podanie-form-data', JSON.stringify({
-                      subject: formData.get('subject'),
-                      message: formData.get('message'),
-                      file: response.file
-                    }))
-                }
+                localStorage.setItem('podanie-form-data', JSON.stringify({
+                  subject: formData.get('subject'),
+                  message: formData.get('message'),
+                  xml: response.xml,
+                  file: response.file,
+                }))
 
                 window.location = '/examples/podanie/udelenie-opravneni'
               }

@@ -21,12 +21,15 @@
       <MessageSubject>{{ messageSubject }}</MessageSubject>
       <SenderBusinessReference/>
       <RecipientBusinessReference/>
-      <Object Class="FORM" Description="Všeobecná agenda" Encoding="XML" Id="eb8eb80c-c4ae-42a6-94cf-8614b6551583" IsSigned="false" MimeType="application/x-eform-xml" Name="Všeobecná agenda.xml">
-        <GeneralAgenda xmlns="http://schemas.gov.sk/form/App.GeneralAgenda/1.9">
-          <subject>{{ messageSubject }}</subject>
-          <text>{{ messageText }}</text>
-        </GeneralAgenda>
+      <Object Class="FORM" Description="{{ form.description }}" Encoding="{{ form.encoding}}" Id="{{ form.id }}" IsSigned="{{ form.isSigned }}" MimeType="{{ form.mimeType }}" Name="{{ form.name }}">
+        {{ form.content }}
       </Object>
+      {% for attachment in attachments %}
+      <Object Class="ATTACHMENT" Description="{{ attachment.description }}" Encoding="{{ attachment.encoding}}" Id="{{ attachment.id }}" IsSigned="{{ attachment.isSigned }}" MimeType="{{ attachment.mimeType }}" Name="{{ attachment.name }}">
+        {{ attachment.content }}
+      </Object>
+      {% endfor %}
+
     </MessageContainer>
   </Body>
 </SKTalkMessage>
