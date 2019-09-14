@@ -1,0 +1,229 @@
+$dark-hover-red: #b31424;
+$white: #ffffff;
+$yellow: #ffdd00;
+$black: #0b0c0c;
+$red: #e61e32;
+
+$chevron-banner: url("../../../assets/images/chevron-banner.svg");
+$chevron-banner-small: url("../../../assets/images/chevron-banner-small.svg");
+$chevron-banner-small-focus: url("../../../assets/images/chevron-banner-small-focus.svg");
+$chevron-banner-focus: url("../../../assets/images/chevron-banner-focus.svg");
+$chevron-banner-hover: url("../../../assets/images/chevron-banner-hover.svg");
+$chevron-banner-hover-border: url("../../../assets/images/chevron-banner-hover-border.svg");
+
+.gem-c-chevron-banner {
+  position: relative;
+}
+
+.gem-c-chevron-banner:hover .gem-c-chevron-banner__link-container {
+  background-color: $dark-hover-red;
+}
+
+@media (min-width: 20em) {
+  .gem-c-chevron-banner:hover .gem-c-chevron-banner__link-container:after {
+    background-image: $chevron-banner-hover;
+  }
+}
+
+.gem-c-chevron-banner--hover-border:hover .gem-c-chevron-banner__link-container {
+  border-right: 2px solid;
+  border-color: $white;
+}
+
+@media (min-width: 20em) {
+  .gem-c-chevron-banner--hover-border:hover .gem-c-chevron-banner__link-container {
+    border-right: 0;
+  }
+}
+
+@media (min-width: 20em) {
+  .gem-c-chevron-banner--hover-border:hover .gem-c-chevron-banner__link-container:after {
+    background-image: $chevron-banner-hover-border;
+  }
+}
+
+.gem-c-chevron-banner:focus-within .gem-c-chevron-banner__link-container {
+  border-right: 2px solid;
+  border-color: $black;
+  background-color: $yellow;
+}
+
+@media (min-width: 20em) {
+  .gem-c-chevron-banner:focus-within .gem-c-chevron-banner__link-container {
+    border-right: 0;
+  }
+}
+
+.gem-c-chevron-banner:focus-within .gem-c-chevron-banner__link-container:after {
+  background-image: $chevron-banner-small-focus;
+}
+
+@media (min-width: 20em) {
+  .gem-c-chevron-banner:focus-within .gem-c-chevron-banner__link-container:after {
+    background-image: $chevron-banner-focus;
+  }
+}
+
+.gem-c-chevron-banner__link-container {
+  padding: 20px;
+  border: 2px solid transparent;
+  border-right: 0;
+  border-radius: 5px;
+  background-color: $red;
+}
+
+@media (min-width: 20em) {
+  .gem-c-chevron-banner__link-container {
+    margin-right: 120px;
+    padding: 15px;
+    border-radius: 5px 0 0 5px;
+  }
+}
+
+@media (min-width: 48.0625em) {
+  .gem-c-chevron-banner__link-container {
+    padding: 20px;
+  }
+}
+
+.gem-c-chevron-banner__link-container:after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 10px;
+  width: 25px;
+  height: 100%;
+  background-image: $chevron-banner-small;
+  background-repeat: no-repeat;
+  background-position: center right;
+  background-size: 25px 25px;
+}
+
+@media (min-width: 20em) {
+  .gem-c-chevron-banner__link-container:after {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 0;
+    right: 0;
+    min-width: 120px;
+    height: 100%;
+    background-image: $chevron-banner;
+    background-repeat: no-repeat;
+    background-position: -1px center;
+    background-size: auto 100%;
+  }
+}
+
+@media screen and (min-width: 0\0) and (min-width: 320px) and (max-width: 364px) {
+  .gem-c-chevron-banner__link-container:after {
+    background-position: -15px center;
+  }
+}
+
+@media screen and (min-width: 0\0) and (min-width: 365px) and (max-width: 640px) {
+  .gem-c-chevron-banner__link-container:after {
+    background-position: -28px center;
+  }
+}
+
+@media screen and (min-width: 0\0) and (min-width: 641px) and (max-width: 769px) {
+  .gem-c-chevron-banner__link-container:after {
+    background-position: -20px center;
+  }
+}
+
+@media screen and (min-width: 0\0) and (min-width: 770px) {
+  .gem-c-chevron-banner__link-container:after {
+    background-position: -14px center;
+  }
+}
+
+@media (max-width: 19.99em) {
+  .gem-c-chevron-banner__link {
+    display: block;
+    width: 80%;
+  }
+}
+
+.gem-c-chevron-banner__link:link,
+.gem-c-chevron-banner__link:visited,
+.gem-c-chevron-banner__link:hover {
+  color: $white;
+  font-family: "nta", Arial, sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 1.1111111111;
+  text-decoration: none;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+@media print {
+
+  .gem-c-chevron-banner__link:link,
+  .gem-c-chevron-banner__link:visited,
+  .gem-c-chevron-banner__link:hover {
+    font-family: sans-serif;
+  }
+}
+
+@media (min-width: 40.0625em) {
+
+  .gem-c-chevron-banner__link:link,
+  .gem-c-chevron-banner__link:visited,
+  .gem-c-chevron-banner__link:hover {
+    font-size: 24px;
+    line-height: 1.25;
+  }
+}
+
+@media print {
+
+  .gem-c-chevron-banner__link:link,
+  .gem-c-chevron-banner__link:visited,
+  .gem-c-chevron-banner__link:hover {
+    font-size: 18pt;
+    line-height: 1.15;
+  }
+}
+
+.gem-c-chevron-banner__link:link:focus,
+.gem-c-chevron-banner__link:focus {
+  color: $black;
+  background-color: $yellow;
+  box-shadow: 0 -2px $yellow, 0 4px $black;
+}
+
+.gem-c-chevron-banner__link:after {
+  content: "";
+  position: absolute;
+  z-index: 10;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.homepage__ready-container {
+  margin: 30px 0 40px 0;
+
+  @media (min-width: 48.0625em) {
+    margin-bottom: 15px;
+  }
+}
+
+
+.homepage__ready-heading {
+  margin-bottom: 10px;
+}
+
+.homepage__ready-desc {
+  margin-top: 0;
+  font-family: "nta", Arial, sans-serif;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 1.1111111111;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}

@@ -1,0 +1,15 @@
+params:
+- name: themeTitle
+  type: string
+  required: true
+  description: Title of the actual theme to be rendered.
+- name: themeDescription
+  type: string
+  required: true
+  description: Description text of the actual theme.
+- name: themeRedirectUrl
+  type: string
+  required: true
+  description: Redirect url to be used after clicking on redirect button.
+
+previewLayout: full-width
