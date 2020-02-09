@@ -14,7 +14,7 @@ examples:
       - href: '#1'
         text: Časté otázky
       - href: '#2'
-        text: Prihlásiť
+        text: Moje konto
 - name: s logom
   description: Hlavička s logom
   data:
@@ -26,7 +26,7 @@ examples:
       - href: '#1'
         text: Časté otázky
       - href: '#2'
-        text: Prihlásiť
+        text: Moje konto
 - name: bez vyhladavania
   description: Hlavička s dvoma linkami bez search fieldu
   data:
@@ -43,7 +43,7 @@ examples:
       - href: '#4'
         text: FAQ
       - href: '#5'
-        text: Prihlásiť
+        text: Moje konto
 - name: viac položiek
   description: Hlavička s troma linkami a search fieldom
   data:
@@ -56,7 +56,7 @@ examples:
       - href: '#2'
         text: O nás
       - href: '#3'
-        text: Prihlásiť
+        text: Moje konto
 - name: prihlásený - krátky email
   description: Hlavička prihláseného používateľa s krátkym emailom
   data:
@@ -123,5 +123,5 @@ examples:
         text: O nás
         active: true
       - href: '#3'
-        text: Prihlásiť
+        text: Moje konto
 
