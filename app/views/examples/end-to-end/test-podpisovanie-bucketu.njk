@@ -1,0 +1,32 @@
+{% extends "podanie.njk" %}
+
+{% from "input/macro.njk" import govukInput %}
+{% from "textarea/macro.njk" import govukTextarea %}
+{% from "file-upload/macro.njk" import govukFileUpload %}
+{% from "button/macro.njk" import govukButton %}
+
+{% block header %}
+    {{ govukHeader({
+        productName: 'Test podpisovania bucketu',
+        homepageUrl: '/app/trvaly-pobyt'
+    }) }}
+{% endblock %}
+
+{% block main %}
+        <form action="/app/podpisovac" method="get">
+          {{ govukTextarea({
+            "label": {
+              "text": "Bucket ID"
+            },
+            "name": "bucket-id"
+          }) }}
+
+          <p>
+            <small>Bucket ID získate <a href="/examples/end-to-end/test-upload-suborov-na-podpis">tu</a></small>.
+          </p>
+
+          {{ govukButton({
+            "text": "Odoslať"
+          }) }}
+        </form>
+{% endblock %}

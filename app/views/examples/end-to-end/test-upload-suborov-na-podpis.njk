@@ -1,0 +1,92 @@
+{% extends "podanie.njk" %}
+
+{% from "input/macro.njk" import govukInput %}
+{% from "textarea/macro.njk" import govukTextarea %}
+{% from "file-upload/macro.njk" import govukFileUpload %}
+{% from "button/macro.njk" import govukButton %}
+
+{% block header %}
+    {{ govukHeader({
+        productName: 'Test uploadu súborov na podpis',
+        homepageUrl: '/app/trvaly-pobyt'
+    }) }}
+{% endblock %}
+
+{% block main %}
+        <form action="/app/podpisovac/api/create-bucket" method="post" enctype="multipart/form-data">
+          {{ govukInput({
+            "label": {
+              "text": "Správa zobrazená pri podpisovaní súborov"
+            },
+            "hint": {
+              "text": "Maximálne 160 znakov"
+            },
+            "attributes": {
+              "maxlength": 160,
+              "value": "Stručná inštrukcia k podpisovaným súborom."
+            },
+            "name": "message"
+          }) }}
+
+          {{ govukFileUpload({
+            "name": "file-upload-1",
+            "label": {
+              "text": "Súbor č. 1"
+            }
+          }) }}
+
+          {{ govukFileUpload({
+            "name": "file-upload-2",
+            "label": {
+              "text": "Súbor č. 2"
+            }
+          }) }}
+
+          {{ govukFileUpload({
+            "name": "file-upload-3",
+            "label": {
+              "text": "Súbor č. 3"
+            }
+          }) }}
+
+          <div style="margin-top: 60px;">
+            <hr>
+          </div>
+
+          {{ govukInput({
+            "label": {
+              "text": "Success URL"
+            },
+            "hint": {
+              "text": "URL, na ktorú bude používateľ presmerovaný po úspešnom podpísaní."
+            },
+            "value": "/examples/podanie/podpisovanie?result=success",
+            "name": "successUrl"
+          }) }}
+
+          {{ govukInput({
+            "label": {
+              "text": "Fail URL"
+            },
+            "hint": {
+              "text": "URL, na ktorú bude používateľ presmerovaný po neúspešnom podpísaní."
+            },
+            "value": "/examples/podanie/podpisovanie?result=fail",
+            "name": "failUrl"
+          }) }}
+
+          {{ govukInput({
+            "label": {
+              "text": "API KEY"
+            },
+            "attributes": {
+              "value": 'super-secret-api-key'
+            },
+            "name": "apiKey"
+          }) }}
+
+          {{ govukButton({
+            "text": "Odoslať"
+          }) }}
+        </form>
+{% endblock %}

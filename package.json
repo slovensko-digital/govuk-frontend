@@ -102,10 +102,13 @@
   "dependencies": {
     "accessible-autocomplete": "^1.6.2",
     "axios": "^0.19.0",
+    "dotenv": "^8.2.0",
     "express-fileupload": "^1.1.5",
     "express-writer": "0.0.4",
+    "form-data": "^3.0.0",
     "jsonwebtoken": "^8.5.1",
     "popper.js": "^1.14.6",
-    "uuid": "^3.3.2"
+    "uuid": "^3.3.2",
+    "xml2js": "^0.4.22"
   }
 }

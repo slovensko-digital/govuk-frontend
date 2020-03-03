@@ -1,0 +1,21 @@
+{% block js %}
+    <script>
+        function grantPermissions()
+        {
+          var key = 'podanie-settings-user-granted-permissions';
+          var value = 'yes';
+          var setToCookie = true;
+
+          localStorage.setItem(key, value);
+
+          if (setToCookie)
+          {
+            document.cookie = key + "=" + (value || "") + "; path=/";
+          }
+        }
+
+        grantPermissions();
+
+        window.location = '/app/trvaly-pobyt';
+    </script>
+{% endblock %}

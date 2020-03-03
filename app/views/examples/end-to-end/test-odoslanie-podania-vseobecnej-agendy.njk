@@ -1,0 +1,125 @@
+{% extends "podanie.njk" %}
+
+{% from "input/macro.njk" import govukInput %}
+{% from "textarea/macro.njk" import govukTextarea %}
+{% from "file-upload/macro.njk" import govukFileUpload %}
+{% from "button/macro.njk" import govukButton %}
+{% from "checkboxes/macro.njk" import govukCheckboxes %}
+
+{% block header %}
+    {{ govukHeader({
+        productName: 'Test odoslania podania všeobecnej agendy',
+        homepageUrl: '/app/trvaly-pobyt'
+    }) }}
+{% endblock %}
+
+{% block main %}
+        <form action="/app/podavac/api/send" method="post" enctype="multipart/form-data">
+
+          {{ govukInput({
+            "label": {
+              "text": "ID prijímateľa"
+            },
+            "value": "ico://sk/8311237188",
+            "name": "RecipientId"
+          }) }}
+
+          {{ govukInput({
+            "label": {
+              "text": "Predmet správy zobrazovaný v zozname správ v schránke"
+            },
+            "value": "Testovacie všeobecné podanie",
+            "name": "MessageSubject"
+          }) }}
+
+          {{ govukTextarea({
+            "label": {
+              "text": "XML formulára všeobecnej agendy"
+            },
+            "value": "<GeneralAgenda xmlns=\"http://schemas.gov.sk/form/App.GeneralAgenda/1.9\">
+\t<subject>Predmet všeobecného podania</subject>
+\t<text>Text všeobecného podania</text>\n</GeneralAgenda>",
+            "name": "form"
+          }) }}
+
+          {{ govukFileUpload({
+            "name": "file-upload-1",
+            "label": {
+              "text": "Súbor č. 1"
+            }
+          }) }}
+
+          {{ govukFileUpload({
+            "name": "file-upload-2",
+            "label": {
+              "text": "Súbor č. 2"
+            }
+          }) }}
+
+          {{ govukFileUpload({
+            "name": "file-upload-3",
+            "label": {
+              "text": "Súbor č. 3"
+            }
+          }) }}
+
+          {{ govukCheckboxes({
+            "name": "SignedFiles",
+            "classes": "govuk-checkboxes--small",
+            "items": [
+              {
+                "value": "0",
+                "text": "Súbor č. 1 je podpísaný"
+              },
+              {
+                "value": "1",
+                "text": "Súbor č. 2 je podpísaný"
+              },
+              {
+                "value": "2",
+                "text": "Súbor č. 3 je podpísaný"
+              }
+            ]
+          }) }}
+
+          <div style="margin-top: 60px;">
+            <hr>
+          </div>
+
+          {{ govukInput({
+            "label": {
+              "text": "Success URL"
+            },
+            "hint": {
+              "text": "URL, na ktorú bude používateľ presmerovaný po úspešnom podpísaní."
+            },
+            "value": "/examples/podanie/podpisovanie?result=success",
+            "name": "successUrl"
+          }) }}
+
+          {{ govukInput({
+            "label": {
+              "text": "Fail URL"
+            },
+            "hint": {
+              "text": "URL, na ktorú bude používateľ presmerovaný po neúspešnom podpísaní."
+            },
+            "value": "/examples/podanie/podpisovanie?result=fail",
+            "name": "failUrl"
+          }) }}
+
+          {{ govukInput({
+            "label": {
+              "text": "API KEY"
+            },
+            "attributes": {
+              "value": 'super-secret-api-key'
+            },
+            "name": "apiKey"
+          }) }}
+
+          {{ govukButton({
+            "text": "Odoslať"
+          }) }}
+        </form>
+{% endblock %}

@@ -1,0 +1,15 @@
+{% extends "podanie.njk" %}
+
+{% block header %}
+    {{ govukHeader({
+        productName: 'end to end komponenty',
+        homepageUrl: '/examples/podanie'
+    }) }}
+{% endblock %}
+
+{% block main %}
+  <a href="/app/trvaly-pobyt">Aplikácia na zmenu trvalého pobytu</a><br>
+  <a href="/examples/end-to-end/test-podpisovanie-bucketu">Test - podpisovanie bucketu</a><br>
+  <a href="/examples/end-to-end/test-upload-suborov-na-podpis">Test - upload suborov na podpis</a><br>
+  <a href="/examples/end-to-end/test-odoslanie-podania-vseobecnej-agendy">Test - odoslanie podania všeobecnej agendy</a><br>
+{% endblock %}

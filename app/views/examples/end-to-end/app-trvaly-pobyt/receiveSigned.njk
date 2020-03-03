@@ -1,0 +1,55 @@
+{% extends "podanie.njk" %}
+
+{% from "input/macro.njk" import govukInput %}
+{% from "textarea/macro.njk" import govukTextarea %}
+{% from "file-upload/macro.njk" import govukFileUpload %}
+{% from "button/macro.njk" import govukButton %}
+
+{% block header %}
+    {{ govukHeader({
+        productName: 'Prihlásenie na trvalý pobyt',
+        homepageUrl: '/app/trvaly-pobyt'
+    }) }}
+{% endblock %}
+
+{% block main %}
+
+    {% if user is null %}
+        <span class="govuk-caption-l">Rýchle a jednoduché</span>
+        <h1 class="govuk-heading-l">Prihlásenie na trvalý pobyt</h1>
+
+        <p class="govuk-body">Táto aplikácia Vám umožní prihlásiť seba alebo Vaše deti na trvalý pobyt.</p>
+
+        <a href="{{ loginConfig.login_url }}" class="govuk-button govuk-button--start">Prihlásiť sa cez slovensko.sk</a>
+
+    {% else %}
+        {{ user.name }} <a href="/app/trvaly-pobyt/odhlasenie" class="govuk-link--muted">Odhlásiť</a>
+        <hr><br>
+
+      {% set multipleFiles = bucket.files|length > 1 %}
+
+      <h3 style="margin-top: 0">
+        Žiadosť o zmenu trvalého pobytu dokončíte odoslaním {% if multipleFiles %}týchto dokumentov{% else %}tohto dokumentu{% endif %}
+      </h3>
+
+      <table class="govuk-table">
+        <tbody class="govuk-table__body">
+        {% for file in bucket.files %}
+          <tr class="govuk-table__row">
+            <td class="govuk-table__cell">{{ file.name }}</td>
+            <td class="govuk-table__cell" id="file-status-{{ loop.index0 }}">{% if file.signed %}podpísaný{% else %}nepodpísaný{% endif %}</td>
+          </tr>
+        {% endfor %}
+        </tbody>
+      </table>
+
+      <form>
+        <button type="submit" name="submit" class="govuk-button govuk-button--large" style="margin: 0;">Odoslať</button>
+      </form>
+    {% endif %}
+{% endblock %}
+
+{% block js %}
+
+    </script>
+{% endblock %}

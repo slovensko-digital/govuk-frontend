@@ -1,0 +1,75 @@
+// Download forgeJS from the web and set it as a variable
+if(!pm.globals.has("forgeJS")){
+        pm.sendRequest("https://raw.githubusercontent.com/archimetes/RSAForPostman/master/forge.js", function (err, res) {
+        if (err) {
+            console.log(err);}
+        else {
+            pm.globals.set("forgeJS", res.text());}
+})}
+eval(postman.getGlobalVariable("forgeJS"));
+// Note: if you do not want to use a web server, you can simply create a global variable named forgeJS and copy content of this file into this script.
+
+// Set private key
+var privateKeyPEM = "-----BEGIN PRIVATE KEY-----\
+MIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQCiMVgTJESzqZET\
+uoJSlavcz3tfdX5zVyTVn+Ar2TmdNjIV5uQ68vDo8qYcs1zYEhXQZpE9p9liUskF\
+VdOEV5zJUcqZvjls+UDGAz3n6PEFBj2cbW7ILM1I4mRl1Y43/zNCgiFZWiKhiZzb\
+D9csoHUU5/k0P1t5IwsHdnX2E1Cze7sRDHjaQkDLv+/dAFfctS1l4vMDjKNZdwSn\
+K4QmOa5Q/6Rxta8HPlmexnmZ5Gg+0+vQuUosE7yxVoriak+rpPjd5BsYOwdqgupp\
+WP/LLvpbcF/T6BP+gY1LMsTdyznOlS35YbhlLjq0KFFtiFctgRqE6g/mAMfjNRTN\
+cZDW/yxFAgMBAAECggEAam4QynbJMk/56EVCEWkvnrTz0z8pXAx6GkhP9NYVbWlL\
+0n1xlJEoruPTRxAXw52SfO9hLWFAT7ndOUgJhVVsh9rJJLvjuPOSop0r+UstJUvk\
+EArrYCWuC76rfPt22J35CBKWSajRAslniYRKgXlFexOBvtw4bTQmn54HaBNiqHNk\
+X60/ldCfoM4hJ5uJV9rGB/2buELcvvJfA/4G/6vkRYDwExHT6Fn56ltvDL3qjEH5\
+t6sk68OhW902mkj49gBcVbeRYleNS4/4V8bMGWcsM86ms8H/wPtI7saqXZ/8Ha/s\
+/NzY73FKJqMUuG/v39Aq9sTXAVBW/pYUumU6mdVgYQKBgQDQLb6XKNSR1hBARbk7\
+Ej/5ZoQa8qOhj3xNPRNWdfRFXJq9SzptraQ2ElpvsQdBdAagFGjiO2+zFgcIrvuo\
+CRV5eqhSsKgcW+M2VKufVwglYzFVPW9Seu0mLsUELJ0teBmq5MKnU+8PSR7o8S73\
+15RT2wiD/4OdOxvzDWhgigkmSQKBgQDHc1QTsLNyk/RnvH2UshkpYpZ/mKwRc7Fg\
+1C9XQjv+NO7hHTgw8vDdEkZHF2ctYwkfIKGlceDvE/z7ccpSCjb0JrlTopQRuc6L\
+6zQKqrIO6hLSKiycU7UDQKXebjiCQLT24zPEyt8YCUdPJD/wsUg/fmu8bTdtg083\
+kfw9yg8mHQKBgEFlDUjYp6XEM8is3loDCpuiq373l5VJyIdO10NCvGAJjgZGmm0X\
+rczaiRQq7RePhgFFSAlBGH6OPdlpdl47tEY71KJdIgH+j2piwKLGKSXtefLH4K9t\
+NA/Zg0Qja6B76Lw5Ljh38lG/63jLQrDSRKLu3EbyvfpnNglsvcwNsIAZAoGBAKz8\
+WPqu8iS5MGxcriqugWZEjLVkLDECv+B0iA7Nco0bSehTWG4T91Y2SF/Wa3WRBNNL\
+kQeWinmxQ2SuH8Uh+OGvSGPCiVwKZJs0RzHNNJv85pADZie77i5A/tu5iydlic7r\
+5fWT4wTM311D2nUevcPcGQMXUtCX57gR1M2el579AoGAaMBwx6f+zvVxGct4llWQ\
+SH8ct/lGDdMPAR6oFtHV4QnVidWCKenx63YHdgZpFiheOYLJJI+1HiLcVgdNVDos\
+kIQfhzbLEI95vOxWC+EYuRIiAlUjq1BRmiylZsK9MK1Ds33q/WwdthRfZsdzhWBx\
+pB+FLbx0qkwfU+vboWtINS4=\
+-----END PRIVATE KEY-----";
+var privateKey = forge.pki.privateKeyFromPem(privateKeyPEM);
+
+// Set public key (openssl rsa -in privateKey.pem -pubout > publicKey.pub)
+var publicKeyPEM = "-----BEGIN PUBLIC KEY-----\
+MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAojFYEyREs6mRE7qCUpWr\
+3M97X3V+c1ck1Z/gK9k5nTYyFebkOvLw6PKmHLNc2BIV0GaRPafZYlLJBVXThFec\
+yVHKmb45bPlAxgM95+jxBQY9nG1uyCzNSOJkZdWON/8zQoIhWVoioYmc2w/XLKB1\
+FOf5ND9beSMLB3Z19hNQs3u7EQx42kJAy7/v3QBX3LUtZeLzA4yjWXcEpyuEJjmu\
+UP+kcbWvBz5ZnsZ5meRoPtPr0LlKLBO8sVaK4mpPq6T43eQbGDsHaoLqaVj/yy76\
+W3Bf0+gT/oGNSzLE3cs5zpUt+WG4ZS46tChRbYhXLYEahOoP5gDH4zUUzXGQ1v8s\
+RQIDAQAB\
+-----END PUBLIC KEY-----";
+var publicKey = forge.pki.publicKeyFromPem(publicKeyPEM);
+
+// Get a timestamp
+var currentTime = Date.now() + "";
+
+// Sign data
+var md = forge.md.sha256.create();
+md.update(currentTime);
+
+var signature = privateKey.sign(md);
+console.log("Signature:" + forge.util.encode64(signature));
+
+// Verify signature (pro-forma)
+var verificationResult = publicKey.verify(md.digest().getBytes(), signature);
+console.log("Verification:" + verificationResult);
+
+// Create authorization code
+var authorizationCode = currentTime + ":" + forge.util.encode64(signature);
+console.log("Authorization code:" + authorizationCode);
+authorizationCode = encodeURIComponent(authorizationCode);
+console.log("Authorization cod (URI encoded):" + authorizationCode);
+
+pm.variables.set("authorizationCode", authorizationCode);

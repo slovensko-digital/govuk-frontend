@@ -10,3 +10,4 @@ examples/**/package-lock.json
 *.zip
 sassdoc/
 .idea/
+.env

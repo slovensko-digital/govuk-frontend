@@ -1,0 +1,312 @@
+{% extends "podanie-gov.njk" %}
+
+{% from "button/macro.njk" import govukButton %}
+
+{% block header %}
+    {{ govukHeader({
+        productName: 'slovensko.digital - Podpisovač',
+        homepageUrl: '/app/trvaly-pobyt'
+    }) }}
+{% endblock %}
+
+{% block main %}
+    <style>
+        .btn-start-podpisuj {
+            display: none;
+        }
+    </style>
+
+    <p style="color: gray;">
+      {{ bucket.message }}
+    </p>
+
+  <table class="govuk-table">
+    <tbody class="govuk-table__body">
+    {% for file in bucket.files %}
+      <tr class="govuk-table__row">
+        <td class="govuk-table__cell">{{ file.name }}</td>
+        <td class="govuk-table__cell" id="file-status-{{ loop.index0 }}">nepodpísaný</td>
+      </tr>
+    {% endfor %}
+    </tbody>
+  </table>
+
+    <div id="state-unsigned">
+        <p id="inital-warning">
+          {% set multipleFiles = bucket.files|length > 1 %}
+            Chystáte sa podpísať {{ bucket.files|length }} {% if multipleFiles %}dokumenty{% else %}dokument{% endif %} Vašim elektronickým podpisom.<br>
+            <strong>Obsah {% if multipleFiles %}dokumentov{% else %}dokumentu{% endif %} si riadne skontrolujte pred potvrdením podpisu kódom PIN.</strong>
+        </p>
+
+        <div class="govuk-warning-text" id="signing-in-progress" style="display: none;">
+            <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
+            <strong class="govuk-warning-text__text">
+                <span class="govuk-warning-text__assistive">Info</span>
+                Prebieha podpisovanie v aplikácii.
+            </strong>
+        </div>
+
+        <div style="display: none; margin-bottom: 0;" class="step-run-app govuk-error-summary optional-extra-class" aria-labelledby="error-summary-title" role="alert" tabindex="-1" data-module="error-summary">
+            <h2 class="govuk-error-summary__title" id="error-summary-title">
+                Spustite podpisovaciu aplikáciu
+            </h2>
+            <div class="govuk-error-summary__body">
+                <p style="margin: 0;">
+                    <small style="color: gray;">
+                        Aplikáciu si môžete <a href="https://test-portal.podpisuj.sk/staticweb/test-podpisuj.jnlp">stiahnuť z podpisuj.sk</a>
+                    </small>
+                </p>
+            </div>
+        </div>
+
+        <div style="display: none; margin-bottom: 0;" class="step-app-busy govuk-error-summary optional-extra-class" aria-labelledby="error-summary-title" role="alert" tabindex="-1" data-module="error-summary">
+            <h2 class="govuk-error-summary__title" id="error-summary-title">
+                V aplikácii sú už dokumenty na podpísanie
+            </h2>
+            <div class="govuk-error-summary__body">
+                <p style="margin: 0;">
+                    Zrušte podpisovanie dokumentov v aplikácii, aby ste mohli začať podpisovať znovu.
+                </p>
+            </div>
+        </div>
+
+        <div style="margin-bottom: -10px; margin-top: 30px;" id="start-close-buttons">
+            <a href="/app/slovensko.sk/podpisovanie" id="start-signing" class="govuk-button">Začať podpisovanie</a>
+            <a href="{{ bucket.failUrl }}" style="border: none; color: gray; font-size: 15px; text-decoration: none !important; padding-top: 12px; margin-left: 30px; display: inline-block">Zavrieť</a>
+        </div>
+    </div>
+
+    <form method="post" action="{{ back_url }}" id="continue-form" style="display: none;">
+        <input type="hidden" name="bucket" value="">
+        <button class="govuk-button">Pokračovať (<span id="continue-button-timeout">10</span>)</button>
+    </form>
+{% endblock %}
+
+{% block js %}
+    <script>
+        var bucket = {{ bucket_json | safe }};
+
+        var fileName = '{{ file.name }}';
+        var fileContent = '{{ file.content }}';
+        var fileMimeType = '{{ file.mime_type }}';
+
+        var useSigner = localStorage.getItem('podanie-settings-use-signer') || 'fake';
+        var goBackAfterSign = localStorage.getItem('podanie-settings-go-back-after-sign') || 'immediately';
+
+        var podpisujskAppRunningInterval;
+
+        var $progress = $('#signing-in-progress');
+
+        function continueButtonTimeout()
+        {
+          var $button = $('#continue-button-timeout');
+
+          var value = parseInt($button.text());
+
+          if (goBackAfterSign !== 'immediately' && value > 1)
+          {
+            $button.text(value - 1);
+
+            setTimeout(continueButtonTimeout, 1000);
+          }
+          else
+          {
+            $button.closest('form').submit();
+          }
+        }
+
+        function ensurePodpisujskSession(execute) {
+          $.post('/app/podpisovac/api/podpisujsk-credentials').done(function (config) {
+
+            clearInterval(podpisujskAppRunningInterval);
+
+            $.get(config.status_url)
+              .done(function (response) {
+                $('.step-run-app').hide();
+
+                if (response.accountInfo.user === null) {
+                  $.post(
+                    config.login_url,
+                    {
+                      username: config.params.username,
+                      partnerId: config.params.partnerId,
+                      authorizationCode: config.params.authorizationCode
+                    }
+                  )
+                    .done(function() {
+                      execute(config)
+                    })
+                    .fail(function (error) {
+                      if (error.status === 503) {
+                        $('.step-app-busy').show();
+                      }
+                    });
+                } else {
+                  execute(config)
+                }
+              })
+              .fail(function (error) {
+                if (error.status === 0) {
+                  $('.step-run-app').show();
+                  podpisujskAppRunningInterval = setTimeout(function () {
+                    podpisujskLogin(config, false);
+                  }, 1000);
+                }
+              });
+          });
+        }
+
+        function fakeSignerSignDocument(index, done) {
+          var file = bucket.files[index];
+
+          setTimeout(function() {
+            bucket.files[index].signed = true;
+            bucket.files[index].name = bucket.files[index].name + '.fsign';
+
+            done(true);
+          }, 1000);
+        }
+
+        function podpisujskSignerSignDocument(index, done) {
+            ensurePodpisujskSession(function(config) {
+              var file = bucket.files[index];
+
+              var form = new FormData();
+
+              form.append("authorizationCode", config.params.authorizationCode);
+              form.append('file-1', b64toBlob(file.data, file.mimeType), file.name);
+
+              $progress.show();
+              var noError = true;
+
+              setTimeout(function() {
+                if (noError) {
+                  $('.step-app-busy').hide();
+                  $('#start-signing').hide();
+                }
+              }, 2000);
+
+              $.ajax({
+                method: 'POST',
+                enctype: 'multipart/form-data',
+                url: config.sign_url,
+                data: form,
+                processData: false,
+                contentType: false
+              })
+                .done(function(response){
+                  $progress.hide();
+                  $('.step-app-busy').hide();
+                  if (Array.isArray(response.files) && response.files.length === 1)
+                  {
+                    var signedFile = response.files[0];
+
+                    bucket.files[index].signed = true;
+                    bucket.files[index].name = signedFile.name;
+                    bucket.files[index].mimeType = signedFile.mediaType;
+                    bucket.files[index].data = signedFile.binaryData;
+
+                    done(true);
+                  }
+                  else
+                  {
+                    done(false);
+                  }
+                })
+                .fail(function(error) {
+                  if (error.status === 503) {
+                    noError = false
+                    clearInterval(podpisujskAppRunningInterval);
+                    setTimeout(function() {
+                      podpisujskSignerSignDocument(index, done);
+                    }, 1000);
+                    $('#start-signing').show();
+                    $('.step-app-busy').show();
+                  }
+                });
+            });
+        }
+
+        function signDocument(index) {
+          var signerSignDocument = null;
+
+            if (useSigner === 'fake')
+            {
+              signerSignDocument = fakeSignerSignDocument;
+            }
+            else if (useSigner === 'podpisujsk')
+            {
+              signerSignDocument = podpisujskSignerSignDocument;
+            }
+
+          signerSignDocument && signerSignDocument(index, function(success) {
+            if (success) {
+              $('#file-status-' + index).html(success ? 'podpísaný' : 'chyba pri podpisovaní');
+            }
+
+            if (bucket.files.length > index + 1) {
+              signDocument(index + 1);
+            }
+            else
+            {
+              $('#start-close-buttons').hide();
+              $('#signing-in-progress').hide();
+              $('#in-progress').hide();
+              $('#continue-form').show();
+              $('input[name=bucket]').val(JSON.stringify(bucket));
+              continueButtonTimeout();
+            }
+          })
+        }
+
+      $('#start-signing').on('click', function(event) {
+        event.preventDefault();
+        $('#start-signing').hide();
+        $progress.show();
+        $('#inital-warning').hide();
+
+        signDocument(0);
+      })
+
+      var b64toBlob = function(b64Data, contentType) {
+        var sliceSize = 512;
+        var byteCharacters = atob(b64Data);
+        var byteArrays = [];
+
+        for (var offset = 0; offset < byteCharacters.length; offset += sliceSize) {
+          var slice = byteCharacters.slice(offset, offset + sliceSize);
+
+          var byteNumbers = new Array(slice.length);
+          for (var i = 0; i < slice.length; i++) {
+            byteNumbers[i] = slice.charCodeAt(i);
+          }
+
+          var byteArray = new Uint8Array(byteNumbers);
+          byteArrays.push(byteArray);
+        }
+
+        var blob = new Blob(byteArrays, {type: contentType});
+        return blob;
+      }
+
+      var utf8TextToBlob = function(byteCharacters, contentType) {
+        var sliceSize = 512;
+        var byteArrays = [];
+
+        for (var offset = 0; offset < byteCharacters.length; offset += sliceSize) {
+          var slice = byteCharacters.slice(offset, offset + sliceSize);
+
+          var byteNumbers = new Array(slice.length);
+          for (var i = 0; i < slice.length; i++) {
+            byteNumbers[i] = slice.charCodeAt(i);
+          }
+
+          var byteArray = new Uint8Array(byteNumbers);
+          byteArrays.push(byteArray);
+        }
+
+        var blob = new Blob(byteArrays, {type: contentType});
+        return blob;
+      }
+    </script>
+{% endblock %}

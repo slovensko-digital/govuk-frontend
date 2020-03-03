@@ -1,0 +1,141 @@
+{% extends "podanie-gov.njk" %}
+
+{% block header %}
+    {{ govukHeader({
+        productName: 'Slovensko 2.0 - Portál oprávnení',
+        homepageUrl: '/app/trvaly-pobyt'
+    }) }}
+{% endblock %}
+
+{% block main %}
+    <style>
+        * {
+            font-family: Arial;
+        }
+    </style>
+
+    <div class="govuk-grid-column-one-third" style="text-align: right; padding-top: 10px; padding-right: 30px;">
+        <img src="/app/slovensko.sk/opravnenia/assets/permission.png" style="width: 70%; opacity: 0.3;">
+    </div>
+    <div class="govuk-grid-column-two-thirds" id="authorization-level-login" style="display: none;">
+        <p>
+            {{ user.name }}, prečítajte si túto dohodu a na znak súhlasu stlačte tlačidlo "Súhlasím".
+        </p>
+
+        <h3 style="margin-bottom: 10px;">Dohoda o udelení oprávnení</h3>
+
+        <textarea class="govuk-textarea" style="font-family: Courier; font-size: 13px; height: 196px; overflow: scroll">Dodatok k dohode o integračnom zámere
+Konzumenta o využívaní služieb ÚPVS Koncovým
+konzumentom prostredníctvom certifikovaného
+integračného riešenia (ďalej len „Dodatok k DIZ“)
+
+Pripojenie Koncového konzumenta "{{ user.name }}"
+
+Príloha k Dodatku k Dohode o integračnom zámere
+– ÚPVS – IRVIN podpísanej ku dňu 24.10.2018
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. In id ullamcorper nisl, et consequat quam. Curabitur sit amet finibus arcu. Nulla facilisi. Nulla vitae nibh eget massa egestas vehicula. In scelerisque ipsum a neque suscipit ullamcorper. Nam dapibus, nulla vitae scelerisque viverra, augue lectus sagittis erat, eu ornare orci lorem nec dolor. Cras vitae lectus libero. Proin gravida tempor velit, vel mollis diam. Duis tincidunt, dui eu dignissim dignissim, justo mi consequat libero, ut malesuada mauris massa quis ex.
+
+Morbi egestas ipsum ut pulvinar lobortis. Etiam non finibus mauris. Cras vel ligula quis ex sodales blandit non eget justo. Nullam ultricies augue sed nulla vehicula, et vulputate quam tempus. Nullam porttitor sem eget rutrum sollicitudin. Vestibulum luctus a dui suscipit tincidunt. Maecenas luctus ornare lacinia. Nullam sapien urna, fermentum eget nisi hendrerit, ornare porttitor elit. Proin sed pulvinar odio. In hac habitasse platea dictumst. Maecenas quis nulla condimentum, mattis erat sit amet, egestas lacus.
+
+Aenean ac orci blandit arcu mattis commodo et ac massa. Fusce porta semper nisi sed iaculis. Mauris semper venenatis nunc ut sodales. Nunc pulvinar orci erat, et viverra velit finibus sit amet. Sed in maximus diam. Mauris molestie nisi ipsum, quis convallis diam ultrices ut. Nam mi nibh, ornare quis erat vel, porttitor sodales orci.
+
+Praesent ac bibendum purus, non fringilla tortor. Vivamus condimentum sagittis turpis sed posuere. Fusce porta maximus neque eu ultrices. Sed faucibus tellus vitae justo viverra sagittis. Vivamus faucibus egestas ante in aliquam. Nam fringilla enim mauris. In tristique euismod libero vitae scelerisque. Fusce eu justo ultricies, tincidunt orci eget, tristique orci. Phasellus ac lacus faucibus, vestibulum libero et, gravida dui. Nullam bibendum sit amet tellus nec dignissim. Proin elementum lorem id augue condimentum, a consectetur est efficitur. Donec neque risus, luctus in metus sit amet, dignissim rhoncus quam. Quisque cursus dolor nec diam fermentum dictum. Suspendisse libero libero, posuere sed lectus ultricies, vehicula ultricies quam. Nunc semper dapibus aliquam. Praesent non diam purus.
+
+Mauris a odio ut metus imperdiet scelerisque ut ut turpis. Nunc est purus, porta vitae congue sed, commodo et arcu. Fusce iaculis tellus ipsum, tristique tempus nisl consectetur ornare. Phasellus sit amet mollis magna. Etiam vestibulum malesuada ipsum, quis ultricies eros molestie a. Morbi at dui sed nunc bibendum auctor. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Phasellus blandit lectus eget odio malesuada tempus eget vitae libero. Fusce ullamcorper odio at risus tincidunt facilisis. Integer sed finibus lacus, ac molestie velit. Nunc eu sapien est. Nunc rutrum scelerisque molestie. Nunc nunc velit, sollicitudin sed mauris at, gravida ornare quam.</textarea>
+
+        <div style="margin-bottom: -10px; margin-top: 30px;">
+            <a href="/examples/podanie/udelenie-opravneni-agreement" id="next-url" class="govuk-button">Súhlasím</a>
+            <a href="/app/trvaly-pobyt?permissions=denied" style="border: none; color: gray; font-size: 15px; text-decoration: none !important; padding-top: 12px; margin-left: 30px; display: inline-block">Nesúhlasím</a>
+        </div>
+
+    </div>
+    <div class="govuk-grid-column-two-thirds" id="authorization-level-sign" style="display: none;">
+        <h3>Dohoda o udelení oprávnení</h3>
+
+        {% if is_signed %}
+            <p>
+                {{ user.name }}, úspešne ste elektronicky podpísali Dohodu o udelení oprávnení.
+            </p>
+
+            <div style="margin-bottom: -10px; margin-top: 30px;">
+                <a href="/app/trvaly-pobyt" class="govuk-button">Pokračovať (<span id="continue-button-timeout">11</span>)</a>
+            </div>
+        {% else %}
+            <p>
+                {{ user.name }}, oprávnenia udelíte elektronickým podpísaním Dohody o udelení oprávnení.
+            </p>
+
+            <p>
+                <small>Dokument: dohoda-o-udeleni-opravneni.pdf<br>
+                    <strong>Obsah dokumentu si riadne prezite a skontrolujte pred podpisovaním.</strong><br><br>
+                    Stav: nepodpísaný</small>
+            </p>
+
+            <div style="margin-bottom: -10px; margin-top: 30px;">
+                <a href="/app/trvaly-pobyt" id="next-url" class="govuk-button">Podpísať</a>
+                <a href="/app/trvaly-pobyt?permissions=denied" style="border: none; color: gray; font-size: 15px; text-decoration: none !important; padding-top: 12px; margin-left: 30px; display: inline-block">Zavrieť</a>
+            </div>
+        {% endif %}
+    </div>
+{% endblock %}
+
+{% block js %}
+    <script>
+
+      function grantPermissions()
+      {
+        var key = 'podanie-settings-user-granted-permissions';
+        var value = 'yes';
+        var setToCookie = true;
+
+        localStorage.setItem(key, value);
+
+        if (setToCookie)
+        {
+          document.cookie = key + "=" + (value || "") + "; path=/";
+        }
+      }
+
+      if ('sign' === localStorage.getItem('podanie-settings-authorization-level'))
+      {
+        $('#authorization-level-sign').show();
+
+        grantPermissions();
+
+        function continueButtonTimeout()
+        {
+          var $button = $('#continue-button-timeout');
+
+          var value = parseInt($button.text());
+
+          if (value > 1)
+          {
+            $button.text(value - 1);
+
+            setTimeout(continueButtonTimeout, 1000);
+          }
+          else
+          {
+            window.location = $button.closest('a').attr('href');
+          }
+        }
+
+        continueButtonTimeout();
+      }
+      else
+      {
+        $('#authorization-level-login').show();
+
+        $('#next-url').attr('href', '/app/trvaly-pobyt');
+
+        $('#next-url').click(function(event) {
+          event.preventDefault();
+
+          grantPermissions();
+          window.location = '/app/trvaly-pobyt';
+
+        });
+      }
+    </script>
+{% endblock %}

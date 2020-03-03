@@ -1,0 +1,32 @@
+{% extends "podanie-gov.njk" %}
+
+{% block header %}
+    {{ govukHeader({
+        productName: 'slovensko.sk',
+        homepageUrl: '/examples/podanie'
+    }) }}
+{% endblock %}
+
+
+{% block main %}
+    <h1>
+      Prihláste sa
+    </h1>
+    <form method="GET" id="login-form">
+        <input type="text" class="govuk-input" id="login-name" value="Janko Lokálový" style="max-width: 400px;">
+        <br><br>
+      <button class="govuk-button">Prihlásiť sa</button>
+    </form>
+{% endblock %}
+
+{% block js %}
+  <script>
+      $('#login-form').submit(function(event) {
+        event.preventDefault()
+        var name = $('#login-name').val();
+        name = name === '' ? 'Janko Lokálový' : name;
+        document.cookie = "fake_user=" + (encodeURIComponent(JSON.stringify({ name: name, exp: 3600 })) || "") + "; path=/";
+        window.location = '{{ next_url }}'
+      })
+  </script>
+{% endblock %}

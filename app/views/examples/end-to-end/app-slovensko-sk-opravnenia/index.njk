@@ -1,0 +1,157 @@
+{% extends "podanie-gov.njk" %}
+
+{% block header %}
+    {{ govukHeader({
+        productName: 'Slovensko 2.0 - Portál oprávnení',
+        homepageUrl: '/app/trvaly-pobyt'
+    }) }}
+{% endblock %}
+
+{% block main %}
+    <style>
+        * {
+            font-family: Arial;
+        }
+    </style>
+
+    <div class="govuk-grid-column-one-third" style="text-align: right; padding-top: 10px; padding-right: 30px;">
+        <img src="/app/slovensko.sk/opravnenia/assets/permission.png" style="width: 70%; opacity: 0.3;">
+    </div>
+    {% if user is null %}
+        <div class="govuk-grid-column-two-thirds">
+            <p>
+                 Pred pokračovaním v udeľovaní oprávnení sa musíte prihlásiť na slovensko.sk
+            </p>
+
+            <div style="margin-bottom: -10px; margin-top: 30px;">
+                    <a href="/app/slovensko.sk/opravnenia/agreement" id="next-url" class="govuk-button govuk-button--start">Pokračovať</a><br>
+                    <a href="/app/trvaly-pobyt?permissions=denied" style="border: none; color: gray; font-size: 15px; text-decoration: none !important;">Zavrieť</a>
+            </div>
+        </div>
+    {% else %}
+
+        <div class="govuk-grid-column-two-thirds">
+            {% if show_sign_failed_message %}
+                <div class="govuk-error-summary optional-extra-class" aria-labelledby="error-summary-title" role="alert" tabindex="-1" data-module="error-summary">
+                    <h2 class="govuk-error-summary__title" id="error-summary-title">
+                        Vyskytol sa problém pri podpisovaní dokumentu
+                    </h2>
+                    <div class="govuk-error-summary__body">
+                        <p>
+                            Dokument Dohoda o udelení oprávnení nebol podpísaný. Bez správneho podpísania dokumentu nie je možné udeliť požadované oprávnenia.
+                        </p>
+                    </div>
+                </div>
+            {% endif %}
+
+            <p>
+                <strong>Aplikácia "Prihlásenie na trvalý pobyt" získa povolenia:</strong>
+                <span style="display: block; padding-top: 5px;">
+                    prístup k informáciám o Vašich deťoch, prístup k informáciám o Vašich nehnuteľnostiach a
+                    posielanie správ z Vašej schránky na slovensko.sk
+                    <small style="display: block; color: gray; margin-top: 0;">
+                        <a href="#" id="show-more" style="color: gray;">zobraziť zoznam oprávnení</a>
+                        <span id="permissions-list" style="display: none">
+                            Prijatie správy s elektronickým dokumentom alebo elektronickým dokumentom podpísaným elektronickým podpisom (sluzba_is_1369)<br>
+                            Vloženie správy do priečinka odoslaných správ (sluzba_is_51738)
+                        </span>
+                    </small>
+                </span>
+            </p>
+
+            <p style="margin-bottom: 0">
+                <small style="color: gray;">Autor: Služby Slovensko.Digital, s.r.o.
+                    <a href="#" id="show-more-author" style="color: gray;">detaily autora</a>
+                    <span id="author-details" style="display: none">
+                        Staré grunty 12, 841 04 Bratislava, IČO: 50 881 337
+                    </span>
+                </small>
+            </p>
+
+            <div style="margin-bottom: -10px; margin-top: 30px;">
+                <a href="/app/slovensko.sk/opravnenia/agreement" id="next-url" class="govuk-button govuk-button--start">Pokračovať</a>
+                <div></div>
+                <a href="/app/trvaly-pobyt?permissions=denied" style="border: none; color: gray; font-size: 15px; text-decoration: none !important;">Zavrieť</a>
+            </div>
+        </div>
+    {% endif %}
+{% endblock %}
+
+{% block js %}
+    <script>
+        {% if user is null %}
+        var isSignedIn = false;
+        {% else %}
+        var isSignedIn = true;
+        {% endif %}
+
+        function grantPermissions()
+        {
+          var key = 'podanie-settings-user-granted-permissions';
+          var value = 'yes';
+          var setToCookie = true;
+
+          localStorage.setItem(key, value);
+
+          if (setToCookie)
+          {
+            document.cookie = key + "=" + (value || "") + "; path=/";
+          }
+        }
+
+        if (isSignedIn)
+        {
+          var authorizationLevel = localStorage.getItem('podanie-settings-authorization-level') || 'login';
+
+          if (localStorage.getItem('podanie-settings-user-granted-permissions') === 'yes')
+          {
+            window.location = '/app/trvaly-pobyt';
+          }
+
+          if ('login' === authorizationLevel)
+          {
+            $('#next-url').attr('href', '/app/trvaly-pobyt');
+
+            $('#next-url').click(function(event) {
+              event.preventDefault();
+
+              grantPermissions();
+              window.location = '/app/trvaly-pobyt';
+
+            });
+          }
+          else if ('sign' === authorizationLevel) {
+            $('#next-url').attr('href', '/app/slovensko.sk/opravnenia/podpis');
+          }
+        }
+        else {
+          $('#next-url').on('click', function(event) {
+            event.preventDefault();
+
+            $.ajax({
+              type: 'POST',
+              url: '/podanie/login',
+              data: {
+                next_url: 'examples/podanie/udelenie-opravneni'
+              },
+              success: function (response) {
+                if (response.login_required)
+                {
+                  window.location = response.login_url;
+                }
+              }
+            });
+          })
+        }
+
+        $('#show-more').on('click', function () {
+          $(this).hide()
+          $('#permissions-list').show()
+        })
+
+        $('#show-more-author').on('click', function () {
+          $(this).hide()
+          $('#author-details').show().css({display: 'block'});
+        })
+    </script>
+{% endblock %}

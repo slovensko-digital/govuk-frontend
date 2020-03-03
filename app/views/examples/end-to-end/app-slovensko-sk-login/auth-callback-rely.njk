@@ -1,0 +1,8 @@
+<html lang="sk">
+<body onload="document.forms[0].submit();">
+<form method="post" action="https://slovensko-sk-api.ekosystem.staging.slovensko.digital/auth/saml/callback">
+    <input type="hidden" name="SAMLResponse" value="{{ SAMLResponse }}">
+    <input type="submit" value="Login" style="display: none;">
+</form>
+</body>
+</html>

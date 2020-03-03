@@ -1,0 +1,7 @@
+<html lang="sk">
+    <body onload="document.forms[0].submit()">
+        <form id="login-form" action="{{ login_url }}">
+            <input type="hidden" name="callback" value="{{ next_url }}">
+        </form>
+    </body>
+</html>

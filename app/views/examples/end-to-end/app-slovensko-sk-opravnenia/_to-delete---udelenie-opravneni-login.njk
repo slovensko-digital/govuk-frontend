@@ -1,0 +1,81 @@
+{% extends "podanie.njk" %}
+
+{% block header %}
+    <style>
+        .govsk-header .sdn-header .sdn-header__link {
+            color: black;
+        }
+
+        .govsk-header .sdn-header__container {
+            height: auto;
+        }
+
+        .govsk-header .sdn-header {
+            background-color: #ecf0ff;
+            background-image: url(/podanie/assets/stripe.png);
+            background-position: center bottom;
+            background-repeat: repeat-x;
+            border: none;
+        }
+    </style>
+    <div class="govsk-header">
+    {{ govukHeader({
+        productName: 'Slovensko 2.0 - Portál oprávnení',
+        homepageUrl: '/examples/podanie'
+    }) }}
+    </div>
+{% endblock %}
+
+{% block main %}
+    <style>
+        * {
+            font-family: Arial;
+        }
+
+        a[href*="//"]:not([href*="navody.digital"]):not([href^="#"]):not([href^="/"]):not(.no-arrow):after {
+            content: none !important;
+        }
+    </style>
+
+    <div class="govuk-grid-column-one-third" style="text-align: right; padding-top: 30px; padding-right: 30px;">
+        <img src="/app/slovensko.sk/opravnenia/assets/permission.png" style="width: 70%; opacity: 0.3;">
+    </div>
+    <div class="govuk-grid-column-two-thirds">
+        <h1>
+          Potvrdenie udelenia oprávnení
+        </h1>
+
+        <p>
+            Oprávnenia budú udelené elektronickým podpisom tohto dokumentu. Dokument obsahuje
+        </p>
+
+        <a href="https://test-portal.podpisuj.sk/staticweb/test-podpisuj.jnlp" class="govuk-button btn-start-podpisuj">Spustiť podpisovanie</a>
+
+        <div style="margin-bottom: -10px; margin-top: 50px; border-top: 1px solid #d8d8d8; padding-top: 20px;">
+            {% if user is null %}
+                <small style="color: gray;">Zatiaľ neprihlásený. V ďalšom kroku, po kliknutí na tlačidlo "Odoslať", sa prihlásite na slovensko.sk</small>
+            {% else %}
+                <p>
+                    {{ user.name }}
+                    <small style="display: block; color: gray; margin-top: 0;">
+                        Kvietková 18, 841 04 Bratislava, Slovenská republika
+                    </small>
+                </p>
+            {% endif %}
+
+            <a href="/examples/podanie/udelenie-opravneni-podpis" class="govuk-button govuk-button--start">Rozumiem, chcem pokračovať</a>
+            <a href="/examples/podanie?permissions=denied" class="govuk-back-link" style="border: none; color: gray; font-size: 15px; float: right; text-decoration: none !important;">Nechcem udeliť oprávnenia</a>
+
+        </div>
+
+    </div>
+{% endblock %}
+
+{% block js %}
+    <script>
+      $('#show-more').on('click', function () {
+        $(this).hide()
+        $('#permissions-list').show()
+      })
+    </script>
+{% endblock %}

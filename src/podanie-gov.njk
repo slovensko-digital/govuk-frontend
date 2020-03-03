@@ -7,11 +7,29 @@
 <html lang="{{ htmlLang | default('en') }}" class="has-sticky-footer {{ htmlClasses }}">
   <head>
     <meta charset="utf-8" />
-    <title>{% block pageTitle %}Prihlásenie na trvalý pobyt | slovensko.digital{% endblock %}</title>
+    <title>{% block pageTitle %}Slovensko 2.0 | slovensko.digital{% endblock %}</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     {#<meta name="theme-color" content="{{ themeColor | default('#0b0c0c') }}" /> #}{# Hardcoded value of $govuk-black #}
     {# Ensure that older IE versions always render with the correct rendering engine #}
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <style>
+      .govsk-header .sdn-header .sdn-header__link {
+        color: black;
+      }
+
+      .govsk-header .sdn-header__container {
+        height: auto;
+      }
+
+      .govsk-header .sdn-header {
+        background-color: #ecf0ff;
+        background-image: url(/podanie/assets/stripe.png);
+        background-position: center bottom;
+        background-repeat: repeat-x;
+        border: none;
+      }
+    </style>
 
     {% block headIcons %}
       {#<link rel="shortcut icon" sizes="16x16 32x32 48x48" href="{{ assetPath | default('/assets') }}/images/favicon.ico" type="image/x-icon" />#}
@@ -52,11 +70,13 @@
       }) }}
     {% endblock %}
 
-    {% block header %}
-      {{ govukHeader({
-          productName: 'Prihlásenie na trvalý pobyt',
-          homepageUrl: '/app/trvaly-pobyt'
-      }) }}
+      <div class="govsk-header">
+        {% block header %}
+        {{ govukHeader({
+            productName: 'slovensko.digital: Podávač podaní 2.0 Turbo',
+            homepageUrl: '/app/trvaly-pobyt'
+        }) }}
+      </div>
     {% endblock %}
 
     <div class="govuk-width-container">

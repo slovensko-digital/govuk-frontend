@@ -1,0 +1,91 @@
+{% extends "podanie.njk" %}
+
+{% from "input/macro.njk" import govukInput %}
+{% from "textarea/macro.njk" import govukTextarea %}
+{% from "file-upload/macro.njk" import govukFileUpload %}
+{% from "button/macro.njk" import govukButton %}
+
+{% block pageTitle %}Nastavenia dema | slovensko.digital{% endblock %}
+
+{% block header %}
+    {{ govukHeader({
+        productName: 'Nastavenia dema',
+        homepageUrl: '/app/trvaly-pobyt'
+    }) }}
+{% endblock %}
+
+{% block main %}
+
+{#    <h3>Kde je vynútené prihlásenie používateľa?</h3>#}
+{#    <label><input type="radio" name="login-flow" value="before_auth"> pred udeľovaním oprávnení</label><br>#}
+{#    <label><input type="radio" name="login-flow" value="during_auth"> ako súčasť udeľovania oprávnení</label><br>#}
+
+{#    <h3>Explicitne komunikovať, keď používateľ nie je prihlásený?</h3>#}
+{#    <label><input type="radio" name="show-no-session-info" value="yes"> áno</label><br>#}
+{#    <label><input type="radio" name="show-no-session-info" value="no"> nie</label><br>#}
+
+    <h3>Po podpísaní ísť naspäť na back url?</h3>
+    <label><input type="radio" name="go-back-after-sign" value="immediately"> hneď</label><br>
+    <label><input type="radio" name="go-back-after-sign" value="wait"> po 10 sekundách</label><br>
+
+    <h3>Úroveň overenia pri udeľovaní oprávnení:</h3>
+    <label><input type="radio" name="authorization-level" value="login"> prihlásenie</label><br>
+    <label><input type="radio" name="authorization-level" value="login_with_document"> prihlásenie + prečítanie dokumentu</label><br>
+    <label><input type="radio" name="authorization-level" value="sign"> elektronické podpísanie dokumentu</label><br>
+
+    <br>
+    <hr>
+
+    <h3>Používateľ udelil oprávnenia?</h3>
+    <label><input type="radio" name="user-granted-permissions" value="yes"> áno</label><br>
+    <label><input type="radio" name="user-granted-permissions" value="no"> nie</label><br>
+
+    <h3>Použiť fake používateľa?</h3>
+    <label><input type="radio" name="use-fake-user" value="yes"> áno</label><br>
+    <label><input type="radio" name="use-fake-user" value="no"> nie (použije sa slovensko.sk)</label><br>
+
+    <h3>Aký podpisovač použiť?</h3>
+    <label><input type="radio" name="use-signer" value="fake"> fake</label><br>
+    <label><input type="radio" name="use-signer" value="podpisujsk"> podpisuj.sk</label><br>
+{% endblock %}
+
+{% block js %}
+    <script>
+
+        function initRadiolist(name, defaultValue, setToCookie)
+        {
+          var storageKey = 'podanie-settings-' + name;
+          var value = localStorage.getItem(storageKey);
+          value = null === value ? defaultValue : value;
+
+          function set(key, value, setToCookie)
+          {
+            localStorage.setItem(key, value);
+
+            if (setToCookie)
+            {
+              document.cookie = key + "=" + (value || "") + "; path=/";
+            }
+          }
+
+          set(storageKey, value, setToCookie);
+
+          $('input[name=' + name + ']')
+            .on('input', function() {
+              set(storageKey, $(this).val(), setToCookie);
+            })
+            .prop('checked', false);
+          $('input[name=' + name + '][value=' + value + ']').prop('checked', true);
+        }
+
+      $(document).ready(function () {
+        initRadiolist('authorization-level', 'login');
+        initRadiolist('login-flow', 'before_auth', true);
+        initRadiolist('show-no-session-info', 'yes');
+        initRadiolist('use-signer', 'fake');
+        initRadiolist('go-back-after-sign', 'immediately');
+        initRadiolist('user-granted-permissions', 'no', true);
+        initRadiolist('use-fake-user', 'no', true);
+      });
+    </script>
+{% endblock %}
