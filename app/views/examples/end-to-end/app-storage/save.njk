@@ -1,0 +1,33 @@
+<html lang="sk">
+  <head>
+    <script>
+      function clear() {
+        var documentDomain = 'end-to-end-document-' + document.forms[0].documentId.value.split(',')[0];
+
+        for (var key in sessionStorage) {
+          if (sessionStorage.hasOwnProperty(key)) {
+            if (key.indexOf(documentDomain) > -1)
+            {
+              sessionStorage.removeItem(key)
+            }
+          }
+        }
+      }
+
+      function submit() {
+        clear();
+        sessionStorage.setItem('end-to-end-document-' + document.forms[0].documentId.value, document.forms[0].document.value);
+        document.forms[0].submit();
+      }
+    </script>
+  </head>
+  <body onload="submit();">
+    <form action="{{ nextUrl }}" method="POST">
+      <input type="hidden" name="documentId" value="{{ documentId }}">
+      <input type="hidden" name="document" value="{{ document }}">
+    </form>
+  </body>
+</html>
+
+
+

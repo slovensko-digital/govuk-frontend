@@ -4,15 +4,18 @@
 {% from "textarea/macro.njk" import govukTextarea %}
 {% from "file-upload/macro.njk" import govukFileUpload %}
 {% from "button/macro.njk" import govukButton %}
+{% from "checkboxes/macro.njk" import govukCheckboxes %}
 
 {% block header %}
     {{ govukHeader({
-        productName: 'Test uploadu súborov na podpis',
-        homepageUrl: '/app/trvaly-pobyt'
+      productName: 'end to end komponenty',
+      homepageUrl: '/examples/end-to-end'
     }) }}
 {% endblock %}
 
 {% block main %}
+  <h1>Test - podpisovanie súborov</h1>
+  {% if result === null %}
         <form action="/app/podpisovac/api/create-bucket" method="post" enctype="multipart/form-data">
           {{ govukInput({
             "label": {
@@ -60,7 +63,7 @@
             "hint": {
               "text": "URL, na ktorú bude používateľ presmerovaný po úspešnom podpísaní."
             },
-            "value": "/examples/podanie/podpisovanie?result=success",
+            "value": base_url + "/examples/end-to-end/test-podpisovanie-suborov?result=success",
             "name": "successUrl"
           }) }}
 
@@ -71,7 +74,7 @@
             "hint": {
               "text": "URL, na ktorú bude používateľ presmerovaný po neúspešnom podpísaní."
             },
-            "value": "/examples/podanie/podpisovanie?result=fail",
+            "value": base_url + "/examples/end-to-end/test-podpisovanie-suborov?result=fail",
             "name": "failUrl"
           }) }}
 
@@ -85,8 +88,59 @@
             "name": "apiKey"
           }) }}
 
+          <div style="margin-top: 60px;">
+            <hr>
+          </div>
+
+          {{ govukCheckboxes({
+            "name": "continue_with_send",
+            "classes": "govuk-checkboxes--small",
+            "items": [
+              {
+                "value": "true",
+                "text": "Po podpísaní hneď podať"
+              }
+            ]
+          }) }}
+
           {{ govukButton({
             "text": "Odoslať"
           }) }}
+
+          <input type="hidden" name="RedirectToSigner" value="true">
         </form>
+  {% else %}
+    {% if result === 'success' %}
+      <p>
+        Súbory boli úspešne podpísané.
+      </p>
+    {% else %}
+      <div class="govuk-error-summary optional-extra-class" aria-labelledby="error-summary-title" role="alert" tabindex="-1" data-module="error-summary">
+        <h2 class="govuk-error-summary__title" id="error-summary-title">
+          Vyskytol sa problém pri podpisovaní súborov.
+        </h2>
+        <div class="govuk-error-summary__body">
+          <p>
+            Vráťte sa naspäť na formulár a skúste znovu.
+          </p>
+        </div>
+      </div>
+    {% endif %}
+    <p>
+      <a href="/examples/end-to-end/test-podpisovanie-suborov">Naspäť na formulár podpisovania súborov</a>
+    </p>
+  {% endif %}
+{% endblock %}
+
+
+{% block js %}
+  <script>
+    $('form').submit(function() {
+      if ($('input[name=continue_with_send]').is(':checked')) {
+        var $successUrl = $('input[name=successUrl]');
+        var url = $successUrl.val();
+        $successUrl.val(url + (url.indexOf('?') > -1 ? '&' : '?') + 'continue_with_send=true')
+      }
+    })
+  </script>
 {% endblock %}

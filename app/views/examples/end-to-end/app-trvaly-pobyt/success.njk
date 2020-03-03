@@ -1,0 +1,37 @@
+{% extends "podanie.njk" %}
+
+{% from "input/macro.njk" import govukInput %}
+{% from "textarea/macro.njk" import govukTextarea %}
+{% from "file-upload/macro.njk" import govukFileUpload %}
+{% from "button/macro.njk" import govukButton %}
+
+{% block header %}
+    {{ govukHeader({
+        productName: 'Prihlásenie na trvalý pobyt',
+        homepageUrl: '/app/trvaly-pobyt'
+    }) }}
+{% endblock %}
+
+{% block main %}
+
+    {% if user is null %}
+        <span class="govuk-caption-l">Rýchle a jednoduché</span>
+        <h1 class="govuk-heading-l">Prihlásenie na trvalý pobyt</h1>
+
+        <p class="govuk-body">Táto aplikácia Vám umožní prihlásiť seba alebo Vaše deti na trvalý pobyt.</p>
+
+        <a href="{{ loginConfig.login_url }}" class="govuk-button govuk-button--start">Prihlásiť sa cez slovensko.sk</a>
+
+    {% else %}
+        {{ user.name }} <a href="/app/trvaly-pobyt/odhlasenie" class="govuk-link--muted">Odhlásiť</a>
+        <hr><br>
+
+        <h2>
+          Žiadosť o zmenu trvalého pobytu bola úspešne podaná.
+        </h2>
+
+        <p>
+          <a href="/app/trvaly-pobyt/">Podať ďalšiu žiadosť</a>
+        </p>
+    {% endif %}
+{% endblock %}

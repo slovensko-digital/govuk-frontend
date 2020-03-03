@@ -32,24 +32,39 @@
         Žiadosť o zmenu trvalého pobytu dokončíte odoslaním {% if multipleFiles %}týchto dokumentov{% else %}tohto dokumentu{% endif %}
       </h3>
 
-      <table class="govuk-table">
-        <tbody class="govuk-table__body">
-        {% for file in bucket.files %}
-          <tr class="govuk-table__row">
-            <td class="govuk-table__cell">{{ file.name }}</td>
-            <td class="govuk-table__cell" id="file-status-{{ loop.index0 }}">{% if file.signed %}podpísaný{% else %}nepodpísaný{% endif %}</td>
-          </tr>
-        {% endfor %}
-        </tbody>
-      </table>
+      <form action="/app/podavac/api/send" method="post">
+        <input type="hidden" name="RecipientId" value="ico://sk/8311237188">
+        <input type="hidden" name="MessageSubject" value="Žiadosť o zmenu trvalého pobytu">
+        <input type="hidden" name="successUrl" value="{{ base_url }}app/trvaly-pobyt/success">
+        <input type="hidden" name="failUrl" value="{{ base_url }}app/trvaly-pobyt/fail">
+        <input type="hidden" name="apiKey" value="super-secret-api-key">
+        <input type="hidden" name="form" value="{{ '<GeneralAgenda xmlns="http://schemas.gov.sk/form/App.GeneralAgenda/1.9">
+        <subject>Žiadosť o zmenu trvalého pobytu</subject>
+        <text>Dobrý deň,
+týmto žiadam o zmenu trvalého pobytu pre osoby uvedené v prílohách tohto podania.
 
-      <form>
+S pozdravom,
+' ~ user.name ~ '</text>
+        </GeneralAgenda>' }}">
+
+        <table class="govuk-table">
+          <tbody class="govuk-table__body">
+          {% for file in bucket.files %}
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell">{{ file.name }}</td>
+              <td class="govuk-table__cell" id="file-status-{{ loop.index0 }}">
+                {% if file.signed %}podpísaný{% else %}nepodpísaný{% endif %}
+                <input type="hidden" name="files[{{ loop.index0 }}][name]" value="{{ file.name }}">
+                <input type="hidden" name="files[{{ loop.index0 }}][content]" value="{{ file.data }}">
+                <input type="hidden" name="files[{{ loop.index0 }}][mimetype]" value="{{ file.mimeType }}">
+                <input type="hidden" name="files[{{ loop.index0 }}][isSigned]" value="{{ file.signed }}">
+                <input type="hidden" name="files[{{ loop.index0 }}][encoding]" value="Base64">
+              </td>
+            </tr>
+          {% endfor %}
+          </tbody>
+        </table>
         <button type="submit" name="submit" class="govuk-button govuk-button--large" style="margin: 0;">Odoslať</button>
       </form>
     {% endif %}
-{% endblock %}
-
-{% block js %}
-
-    </script>
 {% endblock %}

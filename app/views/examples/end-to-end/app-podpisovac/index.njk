@@ -14,22 +14,142 @@
         .btn-start-podpisuj {
             display: none;
         }
+
+        .next-step {
+          display: none;
+        }
+
+      .signer-step {
+        margin-top: 15px;
+        padding: 15px 20px;
+        font-weight: bold;
+        border: 1px solid rgba(0, 0, 0, 0.15);
+        transition: background-color 0.5s ease,
+        color 0.5s ease;
+      }
+
+      .signer-step small {
+        font-weight: normal;
+      }
+
+      .signer-step.error {
+        color: #ff4349;
+        border-color: rgba(255, 67, 73, 0.3);
+      }
+
+      .done {
+        color: #9c9c9c;
+        font-size: 16px;
+        margin-top: 5px;
+        font-weight: normal;
+        border: none;
+        padding: 0;
+      }
+
+      .done:before {
+        content: '\2714';
+        padding-right: 10px;
+      }
+
+      .bok-form {
+        background-image: url(/app/end-to-end/assets/bok-form.png);
+        background-repeat: no-repeat;
+        background-position: center center;
+        background-color: rgba(128, 128, 128, 0.8);
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        display: none;
+        outline: none !important;
+      }
+
+      .pin-form {
+        background-image: url(/app/end-to-end/assets/pin-form.png);
+        background-repeat: no-repeat;
+        background-position: center center;
+        background-color: rgba(128, 128, 128, 0.8);
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        display: none;
+        outline: none !important;
+        z-index: 100000;
+      }
+
+      .document-signer {
+        background-image: url(/app/end-to-end/assets/document-signer.png);
+        background-repeat: no-repeat;
+        background-position: center center;
+        background-color: rgba(128, 128, 128, 0.8);
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        display: none;
+        outline: none !important;
+        z-index: 100000;
+      }
+
+        .document-signer:active,
+        .document-signer:focus,
+        .pin-form:active,
+        .pin-form:focus,
+        .bok-form:active,
+        .bok-form:focus {
+          background-color: rgba(255, 255, 255, 0);
+        }
     </style>
 
-    <p style="color: gray;">
-      {{ bucket.message }}
-    </p>
+  <div class="signer-step" style="display: none;" data-step="1" data-done-text="Aplikácia eID je spustená">
+    Spustite aplikáciu eID.
+  </div>
 
-  <table class="govuk-table">
-    <tbody class="govuk-table__body">
-    {% for file in bucket.files %}
-      <tr class="govuk-table__row">
-        <td class="govuk-table__cell">{{ file.name }}</td>
-        <td class="govuk-table__cell" id="file-status-{{ loop.index0 }}">nepodpísaný</td>
-      </tr>
-    {% endfor %}
-    </tbody>
-  </table>
+  <div class="signer-step" style="display: none;" data-step="2" data-done-text="Čítačka kariet je zapojená">
+    Zapojte čítačku kariet.
+  </div>
+
+  <div class="signer-step" style="display: none;" data-step="3" data-done-text="Občiansky preukaz je odomknutý">
+    Občiansky preukaz nie je odomknutý<br>
+    <small>O chvíľu sa spustí aplikácia, v ktorej zadáte BOK kód, čím odomknete občiansky preukaz.</small>
+  </div>
+
+  <div class="signer-step error" style="display: none;" data-step="4" data-replace="true" data-done-text="Občiansky preukaz je odomknutý">
+    <div>Pri odomykaní občianskeho preukazu nastala chyba. Skúste odomykanie zopakovať.</div>
+    <div style="margin-top: 10px">
+      <button class="govuk-button govuk-button__secondary enter-bok">Odomknúť</button>
+    </div>
+  </div>
+
+  <div class="signer-step" style="display: none;" data-step="5" data-wait="2000" data-done-text="Podpisovať budete certifikátom: Katarína Mrkvičková">
+    Overuje sa dostupnosť certifikátov<br>
+    <small>Prosím čakajte dokým sa zistía dostupné certifikáty.</small>
+  </div>
+
+  <a href="#" class="bok-form"></a>
+  <a href="#" class="pin-form"></a>
+  <a href="#" class="document-signer"></a>
+
+    <div class="message-and-files">
+        <p style="color: gray;">
+          {{ bucket.message }}
+        </p>
+
+      <table class="govuk-table">
+        <tbody class="govuk-table__body">
+        {% for file in bucket.files %}
+          <tr class="govuk-table__row">
+            <td class="govuk-table__cell"><span id="file-name-{{ loop.index0 }}" class="file-name">{{ file.name }}</span></td>
+            <td class="govuk-table__cell" id="file-status-{{ loop.index0 }}">nepodpísaný</td>
+          </tr>
+        {% endfor %}
+        </tbody>
+      </table>
+    </div>
 
     <div id="state-unsigned">
         <p id="inital-warning">
@@ -38,7 +158,7 @@
             <strong>Obsah {% if multipleFiles %}dokumentov{% else %}dokumentu{% endif %} si riadne skontrolujte pred potvrdením podpisu kódom PIN.</strong>
         </p>
 
-        <div class="govuk-warning-text" id="signing-in-progress" style="display: none;">
+      <div class="govuk-warning-text" id="signing-in-progress" style="display: none;">
             <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
             <strong class="govuk-warning-text__text">
                 <span class="govuk-warning-text__assistive">Info</span>
@@ -70,7 +190,7 @@
             </div>
         </div>
 
-        <div style="margin-bottom: -10px; margin-top: 30px;" id="start-close-buttons">
+        <div style="margin-bottom: -10px; margin-top: 60px;" id="start-close-buttons">
             <a href="/app/slovensko.sk/podpisovanie" id="start-signing" class="govuk-button">Začať podpisovanie</a>
             <a href="{{ bucket.failUrl }}" style="border: none; color: gray; font-size: 15px; text-decoration: none !important; padding-top: 12px; margin-left: 30px; display: inline-block">Zavrieť</a>
         </div>
@@ -80,6 +200,12 @@
         <input type="hidden" name="bucket" value="">
         <button class="govuk-button">Pokračovať (<span id="continue-button-timeout">10</span>)</button>
     </form>
+
+
+  <button class="next-step" data-step="1" style="
+          position: absolute;
+          right: 10px;
+          top: 10px;">ďalší krok</button>
 {% endblock %}
 
 {% block js %}
@@ -149,7 +275,7 @@
                 if (error.status === 0) {
                   $('.step-run-app').show();
                   podpisujskAppRunningInterval = setTimeout(function () {
-                    podpisujskLogin(config, false);
+                    ensurePodpisujskSession(execute);
                   }, 1000);
                 }
               });
@@ -159,11 +285,22 @@
         function fakeSignerSignDocument(index, done) {
           var file = bucket.files[index];
 
-          setTimeout(function() {
+          setTimeout(function () {
             bucket.files[index].signed = true;
             bucket.files[index].name = bucket.files[index].name + '.fsign';
 
-            done(true);
+            $('.document-signer').show().on('click', function (event) {
+              event.preventDefault();
+              $('.document-signer').hide()
+              $('.document-signer').off('click');
+
+              $('.pin-form').show().on('click', function (event) {
+                event.preventDefault();
+                $('.pin-form').hide();
+                $('.pin-form').off('click');
+                done(true);
+              });
+            });
           }, 1000);
         }
 
@@ -241,6 +378,7 @@
 
           signerSignDocument && signerSignDocument(index, function(success) {
             if (success) {
+              $('#file-name-' + index).addClass('done');
               $('#file-status-' + index).html(success ? 'podpísaný' : 'chyba pri podpisovaní');
             }
 
@@ -259,14 +397,80 @@
           })
         }
 
+        function showFakeStep(step) {
+          var $step = $('.signer-step[data-step=' + step + ']');
+
+          $step.show();
+
+          if (step > 1) {
+            var $previousStep = $('.signer-step[data-step=' + (step - 1) + ']');
+            $previousStep.text($previousStep.data('done-text')).removeClass('error').addClass('done');
+
+            if ($step.data('replace')) {
+              $previousStep.hide();
+            }
+          }
+
+          if ($step.data('wait')) {
+            $('.next-step').hide();
+            setTimeout(function() {
+              showFakeStep(step + 1)
+
+              $('.next-step').show();
+            }, parseInt($step.data('wait')));
+          }
+          else {
+            step++;
+            $('.next-step').data('step', step);
+          }
+
+          if ($step.length === 0) {
+            $('.next-step').hide();
+            // $('.signer-step').hide();
+            $('.message-and-files').show().css({marginTop: '30px'});
+            $progress.show();
+
+            signDocument(0);
+          }
+        }
+
+      $('.next-step').on('click', function(event) {
+        event.preventDefault();
+        showFakeStep(parseInt($('.next-step').data('step')));
+      });
+
+        $('.enter-bok').click(function(event) {
+        event.preventDefault();
+        $('.bok-form').show().click(function(event) {
+          event.preventDefault();
+          $('.bok-form').hide()
+          showFakeStep(5);
+        });
+      });
+
       $('#start-signing').on('click', function(event) {
         event.preventDefault();
-        $('#start-signing').hide();
-        $progress.show();
         $('#inital-warning').hide();
+        $('#start-signing').hide();
 
-        signDocument(0);
+        if (useSigner === 'fake')
+        {
+          $('.message-and-files').slideUp();
+          $('.next-step').show();
+
+          setTimeout(function() {
+            showFakeStep(1);
+          }, 250);
+        }
+        else
+        {
+          $progress.show();
+
+          signDocument(0);
+        }
       })
+
+        // $('#start-signing').click();
 
       var b64toBlob = function(b64Data, contentType) {
         var sliceSize = 512;

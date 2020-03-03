@@ -8,12 +8,14 @@
 
 {% block header %}
     {{ govukHeader({
-        productName: 'Test odoslania podania všeobecnej agendy',
-        homepageUrl: '/app/trvaly-pobyt'
+      productName: 'end to end komponenty',
+      homepageUrl: '/examples/end-to-end'
     }) }}
 {% endblock %}
 
 {% block main %}
+  <h1>Test - odoslanie podania všeobecnej agendy</h1>
+  {% if result === null %}
         <form action="/app/podavac/api/send" method="post" enctype="multipart/form-data">
 
           {{ govukInput({
@@ -93,7 +95,7 @@
             "hint": {
               "text": "URL, na ktorú bude používateľ presmerovaný po úspešnom podpísaní."
             },
-            "value": "/examples/podanie/podpisovanie?result=success",
+            "value": base_url + "/examples/end-to-end/test-odoslanie-podania-vseobecnej-agendy?result=success",
             "name": "successUrl"
           }) }}
 
@@ -104,7 +106,7 @@
             "hint": {
               "text": "URL, na ktorú bude používateľ presmerovaný po neúspešnom podpísaní."
             },
-            "value": "/examples/podanie/podpisovanie?result=fail",
+            "value": base_url + "/examples/end-to-end/test-odoslanie-podania-vseobecnej-agendy?result=fail",
             "name": "failUrl"
           }) }}
 
@@ -122,4 +124,25 @@
             "text": "Odoslať"
           }) }}
         </form>
+  {% else %}
+    {% if result === 'success' %}
+      <p>
+        Podanie bolo úspešne podané.
+      </p>
+    {% else %}
+      <div class="govuk-error-summary optional-extra-class" aria-labelledby="error-summary-title" role="alert" tabindex="-1" data-module="error-summary">
+        <h2 class="govuk-error-summary__title" id="error-summary-title">
+          Vyskytol sa problém pri podaní.
+        </h2>
+        <div class="govuk-error-summary__body">
+          <p>
+            Vráťte sa naspäť na formulár a skúste znovu.
+          </p>
+        </div>
+      </div>
+    {% endif %}
+    <p>
+      <a href="/examples/end-to-end/test-odoslanie-podania-vseobecnej-agendy">Naspäť na formulár podania</a>
+    </p>
+  {% endif %}
 {% endblock %}

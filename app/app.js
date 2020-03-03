@@ -10,6 +10,7 @@ const writer = require('express-writer')
 const cookieParser = require('cookie-parser')
 const FormData = require('form-data')
 const axios = require('axios')
+const uuidv1 = require('uuid/v1')
 
 if (app.get('env') === 'development') {
   require('dotenv').config()
@@ -76,6 +77,7 @@ module.exports = (options) => {
 
   app.use('/docs', express.static(configPaths.sassdoc))
   app.use('/app/slovensko.sk/opravnenia/assets', express.static('app/views/examples/end-to-end/app-slovensko-sk-opravnenia/assets'))
+  app.use('/app/end-to-end/assets', express.static('app/views/examples/end-to-end/assets'))
 
   app.use(cookieParser())
 
@@ -286,6 +288,7 @@ module.exports = (options) => {
 
   // Example view
   app.get('/examples/:example/:action?', function (req, res, next) {
+    res.locals.base_url = req.protocol + '://' + req.get('host')
     res.render(`${req.params.example}/${req.params.action || 'index'}`, function (error, html) {
       if (error) {
         next(error)
@@ -299,6 +302,61 @@ module.exports = (options) => {
    * PODANIE: Aplikacia na poslanie spravy do schranky na slovensko.sk
    */
   function endToEndRoutes (app) {
+    app.get('/examples/end-to-end/test-odoslanie-podania-vseobecnej-agendy', function (req, res, next) {
+      res.locals.base_url = req.protocol + '://' + req.get('host')
+      res.locals.result = req.query.result || null
+      res.render('end-to-end/test-odoslanie-podania-vseobecnej-agendy', function (error, html) {
+        if (error) {
+          next(error)
+        } else {
+          res.send(html)
+        }
+      })
+    })
+
+    const testPodpisovanieSuborov = function (req, res, next) {
+      res.locals.base_url = req.protocol + '://' + req.get('host')
+      res.locals.result = req.query.result || null
+
+      if (res.locals.result === 'success' && req.query.continue_with_send) {
+        const messageData = {
+          RecipientId: 'ico://sk/8311237188',
+          Subject: 'Testovacie podanie',
+          Form: '<GeneralAgenda xmlns="http://schemas.gov.sk/form/App.GeneralAgenda/1.9">' +
+            '<subject>Subject testovacieho podania</subject>' +
+            '<text>Text testovacieho podania</text></GeneralAgenda>',
+          SuccessUrl: res.locals.base_url + '/examples/end-to-end/test-odoslanie-podania-vseobecnej-agendy?result=success',
+          FailUrl: res.locals.base_url + '/examples/end-to-end/test-odoslanie-podania-vseobecnej-agendy?result=fail',
+          Files: []
+        }
+
+        const files = JSON.parse(req.body.bucket).files
+
+        files.forEach(function (file) {
+          messageData.Files.push({
+            encoding: 'Base64',
+            content: file.data,
+            mimeType: file.mimeType,
+            name: file.name,
+            isSigned: file.signed
+          })
+        })
+
+        saveToStorageAndNext(req, res, 'podanie', messageData, res.locals.base_url + '/app/podavac/api/send')
+      } else {
+        res.render('end-to-end/test-podpisovanie-suborov', function (error, html) {
+          if (error) {
+            next(error)
+          } else {
+            res.send(html)
+          }
+        })
+      }
+    }
+
+    app.post('/examples/end-to-end/test-podpisovanie-suborov', testPodpisovanieSuborov)
+    app.get('/examples/end-to-end/test-podpisovanie-suborov', testPodpisovanieSuborov)
+
     /**
      * APP: TRVALY POBYT
      */
@@ -315,6 +373,32 @@ module.exports = (options) => {
             res.locals.loginConfig = endToEndHelpers.loginConfig({}, req, res.locals)
 
             endToEndHelpers.render(res, 'trvaly-pobyt', 'index', next)
+          })
+          .catch(function (error) {
+            console.log(error)
+            next()
+          })
+      })
+
+      app.get('/app/trvaly-pobyt/success', function (req, res, next) {
+        endToEndHelpers.withUserSession(req, res, true)
+          .then(function (locals) {
+            res.locals = { ...res.locals, ...locals }
+
+            endToEndHelpers.render(res, 'trvaly-pobyt', 'success', next)
+          })
+          .catch(function (error) {
+            console.log(error)
+            next()
+          })
+      })
+
+      app.get('/app/trvaly-pobyt/fail', function (req, res, next) {
+        endToEndHelpers.withUserSession(req, res, true)
+          .then(function (locals) {
+            res.locals = { ...res.locals, ...locals }
+
+            endToEndHelpers.render(res, 'trvaly-pobyt', 'fail', next)
           })
           .catch(function (error) {
             console.log(error)
@@ -383,7 +467,10 @@ module.exports = (options) => {
           } else {
             res.clearCookie('obo')
             res.clearCookie('fake_user')
-            // const token = userRequestToken(locals.user)
+
+            // TODO: dorobit realne odhlasenie zo slovensko.sk nie len zrusenie lokalnej session
+            //
+            // const token = endToEndHelpers.userRequestToken(locals.user)
             // axios.post(
             //   'https://slovensko-sk-api.ekosystem.staging.slovensko.digital/logout', // DEV
             //   { callback: 'asd' },
@@ -410,7 +497,7 @@ module.exports = (options) => {
 
     const appPodavac = function (app) {
       app.post('/app/podavac/api/send', function (req, res, next) {
-        endToEndHelpers.withUserSession(req, res, true).then(function (locals) {
+        if (req.body.document === undefined) {
           if (req.body.apiKey !== 'super-secret-api-key') {
             res.status(401).send('Wrong Credentials')
 
@@ -419,10 +506,10 @@ module.exports = (options) => {
 
           const messageData = {
             RecipientId: req.body.RecipientId,
-            MessageSubject: req.body.MessageSubject,
+            Subject: req.body.MessageSubject,
             Form: req.body.form,
             SuccessUrl: req.body.successUrl,
-            FailUrl: req.body.failUrl,
+            FailUrl: req.body.failUrl || null,
             Files: []
           }
 
@@ -441,17 +528,30 @@ module.exports = (options) => {
           if (req.files !== undefined && req.files !== null) {
             let fileIndex = 0
             Object.keys(req.files).forEach(function (i) {
-              let file = req.files[i]
-              file.data =
-                messageData.Files.push({
-                  data: file.toString('base64'),
-                  mimeType: file.mimetype,
-                  name: file.name,
-                  isSigned: signedFiles[fileIndex] || false
-                })
+              const file = req.files[i]
+              messageData.Files.push({
+                encoding: 'Base64',
+                content: file.data.toString('base64'),
+                mimeType: file.mimetype,
+                name: file.name,
+                isSigned: signedFiles[fileIndex] || false
+              })
             })
             fileIndex++
           }
+
+          const bodyFiles = req.body.files || {}
+
+          Object.keys(bodyFiles).forEach(function (i) {
+            const file = bodyFiles[i]
+            messageData.Files.push({
+              encoding: file.encoding,
+              content: file.content,
+              mimeType: file.mimeType,
+              name: file.name,
+              isSigned: file.isSigned
+            })
+          })
 
           if (messageData.Files.length > 3) {
             res.status(400).send('No Many Files')
@@ -459,34 +559,49 @@ module.exports = (options) => {
             return 0
           }
 
-          function calculateBufferId (data) {
-            return Buffer.from(JSON.stringify(data)).toString('base64')
-          }
+          saveToStorageAndNext(req, res, 'podanie', messageData)
+        } else {
+          endToEndHelpers.withUserSession(req, res, true).then(function (locals) {
+            const messageData = JSON.parse(Buffer.from(req.body.document, 'base64').toString())
 
-          let bufferId = calculateBufferId(messageData)
+            endToEndHelpers.sendMessage(locals.user, messageData)
+              .then(({ data }) => {
+                if (data.receive_result === 0 && data.save_to_outbox_result === 0) {
+                  res.redirect(messageData.SuccessUrl + (messageData.SuccessUrl.indexOf('?') > -1 ? '&' : '?') + 'documentId=' + req.body.documentId)
+                } else {
+                  res.send(data)
+                }
+              })
+              .catch(({ code, message }) => {
+                if (code === 'user_not_logged') {
+                  res.redirect('/app/slovensko.sk/login?next_url=' + encodeURIComponent(loadFromStorageAndNext(req, req.body.documentId)))
+                } else {
+                  res.redirect(messageData.FailUrl + (messageData.FailUrl.indexOf('?') > -1 ? '&' : '?') + 'documentId=' + req.body.documentId)
+                }
+              })
+          })
+        }
+      })
+    }
 
-          if (bufferId.length > 1900) {
-            messageData.Files.forEach(function (file, i) {
-              file.data = Buffer.from('Originálny súbor ' + file.name + ' bol pre demo účely nahradený textovým súborom.').toString('base64')
-              file.mimeType = 'text/plain'
-              file.name = file.name + '.txt'
+    const saveToStorageAndNext = function (req, res, documentDomain, document, nextUrl) {
+      res.locals.nextUrl = nextUrl || req.protocol + '://' + req.get('host') + req.originalUrl
+      res.locals.documentId = documentDomain + ',' + uuidv1()
+      res.locals.document = Buffer.from(JSON.stringify(document)).toString('base64')
+      endToEndHelpers.render(res, 'storage', 'save', null)
+    }
 
-              messageData.Files[i] = file
-            })
+    const loadFromStorageAndNext = function (req, documentId) {
+      const baseUrl = req.protocol + '://' + req.get('host')
+      return baseUrl + '/app/storage/load?documentId=' + documentId + '&nextUrl=' + encodeURIComponent(baseUrl + req.originalUrl)
+    }
 
-            bufferId = calculateBufferId(messageData)
-          }
+    const appStorage = function (app) {
+      app.get('/app/storage/load', function (req, res, next) {
+        res.locals.nextUrl = req.query.nextUrl + (req.query.nextUrl.indexOf('?') > -1 ? '&' : '?') + 'token=' + req.query.token
+        res.locals.documentId = req.query.documentId
 
-          endToEndHelpers.sendMessage(locals.user, messageData)
-            .then(({ data }) => {
-              res.send(data)
-            })
-            .catch(({ response: { status, data } }) => {
-              res.status(status).send(data)
-            })
-
-          endToEndHelpers.render(res, 'podavac', 'index', next)
-        })
+        endToEndHelpers.render(res, 'storage', 'load', next)
       })
     }
 
@@ -552,9 +667,9 @@ module.exports = (options) => {
           return Buffer.from(JSON.stringify(data)).toString('base64')
         }
 
-        let bufferId = calculateBufferId(responseData)
+        let bucketId = calculateBufferId(responseData)
 
-        if (bufferId.length > 1900) {
+        if (bucketId.length > 1900) {
           filesData = []
 
           Object.keys(req.files).forEach(function (i) {
@@ -568,13 +683,17 @@ module.exports = (options) => {
 
           responseData.files = filesData
 
-          bufferId = calculateBufferId(responseData)
+          bucketId = calculateBufferId(responseData)
         }
 
-        res.send({
-          demoInstruction: 'Go to ' + req.protocol + '://' + req.headers.host + '/examples/end-to-end/test-podpisovanie-bucketu and enter bucketId to the form.              ',
-          bucketId: bufferId
-        })
+        if ((req.body.RedirectToSigner || 'false') === 'true') {
+          res.redirect(req.protocol + '://' + req.headers.host + '/app/podpisovac?bucket-id=' + bucketId)
+        } else {
+          res.send({
+            demoInstruction: 'Go to ' + req.protocol + '://' + req.headers.host + '/examples/end-to-end/test-podpisovanie-bucketu and enter bucketId to the form.              ',
+            bucketId: bucketId
+          })
+        }
       })
 
       app.post('/app/podpisovac/api/podpisujsk-credentials', function (req, res, next) {
@@ -673,6 +792,7 @@ module.exports = (options) => {
     appSlovenskoSkOpravnenia(app)
     appPodpisovac(app)
     appPodavac(app)
+    appStorage(app)
 
     const agreementPdfFile = function () {
       return path.join(configPaths.examples, 'end-to-end', 'app-slovensko-sk-opravnenia', 'assets', 'dohoda-o-udeleni-opravneni.pdf')
@@ -681,217 +801,6 @@ module.exports = (options) => {
     const agreementPdfFileStream = function () {
       return fs.createReadStream(agreementPdfFile())
     }
-
-    /*
-    *
-    *
-    *
-    *
-    *
-    *
-    *
-    *
-    *
-    *
-    *
-    *
-    *
-    */
-
-    app.get('/examples/podanie/odoslanie', function (req, res, next) {
-      const formData = JSON.parse(decodeURIComponent(req.cookies['podanie-form-data']))
-
-      res.locals.subject = formData.subject
-      res.locals.message = formData.message
-
-      next()
-    })
-
-    app.post('/examples/podanie/udelenie-opravneni-agreement', function (req, res, next) {
-      res.locals.is_signed = req.query.signed === 'true'
-
-      next()
-    })
-
-    app.get('/examples/podanie/udelenie-opravneni', function (req, res, next) {
-      const fileName = 'dohoda-o-udeleni-opravneni.pdf'
-      res.locals.agreement_file = {
-        name: fileName,
-        mime_type: 'application/pdf',
-        content: fs.readFileSync(path.join(configPaths.examples, 'podanie', 'assets', fileName)).toString('base64'),
-        description: 'Potvrdenie udelenia oprávnení pre aplikáciu Prihlásenie na trvalý pobyt'
-      }
-
-      next()
-    })
-
-    app.post('/examples/podanie/:action?', function (req, res, next) {
-      res.locals.back_url = req.body.back_url
-
-      if (req.body.files !== undefined && req.body.files.length === 1) {
-        res.locals.file = req.body.files[0]
-      }
-
-      next()
-    })
-
-    // app.get('/examples/:example/:action?', endToEndHelpers.defaultResponseWithSession)
-
-    // app.post('/examples/podanie/:action?', function (req, res, next) {
-    //   defaultResponseWithSession(req, res, function () {
-    //     res.render(`podanie/${req.params.action || 'index'}`, function (error, html) {
-    //       if (error) {
-    //         next(error)
-    //       } else {
-    //         res.send(html)
-    //       }
-    //     })
-    //   })
-    // })
-
-    // function permissions (req, locals, payload) {
-    //   payload.permissions_required = (req.cookies['podanie-settings-user-granted-permissions'] !== 'yes')
-    //   payload.permissions_url = locals.base_url + 'examples/podanie/udelenie-opravneni'
-    //   return payload
-    // }
-
-    // app.post('/podanie/login', function (req, res, next) {
-    //   withUserSession(req, res, true)
-    //     .then(function (locals) {
-    //       res.send(permissions(req, locals, login({}, req, locals, req.body.next_url)))
-    //     })
-    //     .catch(function (error) {
-    //       console.log(error)
-    //       res.send({ error: error })
-    //     })
-    // })
-
-    // app.post('/podanie/submit', function (req, res, next) {
-    //   withUserSession(req, res, true)
-    //     .then(function (locals) {
-    //       let payload = {
-    //         file: null
-    //       }
-    //
-    //       if (req.files) {
-    //         const file = req.files.file
-    //         payload.file = { data: file.data.toString('base64'), mimeType: file.mimetype, name: file.name }
-    //       }
-    //
-    //       payload = permissions(req, locals, login(payload, req, locals, 'examples/podanie/udelenie-opravneni'))
-    //
-    //       if (payload.permissions_required && req.cookies['podanie-settings-login-flow'] === 'during_auth') {
-    //         payload.login_required = false
-    //       }
-    //
-    //       res.send(payload)
-    //     })
-    //     .catch(function (error) {
-    //       console.log(error)
-    //       res.send({ error: error })
-    //     })
-    // })
-
-    app.post('/podanie/send', function (req, res, next) {
-      withUserSession(req, res, true)
-        .then(function (locals) {
-          // console.log(locals)
-          // let { messageSubject, objects: { form, attachments } } = req.body
-
-          let token = userRequestToken(locals.user)
-
-          let message = nunjucks.render(path.join('podanie', 'templates', 'sktalk_envelope.xml.njk'), {
-            messageId: uuidv1(),
-            correlationId: uuidv1(),
-            senderId: locals.user.sub,
-            messageSubject: 'test', // messageSubject,
-            form: {
-              id: uuidv1(),
-              name: 'test.txt',
-              description: 'test file',
-              encoding: 'Base64',
-              mimeType: 'plain/text',
-              isSigned: 'false',
-              content: 'VGVzdG92YWNpYSBzcHJhdmE='
-            },
-            // form: { id: uuidv1(), ...form },
-            attachments: [] // attachments.map(attachment => ({ id: uuidv1(), ...attachment }))
-          })
-
-          axios.post(
-            // 'https://podaas.ekosystem.staging.slovensko.digital/api/sktalk/receive_and_save_to_outbox', // FIX
-            'https://slovensko-sk-api.ekosystem.staging.slovensko.digital/api/sktalk/receive_and_save_to_outbox', // DEV
-            { message },
-            { headers: { Authorization: `Bearer ${token}` } }
-          ).then(({ data }) => {
-            res.send(data)
-          }).catch(({ response: { status, data } }) => {
-            res.status(status).send(data)
-          })
-        })
-        .catch(function (error) {
-          console.log(error)
-          res.send({ error: error })
-        })
-    })
-
-    // const { subject, message } = req.body
-    // response.xml = {
-    //   data: Buffer.from(nunjucks.render(path.join('podanie', 'templates', 'general_agenda.xml.njk'), {
-    //     subject,
-    //     text: message
-    //   })).toString('base64'),
-    //   mimeType: 'application/xml',
-    //   name: 'form.xml'
-    // }
-
-    // app.get('/auth/saml/callback', function (req, res, next) {
-    //   res.cookie('obo', req.query.token, { httpOnly: true })
-    //   res.redirect('/examples/podanie/podpisovanie')
-    // })
-
-    // app.get('/examples/podanie/odhlasenie', function (req, res, next) {
-    //   const token = userRequestToken(res.locals.user)
-    //
-    //   const form = {
-    //     name: 'test',
-    //     description: 'test',
-    //     encoding: 'Base64',
-    //     mimeType: 'text/plain',
-    //     isSigned: 'true',
-    //     content: Buffer.from('test content').toString('base64')
-    //   }
-    //
-    //   let message = nunjucks.render(path.join('podanie', 'templates', 'sktalk_envelope.xml.njk'), {
-    //     messageId: uuidv1(),
-    //     correlationId: uuidv1(),
-    //     senderId: res.locals.user.sub,
-    //     messageSubject: 'test',
-    //     form: { id: uuidv1(), ...form },
-    //     attachments: [] // attachments.map(attachment => ({ id: uuidv1(), ...attachment }))
-    //   })
-    //
-    //   console.log(message)
-    //
-    //   // axios.get('https://slovensko-sk-api.ekosystem.staging.slovensko.digital/logout', {
-    //   axios.post(
-    //     // 'https://podaas.ekosystem.staging.slovensko.digital/api/sktalk/receive_and_save_to_outbox', // FIX
-    //     'https://slovensko-sk-api.ekosystem.staging.slovensko.digital/api/sktalk/receive_and_save_to_outbox', // DEV
-    //     { message },
-    //     { headers: { Authorization: `Bearer ${token}` } }
-    //   ).then(({ data }) => {
-    //     res.send(data)
-    //   })
-    //     //   .catch(({ response: { status, data } }) => {
-    //     //   res.status(status).send(data)
-    //     // })
-    //     .catch(function (error) {
-    //       // console.log(error)
-    //       res.send(error)
-    //     })
-    //
-    //   // axios.get('https://slovensko-sk-api.ekosystem.staging.slovensko.digital/logout', {
-    // })
 
     function generateRtfFile (name, address, sender) {
       const rtfTemplate = '{\\rtf1\\f0\\b\\fs48 \\cf0 Prihlasenie na trvaly pobyt\\fs36 \\\n' +

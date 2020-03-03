@@ -1,0 +1,40 @@
+{% extends "podanie.njk" %}
+
+{% from "input/macro.njk" import govukInput %}
+{% from "textarea/macro.njk" import govukTextarea %}
+{% from "file-upload/macro.njk" import govukFileUpload %}
+{% from "button/macro.njk" import govukButton %}
+
+{% block header %}
+    {{ govukHeader({
+        productName: 'Prihlásenie na trvalý pobyt',
+        homepageUrl: '/app/trvaly-pobyt'
+    }) }}
+{% endblock %}
+
+{% block main %}
+
+    {% if user is null %}
+        <span class="govuk-caption-l">Rýchle a jednoduché</span>
+        <h1 class="govuk-heading-l">Prihlásenie na trvalý pobyt</h1>
+
+        <p class="govuk-body">Táto aplikácia Vám umožní prihlásiť seba alebo Vaše deti na trvalý pobyt.</p>
+
+        <a href="{{ loginConfig.login_url }}" class="govuk-button govuk-button--start">Prihlásiť sa cez slovensko.sk</a>
+
+    {% else %}
+        {{ user.name }} <a href="/app/trvaly-pobyt/odhlasenie" class="govuk-link--muted">Odhlásiť</a>
+        <hr><br>
+
+        <div class="govuk-error-summary optional-extra-class" aria-labelledby="error-summary-title" role="alert" tabindex="-1" data-module="error-summary">
+            <h2 class="govuk-error-summary__title" id="error-summary-title">
+                Vyskytol sa problém pri podávaní žiadosti
+            </h2>
+            <div class="govuk-error-summary__body">
+              <p>
+                <a href="/app/trvaly-pobyt/">Skúste žiadosť podať znovu</a>
+              </p>
+            </div>
+        </div>
+    {% endif %}
+{% endblock %}

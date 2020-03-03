@@ -44,7 +44,7 @@ const withUserSession = function (req, res, verifyUserSession) {
         token = 'fake-token'
       }
     } else {
-      token = req.cookies.obo ? req.cookies.obo : req.query.token
+      token = req.query.token ? req.query.token : req.cookies.obo
       result.user = token ? userFromJwt(token) : null
     }
 
@@ -75,24 +75,31 @@ const withUserSession = function (req, res, verifyUserSession) {
   })
 }
 
-const sendMessage = function (user) {
+const sendMessage = function (user, messageData) {
+  if (user === null) {
+    return new Promise(function (resolve, reject) {
+      const error = new Error('User is not logged')
+      error.code = 'user_not_logged'
+      reject(error)
+    })
+  }
+
   const token = userRequestToken(user)
   let message = nunjucks.render(path.join('end-to-end', 'app-podavac', 'templates', 'sktalk_envelope.xml.njk'), {
     messageId: uuidv1(),
     correlationId: uuidv1(),
     senderId: user.sub,
-    messageSubject: 'test', // messageSubject,
+    messageSubject: messageData.Subject,
     form: {
       id: uuidv1(),
-      name: 'test.txt',
-      description: 'test file',
+      name: 'form.xml',
+      description: 'General Agenda XML',
       encoding: 'Base64',
-      mimeType: 'plain/text',
+      mimeType: 'application/x-eform-xml',
       isSigned: 'false',
-      content: 'VGVzdG92YWNpYSBzcHJhdmE='
+      content: Buffer.from(messageData.Form).toString('base64')
     },
-    // form: { id: uuidv1(), ...form },
-    attachments: [] // attachments.map(attachment => ({ id: uuidv1(), ...attachment }))
+    attachments: messageData.Files.map(file => ({ id: uuidv1(), ...file }))
   })
 
   return axios.post(
@@ -137,7 +144,11 @@ const userFromJwt = function (token) {
 const render = function (res, app, action, next) {
   res.render(`end-to-end/app-${app}/${action}`, function (error, html) {
     if (error) {
-      next(error)
+      if (next === null) {
+        console.log(error)
+      } else {
+        next(error)
+      }
     } else {
       res.send(html)
     }
@@ -157,5 +168,6 @@ const podpisujskAuthorizationCode = function () {
 exports.withUserSession = withUserSession
 exports.loginConfig = loginConfig
 exports.podpisujskAuthorizationCode = podpisujskAuthorizationCode
+exports.userRequestToken = userRequestToken
 exports.sendMessage = sendMessage
 exports.render = render

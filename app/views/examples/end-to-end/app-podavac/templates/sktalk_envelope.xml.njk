@@ -22,7 +22,7 @@
       <SenderBusinessReference/>
       <RecipientBusinessReference/>
       <Object Class="FORM" Description="{{ form.description }}" Encoding="{{ form.encoding}}" Id="{{ form.id }}" IsSigned="{{ form.isSigned }}" MimeType="{{ form.mimeType }}" Name="{{ form.name }}">
-        {{ form.content }}
+        {{ form.content | safe }}
       </Object>
       {% for attachment in attachments %}
       <Object Class="ATTACHMENT" Description="{{ attachment.description }}" Encoding="{{ attachment.encoding}}" Id="{{ attachment.id }}" IsSigned="{{ attachment.isSigned }}" MimeType="{{ attachment.mimeType }}" Name="{{ attachment.name }}">

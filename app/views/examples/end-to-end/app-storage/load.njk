@@ -1,0 +1,19 @@
+<html lang="sk">
+  <head>
+    <script>
+      function submit() {
+        document.forms[0].document.value = sessionStorage.getItem('end-to-end-document-' + document.forms[0].documentId.value);
+        document.forms[0].submit();
+      }
+    </script>
+  </head>
+  <body onload="submit();">
+    <form action="{{ nextUrl }}" method="POST">
+      <input type="hidden" name="documentId" value="{{ documentId }}">
+      <input type="hidden" name="document" value="">
+    </form>
+  </body>
+</html>
+
+
+
