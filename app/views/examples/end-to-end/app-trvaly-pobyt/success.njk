@@ -6,10 +6,28 @@
 {% from "button/macro.njk" import govukButton %}
 
 {% block header %}
-    {{ govukHeader({
-        productName: 'Prihlásenie na trvalý pobyt',
-        homepageUrl: '/app/trvaly-pobyt'
-    }) }}
+  <style>
+    html {
+      font-size: 14px;
+    }
+
+    * {
+      font-family: Verdana !important;
+    }
+
+    .govuk-button {
+      background-color: #613bff;
+    }
+
+    .govuk-button:hover {
+      background-color: #4e2fcb;
+    }
+  </style>
+
+  <div class="govuk-width-container" style="margin-top: 20px;">
+    <span class="govuk-caption-l">Rýchle a jednoduché</span>
+    <h1 class="govuk-heading-l">Prihlásenie na trvalý pobyt</h1>
+  </div>
 {% endblock %}
 
 {% block main %}

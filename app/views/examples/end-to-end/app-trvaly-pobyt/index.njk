@@ -6,22 +6,48 @@
 {% from "button/macro.njk" import govukButton %}
 
 {% block header %}
-    {{ govukHeader({
-        productName: 'Prihlásenie na trvalý pobyt',
-        homepageUrl: '/app/trvaly-pobyt'
-    }) }}
+  <style>
+    html {
+      font-size: 14px;
+    }
+
+    * {
+      font-family: Verdana !important;
+    }
+
+    .govuk-button {
+      background-color: white;
+      border-color: black;
+      color: black !important;
+    }
+
+    .govuk-button:hover {
+      background-color: #ffef83;
+    }
+
+    .govuk-label {
+      margin-bottom: 0;
+      padding-bottom: 5px !important;
+    }
+
+    .govuk-fieldset__heading {
+      font-weight: bold;
+    }
+  </style>
+
+  <div class="govuk-width-container" style="margin-top: 20px;">
+    <span class="govuk-caption-l">Rýchle a jednoduché</span>
+    <h1 class="govuk-heading-l">Prihlásenie na trvalý pobyt</h1>
+  </div>
+
 {% endblock %}
 
 {% block main %}
 
     {% if user is null %}
-        <span class="govuk-caption-l">Rýchle a jednoduché</span>
-        <h1 class="govuk-heading-l">Prihlásenie na trvalý pobyt</h1>
-
         <p class="govuk-body">Táto aplikácia Vám umožní prihlásiť seba alebo Vaše deti na trvalý pobyt.</p>
 
-        <a href="{{ loginConfig.login_url }}" class="govuk-button govuk-button--start">Prihlásiť sa cez slovensko.sk</a>
-
+        <a href="{{ loginConfig.login_url }}" class="govuk-button">Prihlásiť sa cez slovensko.sk</a>
     {% else %}
         {{ user.name }} <a href="/app/trvaly-pobyt/odhlasenie" class="govuk-link--muted">Odhlásiť</a>
         <hr><br>
@@ -55,7 +81,7 @@
                             Zvoľte osoby, ktoré chcete prihlásiť na trvalý pobyt
                         </h1>
                     </legend>
-                    <div class="govuk-checkboxes">
+                  <div class="govuk-checkboxes govuk-checkboxes--small">
                         <div class="govuk-checkboxes__item">
                             <input class="govuk-checkboxes__input" id="person1" name="people[]"
                                    type="checkbox"
@@ -65,8 +91,6 @@
                             </label> <span id="government-gateway-item-hint" class="govuk-hint govuk-checkboxes__hint">
             Aktuálny trvalý pobyt: 	Kvietkova 1, 123 01 Komárno
           </span></div>
-                    </div>
-                    <div class="govuk-checkboxes">
                         <div class="govuk-checkboxes__item">
                             <input class="govuk-checkboxes__input" id="person2" name="people[]"
                                    type="checkbox"
@@ -95,7 +119,7 @@
                             Na akú adresu chcete zvolené osoby prihlásiť na trvalý pobyt?
                         </h1>
                     </legend>
-                    <div class="govuk-radios">
+                    <div class="govuk-radios govuk-radios--small">
                         <div class="govuk-radios__item">
                             <input class="govuk-radios__input" id="gov-1" name="address" type="radio" value="Kvietkova 1, 123 01 Komárno"
                                    aria-describedby="gov-1-item-hint" checked>

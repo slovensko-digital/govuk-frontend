@@ -3,8 +3,11 @@
 {% from "button/macro.njk" import govukButton %}
 
 {% block header %}
+
+
+
     {{ govukHeader({
-        productName: 'slovensko.digital - Podpisovač',
+        productName: 'slovensko.sk 2.0 - Podpisovač',
         homepageUrl: '/app/trvaly-pobyt'
     }) }}
 {% endblock %}
@@ -125,7 +128,7 @@
     </div>
   </div>
 
-  <div class="signer-step" style="display: none;" data-step="5" data-wait="2000" data-done-text="Podpisovať budete certifikátom: Katarína Mrkvičková">
+  <div class="signer-step" style="display: none;" data-step="5" data-wait="2000" data-after-wait="5000" data-done-text="Podpisovať budete certifikátom: Katarína Mrkvičková">
     Overuje sa dostupnosť certifikátov<br>
     <small>Prosím čakajte dokým sa zistía dostupné certifikáty.</small>
   </div>
@@ -173,7 +176,7 @@
             <div class="govuk-error-summary__body">
                 <p style="margin: 0;">
                     <small style="color: gray;">
-                        Aplikáciu si môžete <a href="https://test-portal.podpisuj.sk/staticweb/test-podpisuj.jnlp">stiahnuť z podpisuj.sk</a>
+                        Aplikáciu si môžete <a href="https://www.podpisuj.sk/download" target="_blank">stiahnuť z podpisuj.sk</a>
                     </small>
                 </p>
             </div>
@@ -205,7 +208,7 @@
   <button class="next-step" data-step="1" style="
           position: absolute;
           right: 10px;
-          top: 10px;">ďalší krok</button>
+          top: -1000px;">ďalší krok</button>
 {% endblock %}
 
 {% block js %}
@@ -283,11 +286,9 @@
         }
 
         function fakeSignerSignDocument(index, done) {
-          var file = bucket.files[index];
-
           setTimeout(function () {
             bucket.files[index].signed = true;
-            bucket.files[index].name = bucket.files[index].name + '.fsign';
+            bucket.files[index].name = bucket.files[index].name + '.asice';
 
             $('.document-signer').show().on('click', function (event) {
               event.preventDefault();
@@ -298,10 +299,13 @@
                 event.preventDefault();
                 $('.pin-form').hide();
                 $('.pin-form').off('click');
-                done(true);
+                $('#file-status-' + index).html('podpisuje sa...');
+                setTimeout(function() {
+                  done(true);
+                }, 1000);
               });
             });
-          }, 1000);
+          }, 2000);
         }
 
         function podpisujskSignerSignDocument(index, done) {
@@ -312,6 +316,9 @@
 
               form.append("authorizationCode", config.params.authorizationCode);
               form.append('file-1', b64toBlob(file.data, file.mimeType), file.name);
+              form.append('addTimestamp', false);
+              form.append('signTogether', false);
+              form.append('createASiC', true);
 
               $progress.show();
               var noError = true;
@@ -366,36 +373,41 @@
 
         function signDocument(index) {
           var signerSignDocument = null;
+          $('#file-status-' + index).html('spúšťa sa podpisovanie...');
 
-            if (useSigner === 'fake')
-            {
-              signerSignDocument = fakeSignerSignDocument;
-            }
-            else if (useSigner === 'podpisujsk')
-            {
-              signerSignDocument = podpisujskSignerSignDocument;
-            }
+          if (useSigner === 'fake')
+          {
+            signerSignDocument = fakeSignerSignDocument;
+          }
+          else if (useSigner === 'podpisujsk')
+          {
+            signerSignDocument = podpisujskSignerSignDocument;
+          }
 
-          signerSignDocument && signerSignDocument(index, function(success) {
-            if (success) {
-              $('#file-name-' + index).addClass('done');
-              $('#file-status-' + index).html(success ? 'podpísaný' : 'chyba pri podpisovaní');
-            }
+          setTimeout(function() {
+            signerSignDocument && signerSignDocument(index, function (success) {
+              setTimeout(function() {
+                if (success) {
+                  $('#file-name-' + index).addClass('done');
+                  $('#file-status-' + index).html(success ? 'podpísaný' : 'chyba pri podpisovaní');
+                }
 
-            if (bucket.files.length > index + 1) {
-              signDocument(index + 1);
-            }
-            else
-            {
-              $('#start-close-buttons').hide();
-              $('#signing-in-progress').hide();
-              $('#in-progress').hide();
-              $('#continue-form').show();
-              $('input[name=bucket]').val(JSON.stringify(bucket));
-              continueButtonTimeout();
-            }
-          })
+                if (bucket.files.length > index + 1) {
+                  signDocument(index + 1);
+                } else {
+                  $('#start-close-buttons').hide();
+                  $('#signing-in-progress').hide();
+                  $('#in-progress').hide();
+                  $('#continue-form').show();
+                  $('input[name=bucket]').val(JSON.stringify(bucket));
+                  continueButtonTimeout();
+                }
+              }, useSigner === 'fake' ? 1000 : 0);
+            })
+          }, useSigner === 'fake' ? 1000 : 0);
         }
+
+        var wasSigningInitiated = false;
 
         function showFakeStep(step) {
           var $step = $('.signer-step[data-step=' + step + ']');
@@ -424,20 +436,29 @@
             $('.next-step').data('step', step);
           }
 
-          if ($step.length === 0) {
+          if ($step.length === 0 && !wasSigningInitiated) {
+            wasSigningInitiated = true;
+            signDocument(0);
+
             $('.next-step').hide();
             // $('.signer-step').hide();
             $('.message-and-files').show().css({marginTop: '30px'});
             $progress.show();
-
-            signDocument(0);
           }
         }
 
-      $('.next-step').on('click', function(event) {
-        event.preventDefault();
-        showFakeStep(parseInt($('.next-step').data('step')));
-      });
+        function keydownHandler(event) {
+          event.preventDefault();
+
+            showFakeStep(parseInt($('.next-step').data('step')));
+        }
+
+        $('.next-step').click(keydownHandler);
+        $(document).keyup(function(event) {
+          if(event.key === "Escape") {
+            keydownHandler(event);
+          }
+        });
 
         $('.enter-bok').click(function(event) {
         event.preventDefault();
@@ -469,8 +490,6 @@
           signDocument(0);
         }
       })
-
-        // $('#start-signing').click();
 
       var b64toBlob = function(b64Data, contentType) {
         var sliceSize = 512;

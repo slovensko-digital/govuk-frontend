@@ -9,22 +9,20 @@
     <meta charset="utf-8" />
     <title>{% block pageTitle %}Slovensko 2.0 | slovensko.digital{% endblock %}</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    {#<meta name="theme-color" content="{{ themeColor | default('#0b0c0c') }}" /> #}{# Hardcoded value of $govuk-black #}
-    {# Ensure that older IE versions always render with the correct rendering engine #}
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 
     <style>
       .govsk-header .sdn-header .sdn-header__link {
-        color: black;
+        color: white;
       }
 
       .govsk-header .sdn-header__container {
-        height: auto;
+        height: 60px;
       }
 
       .govsk-header .sdn-header {
-        background-color: #ecf0ff;
-        background-image: url(/podanie/assets/stripe.png);
+        background-color: #2e2e2e;
+        background-image: url(/app/end-to-end/assets/stripe.png);
         background-position: center bottom;
         background-repeat: repeat-x;
         border: none;
@@ -32,12 +30,6 @@
     </style>
 
     {% block headIcons %}
-      {#<link rel="shortcut icon" sizes="16x16 32x32 48x48" href="{{ assetPath | default('/assets') }}/images/favicon.ico" type="image/x-icon" />#}
-      {#<link rel="mask-icon" href="{{ assetPath | default('/assets') }}/images/govuk-mask-icon.svg" color="{{ themeColor | default('#0b0c0c') }}"> #}{# Hardcoded value of $govuk-black #}
-      {#<link rel="apple-touch-icon" sizes="180x180" href="{{ assetPath | default('/assets') }}/images/govuk-apple-touch-icon-180x180.png">#}
-      {#<link rel="apple-touch-icon" sizes="167x167" href="{{ assetPath | default('/assets') }}/images/govuk-apple-touch-icon-167x167.png">#}
-      {#<link rel="apple-touch-icon" sizes="152x152" href="{{ assetPath | default('/assets') }}/images/govuk-apple-touch-icon-152x152.png">#}
-      {#<link rel="apple-touch-icon" href="{{ assetPath | default('/assets') }}/images/govuk-apple-touch-icon.png">#}
     {% endblock %}
 
     {% block head %}
@@ -48,10 +40,6 @@
       <link rel="stylesheet" href="/public/app-ie8.css">
       <![endif]-->
     {% endblock %}
-
-    {# The default og:image is added below head so that scrapers see any custom metatags first, and this is just a fallback #}
-    {# image url needs to be absolute e.g. http://wwww.domain.com/.../govuk-opengraph-image.png #}
-    {#<meta property="og:image" content="{{ assetUrl | default('/assets') }}/images/govuk-opengraph-image.png">#}
 
     <style>
       body::before {
@@ -72,12 +60,12 @@
 
       <div class="govsk-header">
         {% block header %}
-        {{ govukHeader({
-            productName: 'slovensko.digital: Podávač podaní 2.0 Turbo',
-            homepageUrl: '/app/trvaly-pobyt'
-        }) }}
+          {{ govukHeader({
+              productName: 'slovensko.digital: Podávač podaní 2.0 Turbo',
+              homepageUrl: '/app/trvaly-pobyt'
+          }) }}
+      {% endblock %}
       </div>
-    {% endblock %}
 
     <div class="govuk-width-container">
       <main class="govuk-main-wrapper">
@@ -92,11 +80,20 @@
         </div>
       </main>
     </div>
+    </div>
 
     <div class="navody-template__footer">
-
+      <div class="govuk-width-container">
+        <div class="govuk-grid-row">
+          <hr>
+          <div class="govuk-grid-column-full" style="text-align: center; margin-top: 10px; margin-bottom: 20px;">
+            <p style="font-size: 13px !important; margin-bottom: 5px;">Tento projekt je podporený z Európskeho sociálneho fondu</p>
+            <img src="/app/end-to-end/assets/logo-EU-ESF-farba-svk.png" style="max-width: 230px; width: 100%;">
+            <img src="/app/end-to-end/assets/logo-OP-EVS-farba-svk.png" style="max-width: 230px; width: 100%;">
+          </div>
+        </div>
+      </div>
       {% block bodyEnd %}{% endblock %}
-    </div>
     </div>
 
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>

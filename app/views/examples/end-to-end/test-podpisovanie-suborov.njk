@@ -114,6 +114,13 @@
       <p>
         Súbory boli úspešne podpísané.
       </p>
+      <div style="margin-bottom: 20px;">
+      {% for file in files %}
+        <div>
+            <a href="#" onclick="alert('Download suborov v deme nie je dostupny.'); return false;">Stiahnuť súbor {{ file.name }}</a>
+        </div>
+      {% endfor %}
+      </div>
     {% else %}
       <div class="govuk-error-summary optional-extra-class" aria-labelledby="error-summary-title" role="alert" tabindex="-1" data-module="error-summary">
         <h2 class="govuk-error-summary__title" id="error-summary-title">

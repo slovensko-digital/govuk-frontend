@@ -318,6 +318,10 @@ module.exports = (options) => {
       res.locals.base_url = req.protocol + '://' + req.get('host')
       res.locals.result = req.query.result || null
 
+      if (res.locals.result === 'success') {
+        res.locals.files = JSON.parse(req.body.bucket).files
+      }
+
       if (res.locals.result === 'success' && req.query.continue_with_send) {
         const messageData = {
           RecipientId: 'ico://sk/8311237188',
@@ -699,7 +703,7 @@ module.exports = (options) => {
       app.post('/app/podpisovac/api/podpisujsk-credentials', function (req, res, next) {
         res.send({
           status_url: 'http://127.0.0.1:14741/',
-          login_url: 'http://127.0.0.1:14741/login',
+          login_url: 'http://127.0.0.1:14741/login?serviceBaseUrl=https://test-portal.podpisuj.sk/o/portal-services3/services/',
           sign_url: 'http://127.0.0.1:14741/sign',
           params: {
             username: process.env.PODPISUJSK_USERNAME,

@@ -6,18 +6,34 @@
 {% from "button/macro.njk" import govukButton %}
 
 {% block header %}
-    {{ govukHeader({
-        productName: 'Prihlásenie na trvalý pobyt',
-        homepageUrl: '/app/trvaly-pobyt'
-    }) }}
+
+  <style>
+    html {
+      font-size: 14px;
+    }
+
+    * {
+      font-family: Verdana !important;
+    }
+
+    .govuk-button {
+      background-color: #613bff;
+    }
+
+    .govuk-button:hover {
+      background-color: #4e2fcb;
+    }
+  </style>
+
+  <div class="govuk-width-container" style="margin-top: 20px;">
+    <span class="govuk-caption-l">Rýchle a jednoduché</span>
+    <h1 class="govuk-heading-l">Prihlásenie na trvalý pobyt</h1>
+  </div>
 {% endblock %}
 
 {% block main %}
 
     {% if user is null %}
-        <span class="govuk-caption-l">Rýchle a jednoduché</span>
-        <h1 class="govuk-heading-l">Prihlásenie na trvalý pobyt</h1>
-
         <p class="govuk-body">Táto aplikácia Vám umožní prihlásiť seba alebo Vaše deti na trvalý pobyt.</p>
 
         <a href="{{ loginConfig.login_url }}" class="govuk-button govuk-button--start">Prihlásiť sa cez slovensko.sk</a>
@@ -29,8 +45,16 @@
       {% set multipleFiles = bucket.files|length > 1 %}
 
       <h3 style="margin-top: 0">
-        Žiadosť o zmenu trvalého pobytu dokončíte odoslaním {% if multipleFiles %}týchto dokumentov{% else %}tohto dokumentu{% endif %}
+        Dokončenie žiadosti o zmenu trvalého pobytu
       </h3>
+
+      <p>
+        {% if multipleFiles %}
+          Cez Vašu schránku na slovensko.sk budú podané tieto dokumenty:
+        {% else %}
+          Cez Vašu schránku na slovensko.sk bude podaný tento dokument:
+        {% endif %}
+      </p>
 
       <form action="/app/podavac/api/send" method="post">
         <input type="hidden" name="RecipientId" value="ico://sk/8311237188">
@@ -51,9 +75,7 @@ S pozdravom,
           <tbody class="govuk-table__body">
           {% for file in bucket.files %}
             <tr class="govuk-table__row">
-              <td class="govuk-table__cell">{{ file.name }}</td>
-              <td class="govuk-table__cell" id="file-status-{{ loop.index0 }}">
-                {% if file.signed %}podpísaný{% else %}nepodpísaný{% endif %}
+              <td class="govuk-table__cell">{{ file.name }}
                 <input type="hidden" name="files[{{ loop.index0 }}][name]" value="{{ file.name }}">
                 <input type="hidden" name="files[{{ loop.index0 }}][content]" value="{{ file.data }}">
                 <input type="hidden" name="files[{{ loop.index0 }}][mimetype]" value="{{ file.mimeType }}">
@@ -64,7 +86,7 @@ S pozdravom,
           {% endfor %}
           </tbody>
         </table>
-        <button type="submit" name="submit" class="govuk-button govuk-button--large" style="margin: 0;">Odoslať</button>
+        <button type="submit" name="submit" class="govuk-button govuk-button--large" style="margin: 0;">Dokončiť podanie žiadosti</button>
       </form>
     {% endif %}
 {% endblock %}
