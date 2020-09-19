@@ -1,0 +1,9 @@
+
+
+.govuk-accordion__section-button {
+  @include govuk-font($size: 20, $weight: bold);
+}
+
+.govuk-accordion__section-content p {
+  @include govuk-font($size: 16, $weight: normal);
+}
