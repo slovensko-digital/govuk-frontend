@@ -13,8 +13,8 @@ module.exports = {
     ]
   },
   server: {
-    command: `SET PORT=${PORT} && node app/start.js`,
-    launchTimeout: 50000, // Allow time for application to start
+    command: `PORT=${PORT} node app/start.js`,
+    launchTimeout: 30000, // Allow time for application to start
     port: PORT
   }
 }
