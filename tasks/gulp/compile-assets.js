@@ -1,5 +1,7 @@
 'use strict'
 
+const path = require('path')
+
 const gulp = require('gulp')
 const configPaths = require('../../config/paths.json')
 const sass = require('gulp-sass')
@@ -17,7 +19,7 @@ const cssnano = require('cssnano')
 // const postcsspseudoclasses = require('postcss-pseudo-classes')({
 // Work around a bug in pseudo classes plugin that badly transforms
 // :not(:whatever) pseudo selectors
-// blacklist: [':not(', ':disabled)', ':last-child)', ':focus)']
+// blacklist: [':not(', ':disabled)', ':last-child)', ':focus)', ':active)', ':hover)']
 // })
 
 // Compile CSS and JS task --------------
@@ -25,6 +27,16 @@ const cssnano = require('cssnano')
 
 // check if destination flag is dist
 const isDist = taskArguments.destination === 'dist' || false
+
+// Set the destination
+const destinationPath = function () {
+  // Public & Dist directories do no need namespaced with `govuk`
+  if (taskArguments.destination === 'dist' || taskArguments.destination === 'public') {
+    return taskArguments.destination
+  } else {
+    return `${taskArguments.destination}/govuk/`
+  }
+}
 
 const errorHandler = function (error) {
   // Log the error to the console
@@ -35,11 +47,11 @@ const errorHandler = function (error) {
   this.emit('end')
 }
 // different entry points for both streams below and depending on destination flag
-const compileStyleshet = isDist ? configPaths.src + 'all.scss' : configPaths.app + 'assets/scss/app.scss'
-const compileOldIeStyleshet = isDist ? configPaths.src + 'all-ie8.scss' : configPaths.app + 'assets/scss/app-ie8.scss'
+const compileStylesheet = isDist ? configPaths.src + 'all.scss' : configPaths.app + 'assets/scss/app.scss'
+const compileOldIeStylesheet = isDist ? configPaths.src + 'all-ie8.scss' : configPaths.app + 'assets/scss/app-ie8.scss'
 
 gulp.task('scss:compile', () => {
-  let compile = gulp.src(compileStyleshet)
+  const compile = gulp.src(compileStylesheet)
     .pipe(plumber(errorHandler))
     .pipe(sass())
     // minify css add vendor prefixes and normalize to compiled css
@@ -61,7 +73,7 @@ gulp.task('scss:compile', () => {
     ))
     .pipe(gulp.dest(taskArguments.destination + '/'))
 
-  let compileOldIe = gulp.src(compileOldIeStyleshet)
+  const compileOldIe = gulp.src(compileOldIeStylesheet)
     .pipe(plumber(errorHandler))
     .pipe(sass())
     // minify css add vendor prefixes and normalize to compiled css
@@ -74,7 +86,6 @@ gulp.task('scss:compile', () => {
         rem: { disable: true },
         unmq: { disable: true },
         pseudo: { disable: true }
-        // more rules go here
       })
     ])))
     .pipe(gulpif(!isDist, postcss([
@@ -95,17 +106,56 @@ gulp.task('scss:compile', () => {
     ))
     .pipe(gulp.dest(taskArguments.destination + '/'))
 
-  return merge(compile, compileOldIe)
+  let compileLegacy, compileLegacyIE8
+
+  if (!isDist) {
+    compileLegacy = gulp.src(path.join(configPaths.app, 'assets/scss/app-legacy.scss'))
+      .pipe(plumber(errorHandler))
+      .pipe(sass({
+        includePaths: ['node_modules/govuk_frontend_toolkit/stylesheets', 'node_modules']
+      }))
+      .pipe(postcss([
+        autoprefixer
+        // Auto-generate 'companion' classes for pseudo-selector states - e.g. a
+        // :hover class you can use to simulate the hover state in the review app
+        // postcsspseudoclasses
+      ]))
+      .pipe(gulp.dest(taskArguments.destination + '/'))
+
+    compileLegacyIE8 = gulp.src(path.join(configPaths.app, 'assets/scss/app-legacy-ie8.scss'))
+      .pipe(plumber(errorHandler))
+      .pipe(sass({
+        includePaths: ['node_modules/govuk_frontend_toolkit/stylesheets', 'node_modules']
+      }))
+      .pipe(postcss([
+        autoprefixer,
+        // postcsspseudoclasses,
+        require('oldie')({
+          rgba: { filter: true },
+          rem: { disable: true },
+          unmq: { disable: true },
+          pseudo: { disable: true }
+        })
+      ]))
+      .pipe(gulp.dest(taskArguments.destination + '/'))
+  }
+
+  if (isDist) {
+    return merge(compile, compileOldIe)
+  } else {
+    return merge(compile, compileOldIe, compileLegacy, compileLegacyIE8)
+  }
 })
 
 // Compile js task for preview ----------
 // --------------------------------------
 gulp.task('js:compile', () => {
   // for dist/ folder we only want compiled 'all.js' file
-  let srcFiles = isDist ? configPaths.src + 'all.js' : configPaths.src + '**/*.js'
+  const srcFiles = isDist ? configPaths.src + 'all.js' : configPaths.src + '**/*.js'
+
   return gulp.src([
-    '!' + configPaths.src + '**/*.test.js',
-    srcFiles
+    srcFiles,
+    '!' + configPaths.src + '**/*.test.js'
   ])
     .pipe(rollup({
       // Used to set the `window` global and UMD/AMD export name.
@@ -125,5 +175,5 @@ gulp.task('js:compile', () => {
       })
     ))
     .pipe(eol())
-    .pipe(gulp.dest(taskArguments.destination + '/'))
+    .pipe(gulp.dest(destinationPath))
 })

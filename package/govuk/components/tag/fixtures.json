@@ -1,0 +1,131 @@
+{
+    "component": "tag",
+    "fixtures": [
+        {
+            "name": "default",
+            "options": {
+                "text": "alpha"
+            },
+            "html": "<strong class=\"govuk-tag\">\r\n  alpha\r\n</strong>",
+            "hidden": false
+        },
+        {
+            "name": "inactive",
+            "options": {
+                "text": "alpha",
+                "classes": "govuk-tag--inactive"
+            },
+            "html": "<strong class=\"govuk-tag govuk-tag--inactive\">\r\n  alpha\r\n</strong>",
+            "hidden": false
+        },
+        {
+            "name": "grey",
+            "options": {
+                "text": "Grey",
+                "classes": "govuk-tag--grey"
+            },
+            "html": "<strong class=\"govuk-tag govuk-tag--grey\">\r\n  Grey\r\n</strong>",
+            "hidden": false
+        },
+        {
+            "name": "blue",
+            "options": {
+                "text": "Blue",
+                "classes": "govuk-tag--blue"
+            },
+            "html": "<strong class=\"govuk-tag govuk-tag--blue\">\r\n  Blue\r\n</strong>",
+            "hidden": false
+        },
+        {
+            "name": "turquoise",
+            "options": {
+                "text": "Turquoise",
+                "classes": "govuk-tag--turquoise"
+            },
+            "html": "<strong class=\"govuk-tag govuk-tag--turquoise\">\r\n  Turquoise\r\n</strong>",
+            "hidden": false
+        },
+        {
+            "name": "green",
+            "options": {
+                "text": "Green",
+                "classes": "govuk-tag--green"
+            },
+            "html": "<strong class=\"govuk-tag govuk-tag--green\">\r\n  Green\r\n</strong>",
+            "hidden": false
+        },
+        {
+            "name": "purple",
+            "options": {
+                "text": "Purple",
+                "classes": "govuk-tag--purple"
+            },
+            "html": "<strong class=\"govuk-tag govuk-tag--purple\">\r\n  Purple\r\n</strong>",
+            "hidden": false
+        },
+        {
+            "name": "pink",
+            "options": {
+                "text": "Pink",
+                "classes": "govuk-tag--pink"
+            },
+            "html": "<strong class=\"govuk-tag govuk-tag--pink\">\r\n  Pink\r\n</strong>",
+            "hidden": false
+        },
+        {
+            "name": "red",
+            "options": {
+                "text": "Red",
+                "classes": "govuk-tag--red"
+            },
+            "html": "<strong class=\"govuk-tag govuk-tag--red\">\r\n  Red\r\n</strong>",
+            "hidden": false
+        },
+        {
+            "name": "orange",
+            "options": {
+                "text": "Orange",
+                "classes": "govuk-tag--orange"
+            },
+            "html": "<strong class=\"govuk-tag govuk-tag--orange\">\r\n  Orange\r\n</strong>",
+            "hidden": false
+        },
+        {
+            "name": "yellow",
+            "options": {
+                "text": "Yellow",
+                "classes": "govuk-tag--yellow"
+            },
+            "html": "<strong class=\"govuk-tag govuk-tag--yellow\">\r\n  Yellow\r\n</strong>",
+            "hidden": false
+        },
+        {
+            "name": "attributes",
+            "options": {
+                "text": "Tag with attributes",
+                "attributes": {
+                    "data-test": "attribute",
+                    "id": "my-tag"
+                }
+            },
+            "html": "<strong class=\"govuk-tag\" data-test=\"attribute\" id=\"my-tag\">\r\n  Tag with attributes\r\n</strong>",
+            "hidden": true
+        },
+        {
+            "name": "html as text",
+            "options": {
+                "text": "<span>alpha</span>"
+            },
+            "html": "<strong class=\"govuk-tag\">\r\n  &lt;span&gt;alpha&lt;/span&gt;\r\n</strong>",
+            "hidden": true
+        },
+        {
+            "name": "html",
+            "options": {
+                "html": "<span>alpha</span>"
+            },
+            "html": "<strong class=\"govuk-tag\">\r\n  <span>alpha</span>\r\n</strong>",
+            "hidden": true
+        }
+    ]
+}

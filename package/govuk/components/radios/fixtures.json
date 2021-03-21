@@ -1,0 +1,1183 @@
+{
+    "component": "radios",
+    "fixtures": [
+        {
+            "name": "default",
+            "options": {
+                "name": "example-default",
+                "hint": {
+                    "text": "This includes changing your last name or spelling your name differently."
+                },
+                "items": [
+                    {
+                        "value": "yes",
+                        "text": "Yes"
+                    },
+                    {
+                        "value": "no",
+                        "text": "No",
+                        "checked": true
+                    }
+                ]
+            },
+            "html": "<div class=\"govuk-form-group\">\r\n\r\n  <div id=\"example-default-hint\" class=\"govuk-hint\">\r\n    This includes changing your last name or spelling your name differently.\r\n  </div>\r\n\r\n\r\n  <div class=\"govuk-radios\">\r\n    \r\n      \r\n          \r\n        \r\n        \r\n        <div class=\"govuk-radios__item\">\r\n          <input class=\"govuk-radios__input\" id=\"example-default\" name=\"example-default\" type=\"radio\" value=\"yes\">\r\n          <label class=\"govuk-label govuk-radios__label\" for=\"example-default\">\r\n        Yes\r\n      </label>\r\n          \r\n        </div>\r\n        \r\n        \r\n      \r\n    \r\n      \r\n        \r\n        \r\n        <div class=\"govuk-radios__item\">\r\n          <input class=\"govuk-radios__input\" id=\"example-default-2\" name=\"example-default\" type=\"radio\" value=\"no\" checked>\r\n          <label class=\"govuk-label govuk-radios__label\" for=\"example-default-2\">\r\n        No\r\n      </label>\r\n          \r\n        </div>\r\n        \r\n        \r\n      \r\n    \r\n  </div>\r\n\r\n</div>",
+            "hidden": false
+        },
+        {
+            "name": "inline",
+            "options": {
+                "idPrefix": "example",
+                "classes": "govuk-radios--inline",
+                "name": "example",
+                "fieldset": {
+                    "legend": {
+                        "text": "Have you changed your name?"
+                    }
+                },
+                "hint": {
+                    "text": "This includes changing your last name or spelling your name differently."
+                },
+                "items": [
+                    {
+                        "value": "yes",
+                        "text": "Yes"
+                    },
+                    {
+                        "value": "no",
+                        "text": "No",
+                        "checked": true
+                    }
+                ]
+            },
+            "html": "<div class=\"govuk-form-group\">\r\n\r\n  <fieldset class=\"govuk-fieldset\" aria-describedby=\"example-hint\">\r\n  \r\n  <legend class=\"govuk-fieldset__legend\">\r\n  \r\n    Have you changed your name?\r\n  \r\n  </legend>\r\n  \r\n\r\n  <div id=\"example-hint\" class=\"govuk-hint\">\r\n    This includes changing your last name or spelling your name differently.\r\n  </div>\r\n\r\n\r\n  <div class=\"govuk-radios govuk-radios--inline\">\r\n    \r\n      \r\n          \r\n        \r\n        \r\n        <div class=\"govuk-radios__item\">\r\n          <input class=\"govuk-radios__input\" id=\"example\" name=\"example\" type=\"radio\" value=\"yes\">\r\n          <label class=\"govuk-label govuk-radios__label\" for=\"example\">\r\n        Yes\r\n      </label>\r\n          \r\n        </div>\r\n        \r\n        \r\n      \r\n    \r\n      \r\n        \r\n        \r\n        <div class=\"govuk-radios__item\">\r\n          <input class=\"govuk-radios__input\" id=\"example-2\" name=\"example\" type=\"radio\" value=\"no\" checked>\r\n          <label class=\"govuk-label govuk-radios__label\" for=\"example-2\">\r\n        No\r\n      </label>\r\n          \r\n        </div>\r\n        \r\n        \r\n      \r\n    \r\n  </div>\r\n  \r\n\r\n</fieldset>\r\n\r\n\r\n</div>",
+            "hidden": false
+        },
+        {
+            "name": "with disabled",
+            "options": {
+                "idPrefix": "example-disabled",
+                "name": "example-disabled",
+                "fieldset": {
+                    "legend": {
+                        "text": "Have you changed your name?"
+                    }
+                },
+                "hint": {
+                    "text": "This includes changing your last name or spelling your name differently."
+                },
+                "items": [
+                    {
+                        "value": "yes",
+                        "text": "Yes",
+                        "disabled": true
+                    },
+                    {
+                        "value": "no",
+                        "text": "No",
+                        "disabled": true
+                    }
+                ]
+            },
+            "html": "<div class=\"govuk-form-group\">\r\n\r\n  <fieldset class=\"govuk-fieldset\" aria-describedby=\"example-disabled-hint\">\r\n  \r\n  <legend class=\"govuk-fieldset__legend\">\r\n  \r\n    Have you changed your name?\r\n  \r\n  </legend>\r\n  \r\n\r\n  <div id=\"example-disabled-hint\" class=\"govuk-hint\">\r\n    This includes changing your last name or spelling your name differently.\r\n  </div>\r\n\r\n\r\n  <div class=\"govuk-radios\">\r\n    \r\n      \r\n          \r\n        \r\n        \r\n        <div class=\"govuk-radios__item\">\r\n          <input class=\"govuk-radios__input\" id=\"example-disabled\" name=\"example-disabled\" type=\"radio\" value=\"yes\" disabled>\r\n          <label class=\"govuk-label govuk-radios__label\" for=\"example-disabled\">\r\n        Yes\r\n      </label>\r\n          \r\n        </div>\r\n        \r\n        \r\n      \r\n    \r\n      \r\n        \r\n        \r\n        <div class=\"govuk-radios__item\">\r\n          <input class=\"govuk-radios__input\" id=\"example-disabled-2\" name=\"example-disabled\" type=\"radio\" value=\"no\" disabled>\r\n          <label class=\"govuk-label govuk-radios__label\" for=\"example-disabled-2\">\r\n        No\r\n      </label>\r\n          \r\n        </div>\r\n        \r\n        \r\n      \r\n    \r\n  </div>\r\n  \r\n\r\n</fieldset>\r\n\r\n\r\n</div>",
+            "hidden": false
+        },
+        {
+            "name": "with legend as page heading",
+            "options": {
+                "idPrefix": "housing-act",
+                "name": "housing-act",
+                "fieldset": {
+                    "legend": {
+                        "text": "Which part of the Housing Act was your licence issued under?",
+                        "classes": "govuk-fieldset__legend--l",
+                        "isPageHeading": true
+                    }
+                },
+                "hint": {
+                    "text": "Select one of the options below."
+                },
+                "items": [
+                    {
+                        "value": "part-2",
+                        "html": "<span class=\"govuk-heading-s govuk-!-margin-bottom-1\">Part 2 of the Housing Act 2004</span> For properties that are 3 or more stories high and occupied by 5 or more people"
+                    },
+                    {
+                        "value": "part-3",
+                        "html": "<span class=\"govuk-heading-s govuk-!-margin-bottom-1\">Part 3 of the Housing Act 2004</span> For properties that are within a geographical area defined by a local council"
+                    }
+                ]
+            },
+            "html": "<div class=\"govuk-form-group\">\r\n\r\n  <fieldset class=\"govuk-fieldset\" aria-describedby=\"housing-act-hint\">\r\n  \r\n  <legend class=\"govuk-fieldset__legend govuk-fieldset__legend--l\">\r\n  \r\n    <h1 class=\"govuk-fieldset__heading\">\r\n      Which part of the Housing Act was your licence issued under?\r\n    </h1>\r\n  \r\n  </legend>\r\n  \r\n\r\n  <div id=\"housing-act-hint\" class=\"govuk-hint\">\r\n    Select one of the options below.\r\n  </div>\r\n\r\n\r\n  <div class=\"govuk-radios\">\r\n    \r\n      \r\n          \r\n        \r\n        \r\n        <div class=\"govuk-radios__item\">\r\n          <input class=\"govuk-radios__input\" id=\"housing-act\" name=\"housing-act\" type=\"radio\" value=\"part-2\">\r\n          <label class=\"govuk-label govuk-radios__label\" for=\"housing-act\">\r\n        <span class=\"govuk-heading-s govuk-!-margin-bottom-1\">Part 2 of the Housing Act 2004</span> For properties that are 3 or more stories high and occupied by 5 or more people\r\n      </label>\r\n          \r\n        </div>\r\n        \r\n        \r\n      \r\n    \r\n      \r\n        \r\n        \r\n        <div class=\"govuk-radios__item\">\r\n          <input class=\"govuk-radios__input\" id=\"housing-act-2\" name=\"housing-act\" type=\"radio\" value=\"part-3\">\r\n          <label class=\"govuk-label govuk-radios__label\" for=\"housing-act-2\">\r\n        <span class=\"govuk-heading-s govuk-!-margin-bottom-1\">Part 3 of the Housing Act 2004</span> For properties that are within a geographical area defined by a local council\r\n      </label>\r\n          \r\n        </div>\r\n        \r\n        \r\n      \r\n    \r\n  </div>\r\n  \r\n\r\n</fieldset>\r\n\r\n\r\n</div>",
+            "hidden": false
+        },
+        {
+            "name": "with a medium legend",
+            "options": {
+                "idPrefix": "housing-act",
+                "name": "housing-act",
+                "fieldset": {
+                    "legend": {
+                        "text": "Which part of the Housing Act was your licence issued under?",
+                        "classes": "govuk-fieldset__legend--m"
+                    }
+                },
+                "hint": {
+                    "text": "Select one of the options below."
+                },
+                "items": [
+                    {
+                        "value": "part-2",
+                        "html": "<span class=\"govuk-heading-s govuk-!-margin-bottom-1\">Part 2 of the Housing Act 2004</span> For properties that are 3 or more stories high and occupied by 5 or more people"
+                    },
+                    {
+                        "value": "part-3",
+                        "html": "<span class=\"govuk-heading-s govuk-!-margin-bottom-1\">Part 3 of the Housing Act 2004</span> For properties that are within a geographical area defined by a local council"
+                    }
+                ]
+            },
+            "html": "<div class=\"govuk-form-group\">\r\n\r\n  <fieldset class=\"govuk-fieldset\" aria-describedby=\"housing-act-hint\">\r\n  \r\n  <legend class=\"govuk-fieldset__legend govuk-fieldset__legend--m\">\r\n  \r\n    Which part of the Housing Act was your licence issued under?\r\n  \r\n  </legend>\r\n  \r\n\r\n  <div id=\"housing-act-hint\" class=\"govuk-hint\">\r\n    Select one of the options below.\r\n  </div>\r\n\r\n\r\n  <div class=\"govuk-radios\">\r\n    \r\n      \r\n          \r\n        \r\n        \r\n        <div class=\"govuk-radios__item\">\r\n          <input class=\"govuk-radios__input\" id=\"housing-act\" name=\"housing-act\" type=\"radio\" value=\"part-2\">\r\n          <label class=\"govuk-label govuk-radios__label\" for=\"housing-act\">\r\n        <span class=\"govuk-heading-s govuk-!-margin-bottom-1\">Part 2 of the Housing Act 2004</span> For properties that are 3 or more stories high and occupied by 5 or more people\r\n      </label>\r\n          \r\n        </div>\r\n        \r\n        \r\n      \r\n    \r\n      \r\n        \r\n        \r\n        <div class=\"govuk-radios__item\">\r\n          <input class=\"govuk-radios__input\" id=\"housing-act-2\" name=\"housing-act\" type=\"radio\" value=\"part-3\">\r\n          <label class=\"govuk-label govuk-radios__label\" for=\"housing-act-2\">\r\n        <span class=\"govuk-heading-s govuk-!-margin-bottom-1\">Part 3 of the Housing Act 2004</span> For properties that are within a geographical area defined by a local council\r\n      </label>\r\n          \r\n        </div>\r\n        \r\n        \r\n      \r\n    \r\n  </div>\r\n  \r\n\r\n</fieldset>\r\n\r\n\r\n</div>",
+            "hidden": false
+        },
+        {
+            "name": "with a divider",
+            "options": {
+                "idPrefix": "example-divider",
+                "name": "example",
+                "fieldset": {
+                    "legend": {
+                        "text": "How do you want to sign in?"
+                    }
+                },
+                "items": [
+                    {
+                        "value": "governement-gateway",
+                        "text": "Use Government Gateway"
+                    },
+                    {
+                        "value": "govuk-verify",
+                        "text": "Use GOV.UK Verify"
+                    },
+                    {
+                        "divider": "or"
+                    },
+                    {
+                        "value": "create-account",
+                        "text": "Create an account"
+                    }
+                ]
+            },
+            "html": "<div class=\"govuk-form-group\">\r\n\r\n  <fieldset class=\"govuk-fieldset\">\r\n  \r\n  <legend class=\"govuk-fieldset__legend\">\r\n  \r\n    How do you want to sign in?\r\n  \r\n  </legend>\r\n  \r\n\r\n  <div class=\"govuk-radios\">\r\n    \r\n      \r\n          \r\n        \r\n        \r\n        <div class=\"govuk-radios__item\">\r\n          <input class=\"govuk-radios__input\" id=\"example-divider\" name=\"example\" type=\"radio\" value=\"governement-gateway\">\r\n          <label class=\"govuk-label govuk-radios__label\" for=\"example-divider\">\r\n        Use Government Gateway\r\n      </label>\r\n          \r\n        </div>\r\n        \r\n        \r\n      \r\n    \r\n      \r\n        \r\n        \r\n        <div class=\"govuk-radios__item\">\r\n          <input class=\"govuk-radios__input\" id=\"example-divider-2\" name=\"example\" type=\"radio\" value=\"govuk-verify\">\r\n          <label class=\"govuk-label govuk-radios__label\" for=\"example-divider-2\">\r\n        Use GOV.UK Verify\r\n      </label>\r\n          \r\n        </div>\r\n        \r\n        \r\n      \r\n    \r\n      \r\n        <div class=\"govuk-radios__divider\">or</div>\r\n      \r\n    \r\n      \r\n        \r\n        \r\n        <div class=\"govuk-radios__item\">\r\n          <input class=\"govuk-radios__input\" id=\"example-divider-4\" name=\"example\" type=\"radio\" value=\"create-account\">\r\n          <label class=\"govuk-label govuk-radios__label\" for=\"example-divider-4\">\r\n        Create an account\r\n      </label>\r\n          \r\n        </div>\r\n        \r\n        \r\n      \r\n    \r\n  </div>\r\n  \r\n\r\n</fieldset>\r\n\r\n\r\n</div>",
+            "hidden": false
+        },
+        {
+            "name": "with hints on items",
+            "options": {
+                "idPrefix": "gov",
+                "name": "gov",
+                "fieldset": {
+                    "legend": {
+                        "text": "How do you want to sign in?",
+                        "isPageHeading": true
+                    }
+                },
+                "items": [
+                    {
+                        "value": "gateway",
+                        "text": "Sign in with Government Gateway",
+                        "id": "gateway",
+                        "hint": {
+                            "text": "You’ll have a user ID if you’ve registered for Self Assessment or filed a tax return online before."
+                        }
+                    },
+                    {
+                        "value": "verify",
+                        "text": "Sign in with GOV.UK Verify",
+                        "id": "verify",
+                        "hint": {
+                            "text": "You’ll have an account if you’ve already proved your identity with either Barclays, CitizenSafe, Digidentity, Experian, Post Office, Royal Mail or SecureIdentity."
+                        }
+                    }
+                ]
+            },
+            "html": "<div class=\"govuk-form-group\">\r\n\r\n  <fieldset class=\"govuk-fieldset\">\r\n  \r\n  <legend class=\"govuk-fieldset__legend\">\r\n  \r\n    <h1 class=\"govuk-fieldset__heading\">\r\n      How do you want to sign in?\r\n    </h1>\r\n  \r\n  </legend>\r\n  \r\n\r\n  <div class=\"govuk-radios\">\r\n    \r\n      \r\n        \r\n        \r\n        <div class=\"govuk-radios__item\">\r\n          <input class=\"govuk-radios__input\" id=\"gateway\" name=\"gov\" type=\"radio\" value=\"gateway\" aria-describedby=\"gateway-item-hint\">\r\n          <label class=\"govuk-label govuk-radios__label\" for=\"gateway\">\r\n        Sign in with Government Gateway\r\n      </label>\r\n          \r\n          <div id=\"gateway-item-hint\" class=\"govuk-hint govuk-radios__hint\">\r\n        You’ll have a user ID if you’ve registered for Self Assessment or filed a tax return online before.\r\n      </div>\r\n          \r\n        </div>\r\n        \r\n        \r\n      \r\n    \r\n      \r\n        \r\n        \r\n        <div class=\"govuk-radios__item\">\r\n          <input class=\"govuk-radios__input\" id=\"verify\" name=\"gov\" type=\"radio\" value=\"verify\" aria-describedby=\"verify-item-hint\">\r\n          <label class=\"govuk-label govuk-radios__label\" for=\"verify\">\r\n        Sign in with GOV.UK Verify\r\n      </label>\r\n          \r\n          <div id=\"verify-item-hint\" class=\"govuk-hint govuk-radios__hint\">\r\n        You’ll have an account if you’ve already proved your identity with either Barclays, CitizenSafe, Digidentity, Experian, Post Office, Royal Mail or SecureIdentity.\r\n      </div>\r\n          \r\n        </div>\r\n        \r\n        \r\n      \r\n    \r\n  </div>\r\n  \r\n\r\n</fieldset>\r\n\r\n\r\n</div>",
+            "hidden": false
+        },
+        {
+            "name": "without fieldset",
+            "options": {
+                "name": "colours",
+                "items": [
+                    {
+                        "value": "red",
+                        "text": "Red"
+                    },
+                    {
+                        "value": "green",
+                        "text": "Green"
+                    },
+                    {
+                        "value": "blue",
+                        "text": "Blue"
+                    }
+                ]
+            },
+            "html": "<div class=\"govuk-form-group\">\r\n\r\n  <div class=\"govuk-radios\">\r\n    \r\n      \r\n          \r\n        \r\n        \r\n        <div class=\"govuk-radios__item\">\r\n          <input class=\"govuk-radios__input\" id=\"colours\" name=\"colours\" type=\"radio\" value=\"red\">\r\n          <label class=\"govuk-label govuk-radios__label\" for=\"colours\">\r\n        Red\r\n      </label>\r\n          \r\n        </div>\r\n        \r\n        \r\n      \r\n    \r\n      \r\n        \r\n        \r\n        <div class=\"govuk-radios__item\">\r\n          <input class=\"govuk-radios__input\" id=\"colours-2\" name=\"colours\" type=\"radio\" value=\"green\">\r\n          <label class=\"govuk-label govuk-radios__label\" for=\"colours-2\">\r\n        Green\r\n      </label>\r\n          \r\n        </div>\r\n        \r\n        \r\n      \r\n    \r\n      \r\n        \r\n        \r\n        <div class=\"govuk-radios__item\">\r\n          <input class=\"govuk-radios__input\" id=\"colours-3\" name=\"colours\" type=\"radio\" value=\"blue\">\r\n          <label class=\"govuk-label govuk-radios__label\" for=\"colours-3\">\r\n        Blue\r\n      </label>\r\n          \r\n        </div>\r\n        \r\n        \r\n      \r\n    \r\n  </div>\r\n\r\n</div>",
+            "hidden": false
+        },
+        {
+            "name": "with fieldset and error message",
+            "options": {
+                "idPrefix": "example",
+                "name": "example",
+                "errorMessage": {
+                    "text": "Please select an option"
+                },
+                "fieldset": {
+                    "legend": {
+                        "text": "Have you changed your name?"
+                    }
+                },
+                "items": [
+                    {
+                        "value": "yes",
+                        "text": "Yes"
+                    },
+                    {
+                        "value": "no",
+                        "text": "No",
+                        "checked": true
+                    }
+                ]
+            },
+            "html": "<div class=\"govuk-form-group govuk-form-group--error\">\r\n\r\n  <fieldset class=\"govuk-fieldset\" aria-describedby=\"example-error\">\r\n  \r\n  <legend class=\"govuk-fieldset__legend\">\r\n  \r\n    Have you changed your name?\r\n  \r\n  </legend>\r\n  \r\n\r\n  <span id=\"example-error\" class=\"govuk-error-message\">\r\n    <span class=\"govuk-visually-hidden\">Error:</span> Please select an option\r\n  </span>\r\n\r\n  <div class=\"govuk-radios\">\r\n    \r\n      \r\n          \r\n        \r\n        \r\n        <div class=\"govuk-radios__item\">\r\n          <input class=\"govuk-radios__input\" id=\"example\" name=\"example\" type=\"radio\" value=\"yes\">\r\n          <label class=\"govuk-label govuk-radios__label\" for=\"example\">\r\n        Yes\r\n      </label>\r\n          \r\n        </div>\r\n        \r\n        \r\n      \r\n    \r\n      \r\n        \r\n        \r\n        <div class=\"govuk-radios__item\">\r\n          <input class=\"govuk-radios__input\" id=\"example-2\" name=\"example\" type=\"radio\" value=\"no\" checked>\r\n          <label class=\"govuk-label govuk-radios__label\" for=\"example-2\">\r\n        No\r\n      </label>\r\n          \r\n        </div>\r\n        \r\n        \r\n      \r\n    \r\n  </div>\r\n  \r\n\r\n</fieldset>\r\n\r\n\r\n</div>",
+            "hidden": false
+        },
+        {
+            "name": "with very long option text",
+            "options": {
+                "name": "waste",
+                "hint": {
+                    "text": "Nullam id dolor id nibh ultricies vehicula ut id elit."
+                },
+                "errorMessage": {
+                    "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+                },
+                "fieldset": {
+                    "legend": {
+                        "text": "Maecenas faucibus mollis interdum?"
+                    }
+                },
+                "items": [
+                    {
+                        "value": "nullam",
+                        "text": "Nullam id dolor id nibh ultricies vehicula ut id elit. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Maecenas faucibus mollis interdum. Donec id elit non mi porta gravida at eget metus."
+                    },
+                    {
+                        "value": "aenean",
+                        "text": "Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Donec sed odio dui. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Cras mattis consectetur purus sit amet fermentum."
+                    },
+                    {
+                        "value": "fusce",
+                        "text": "Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Etiam porta sem malesuada magna mollis euismod. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. Sed posuere consectetur est at lobortis."
+                    }
+                ]
+            },
+            "html": "<div class=\"govuk-form-group govuk-form-group--error\">\r\n\r\n  <fieldset class=\"govuk-fieldset\" aria-describedby=\"waste-hint waste-error\">\r\n  \r\n  <legend class=\"govuk-fieldset__legend\">\r\n  \r\n    Maecenas faucibus mollis interdum?\r\n  \r\n  </legend>\r\n  \r\n\r\n  <div id=\"waste-hint\" class=\"govuk-hint\">\r\n    Nullam id dolor id nibh ultricies vehicula ut id elit.\r\n  </div>\r\n\r\n\r\n  \r\n  \r\n  <span id=\"waste-error\" class=\"govuk-error-message\">\r\n    <span class=\"govuk-visually-hidden\">Error:</span> Lorem ipsum dolor sit amet, consectetur adipiscing elit.\r\n  </span>\r\n\r\n  <div class=\"govuk-radios\">\r\n    \r\n      \r\n          \r\n        \r\n        \r\n        <div class=\"govuk-radios__item\">\r\n          <input class=\"govuk-radios__input\" id=\"waste\" name=\"waste\" type=\"radio\" value=\"nullam\">\r\n          <label class=\"govuk-label govuk-radios__label\" for=\"waste\">\r\n        Nullam id dolor id nibh ultricies vehicula ut id elit. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Maecenas faucibus mollis interdum. Donec id elit non mi porta gravida at eget metus.\r\n      </label>\r\n          \r\n        </div>\r\n        \r\n        \r\n      \r\n    \r\n      \r\n        \r\n        \r\n        <div class=\"govuk-radios__item\">\r\n          <input class=\"govuk-radios__input\" id=\"waste-2\" name=\"waste\" type=\"radio\" value=\"aenean\">\r\n          <label class=\"govuk-label govuk-radios__label\" for=\"waste-2\">\r\n        Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Donec sed odio dui. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Cras mattis consectetur purus sit amet fermentum.\r\n      </label>\r\n          \r\n        </div>\r\n        \r\n        \r\n      \r\n    \r\n      \r\n        \r\n        \r\n        <div class=\"govuk-radios__item\">\r\n          <input class=\"govuk-radios__input\" id=\"waste-3\" name=\"waste\" type=\"radio\" value=\"fusce\">\r\n          <label class=\"govuk-label govuk-radios__label\" for=\"waste-3\">\r\n        Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Etiam porta sem malesuada magna mollis euismod. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. Sed posuere consectetur est at lobortis.\r\n      </label>\r\n          \r\n        </div>\r\n        \r\n        \r\n      \r\n    \r\n  </div>\r\n  \r\n\r\n</fieldset>\r\n\r\n\r\n</div>",
+            "hidden": false
+        },
+        {
+            "name": "with conditional items",
+            "options": {
+                "idPrefix": "how-contacted",
+                "name": "how-contacted",
+                "fieldset": {
+                    "legend": {
+                        "text": "How do you want to be contacted?"
+                    }
+                },
+                "items": [
+                    {
+                        "value": "email",
+                        "text": "Email",
+                        "conditional": {
+                            "html": "<label class=\"govuk-label\" for=\"context-email\">Email address</label>\n<input class=\"govuk-input govuk-!-width-one-third\" name=\"context-email\" type=\"text\" id=\"context-email\">\n"
+                        }
+                    },
+                    {
+                        "value": "phone",
+                        "text": "Phone",
+                        "conditional": {
+                            "html": "<label class=\"govuk-label\" for=\"contact-phone\">Phone number</label>\n<input class=\"govuk-input govuk-!-width-one-third\" name=\"contact-phone\" type=\"text\" id=\"contact-phone\">\n"
+                        }
+                    },
+                    {
+                        "value": "text",
+                        "text": "Text message",
+                        "conditional": {
+                            "html": "<label class=\"govuk-label\" for=\"contact-text-message\">Mobile phone number</label>\n<input class=\"govuk-input govuk-!-width-one-third\" name=\"contact-text-message\" type=\"text\" id=\"contact-text-message\">\n"
+                        }
+                    }
+                ]
+            },
+            "html": "<div class=\"govuk-form-group\">\r\n\r\n  <fieldset class=\"govuk-fieldset\">\r\n  \r\n  <legend class=\"govuk-fieldset__legend\">\r\n  \r\n    How do you want to be contacted?\r\n  \r\n  </legend>\r\n  \r\n\r\n  <div class=\"govuk-radios govuk-radios--conditional\" data-module=\"govuk-radios\">\r\n    \r\n      \r\n          \r\n        \r\n        \r\n        <div class=\"govuk-radios__item\">\r\n          <input class=\"govuk-radios__input\" id=\"how-contacted\" name=\"how-contacted\" type=\"radio\" value=\"email\" data-aria-controls=\"conditional-how-contacted\">\r\n          <label class=\"govuk-label govuk-radios__label\" for=\"how-contacted\">\r\n        Email\r\n      </label>\r\n          \r\n        </div>\r\n        \r\n          <div class=\"govuk-radios__conditional govuk-radios__conditional--hidden\" id=\"conditional-how-contacted\">\r\n            <label class=\"govuk-label\" for=\"context-email\">Email address</label>\n<input class=\"govuk-input govuk-!-width-one-third\" name=\"context-email\" type=\"text\" id=\"context-email\">\n\r\n          </div>\r\n        \r\n        \r\n      \r\n    \r\n      \r\n        \r\n        \r\n        <div class=\"govuk-radios__item\">\r\n          <input class=\"govuk-radios__input\" id=\"how-contacted-2\" name=\"how-contacted\" type=\"radio\" value=\"phone\" data-aria-controls=\"conditional-how-contacted-2\">\r\n          <label class=\"govuk-label govuk-radios__label\" for=\"how-contacted-2\">\r\n        Phone\r\n      </label>\r\n          \r\n        </div>\r\n        \r\n          <div class=\"govuk-radios__conditional govuk-radios__conditional--hidden\" id=\"conditional-how-contacted-2\">\r\n            <label class=\"govuk-label\" for=\"contact-phone\">Phone number</label>\n<input class=\"govuk-input govuk-!-width-one-third\" name=\"contact-phone\" type=\"text\" id=\"contact-phone\">\n\r\n          </div>\r\n        \r\n        \r\n      \r\n    \r\n      \r\n        \r\n        \r\n        <div class=\"govuk-radios__item\">\r\n          <input class=\"govuk-radios__input\" id=\"how-contacted-3\" name=\"how-contacted\" type=\"radio\" value=\"text\" data-aria-controls=\"conditional-how-contacted-3\">\r\n          <label class=\"govuk-label govuk-radios__label\" for=\"how-contacted-3\">\r\n        Text message\r\n      </label>\r\n          \r\n        </div>\r\n        \r\n          <div class=\"govuk-radios__conditional govuk-radios__conditional--hidden\" id=\"conditional-how-contacted-3\">\r\n            <label class=\"govuk-label\" for=\"contact-text-message\">Mobile phone number</label>\n<input class=\"govuk-input govuk-!-width-one-third\" name=\"contact-text-message\" type=\"text\" id=\"contact-text-message\">\n\r\n          </div>\r\n        \r\n        \r\n      \r\n    \r\n  </div>\r\n  \r\n\r\n</fieldset>\r\n\r\n\r\n</div>",
+            "hidden": false
+        },
+        {
+            "name": "inline with conditional items",
+            "options": {
+                "classes": "govuk-radios--inline",
+                "idPrefix": "how-contacted",
+                "name": "how-contacted",
+                "fieldset": {
+                    "legend": {
+                        "text": "How do you want to be contacted?"
+                    }
+                },
+                "items": [
+                    {
+                        "value": "email",
+                        "text": "Email",
+                        "conditional": {
+                            "html": "<label class=\"govuk-label\" for=\"context-email\">Email address</label>\n<input class=\"govuk-input govuk-!-width-one-third\" name=\"context-email\" type=\"text\" id=\"context-email\">\n"
+                        }
+                    },
+                    {
+                        "value": "phone",
+                        "text": "Phone",
+                        "conditional": {
+                            "html": "<label class=\"govuk-label\" for=\"contact-phone\">Phone number</label>\n<input class=\"govuk-input govuk-!-width-one-third\" name=\"contact-phone\" type=\"text\" id=\"contact-phone\">\n"
+                        }
+                    },
+                    {
+                        "value": "text",
+                        "text": "Text message",
+                        "conditional": {
+                            "html": "<label class=\"govuk-label\" for=\"contact-text-message\">Mobile phone number</label>\n<input class=\"govuk-input govuk-!-width-one-third\" name=\"contact-text-message\" type=\"text\" id=\"contact-text-message\">\n"
+                        }
+                    }
+                ]
+            },
+            "html": "<div class=\"govuk-form-group\">\r\n\r\n  <fieldset class=\"govuk-fieldset\">\r\n  \r\n  <legend class=\"govuk-fieldset__legend\">\r\n  \r\n    How do you want to be contacted?\r\n  \r\n  </legend>\r\n  \r\n\r\n  <div class=\"govuk-radios govuk-radios--inline govuk-radios--conditional\" data-module=\"govuk-radios\">\r\n    \r\n      \r\n          \r\n        \r\n        \r\n        <div class=\"govuk-radios__item\">\r\n          <input class=\"govuk-radios__input\" id=\"how-contacted\" name=\"how-contacted\" type=\"radio\" value=\"email\" data-aria-controls=\"conditional-how-contacted\">\r\n          <label class=\"govuk-label govuk-radios__label\" for=\"how-contacted\">\r\n        Email\r\n      </label>\r\n          \r\n        </div>\r\n        \r\n          <div class=\"govuk-radios__conditional govuk-radios__conditional--hidden\" id=\"conditional-how-contacted\">\r\n            <label class=\"govuk-label\" for=\"context-email\">Email address</label>\n<input class=\"govuk-input govuk-!-width-one-third\" name=\"context-email\" type=\"text\" id=\"context-email\">\n\r\n          </div>\r\n        \r\n        \r\n      \r\n    \r\n      \r\n        \r\n        \r\n        <div class=\"govuk-radios__item\">\r\n          <input class=\"govuk-radios__input\" id=\"how-contacted-2\" name=\"how-contacted\" type=\"radio\" value=\"phone\" data-aria-controls=\"conditional-how-contacted-2\">\r\n          <label class=\"govuk-label govuk-radios__label\" for=\"how-contacted-2\">\r\n        Phone\r\n      </label>\r\n          \r\n        </div>\r\n        \r\n          <div class=\"govuk-radios__conditional govuk-radios__conditional--hidden\" id=\"conditional-how-contacted-2\">\r\n            <label class=\"govuk-label\" for=\"contact-phone\">Phone number</label>\n<input class=\"govuk-input govuk-!-width-one-third\" name=\"contact-phone\" type=\"text\" id=\"contact-phone\">\n\r\n          </div>\r\n        \r\n        \r\n      \r\n    \r\n      \r\n        \r\n        \r\n        <div class=\"govuk-radios__item\">\r\n          <input class=\"govuk-radios__input\" id=\"how-contacted-3\" name=\"how-contacted\" type=\"radio\" value=\"text\" data-aria-controls=\"conditional-how-contacted-3\">\r\n          <label class=\"govuk-label govuk-radios__label\" for=\"how-contacted-3\">\r\n        Text message\r\n      </label>\r\n          \r\n        </div>\r\n        \r\n          <div class=\"govuk-radios__conditional govuk-radios__conditional--hidden\" id=\"conditional-how-contacted-3\">\r\n            <label class=\"govuk-label\" for=\"contact-text-message\">Mobile phone number</label>\n<input class=\"govuk-input govuk-!-width-one-third\" name=\"contact-text-message\" type=\"text\" id=\"contact-text-message\">\n\r\n          </div>\r\n        \r\n        \r\n      \r\n    \r\n  </div>\r\n  \r\n\r\n</fieldset>\r\n\r\n\r\n</div>",
+            "hidden": false
+        },
+        {
+            "name": "with conditional item checked",
+            "options": {
+                "idPrefix": "how-contacted-checked",
+                "name": "how-contacted-checked",
+                "fieldset": {
+                    "legend": {
+                        "text": "How do you want to be contacted?"
+                    }
+                },
+                "items": [
+                    {
+                        "value": "email",
+                        "text": "Email",
+                        "checked": true,
+                        "conditional": {
+                            "html": "<label class=\"govuk-label\" for=\"context-email\">Email</label>\n<input class=\"govuk-input govuk-!-width-one-third\" name=\"context-email\" type=\"text\" id=\"context-email\">\n"
+                        }
+                    },
+                    {
+                        "value": "phone",
+                        "text": "Phone",
+                        "conditional": {
+                            "html": "<label class=\"govuk-label\" for=\"contact-phone\">Phone number</label>\n<input class=\"govuk-input govuk-!-width-one-third\" name=\"contact-phone\" type=\"text\" id=\"contact-phone\">\n"
+                        }
+                    },
+                    {
+                        "value": "text",
+                        "text": "Text message",
+                        "conditional": {
+                            "html": "<label class=\"govuk-label\" for=\"contact-text-message\">Mobile phone number</label>\n<input class=\"govuk-input govuk-!-width-one-third\" name=\"contact-text-message\" type=\"text\" id=\"contact-text-message\">\n"
+                        }
+                    }
+                ]
+            },
+            "html": "<div class=\"govuk-form-group\">\r\n\r\n  <fieldset class=\"govuk-fieldset\">\r\n  \r\n  <legend class=\"govuk-fieldset__legend\">\r\n  \r\n    How do you want to be contacted?\r\n  \r\n  </legend>\r\n  \r\n\r\n  <div class=\"govuk-radios govuk-radios--conditional\" data-module=\"govuk-radios\">\r\n    \r\n      \r\n          \r\n        \r\n        \r\n        <div class=\"govuk-radios__item\">\r\n          <input class=\"govuk-radios__input\" id=\"how-contacted-checked\" name=\"how-contacted-checked\" type=\"radio\" value=\"email\" checked data-aria-controls=\"conditional-how-contacted-checked\">\r\n          <label class=\"govuk-label govuk-radios__label\" for=\"how-contacted-checked\">\r\n        Email\r\n      </label>\r\n          \r\n        </div>\r\n        \r\n          <div class=\"govuk-radios__conditional\" id=\"conditional-how-contacted-checked\">\r\n            <label class=\"govuk-label\" for=\"context-email\">Email</label>\n<input class=\"govuk-input govuk-!-width-one-third\" name=\"context-email\" type=\"text\" id=\"context-email\">\n\r\n          </div>\r\n        \r\n        \r\n      \r\n    \r\n      \r\n        \r\n        \r\n        <div class=\"govuk-radios__item\">\r\n          <input class=\"govuk-radios__input\" id=\"how-contacted-checked-2\" name=\"how-contacted-checked\" type=\"radio\" value=\"phone\" data-aria-controls=\"conditional-how-contacted-checked-2\">\r\n          <label class=\"govuk-label govuk-radios__label\" for=\"how-contacted-checked-2\">\r\n        Phone\r\n      </label>\r\n          \r\n        </div>\r\n        \r\n          <div class=\"govuk-radios__conditional govuk-radios__conditional--hidden\" id=\"conditional-how-contacted-checked-2\">\r\n            <label class=\"govuk-label\" for=\"contact-phone\">Phone number</label>\n<input class=\"govuk-input govuk-!-width-one-third\" name=\"contact-phone\" type=\"text\" id=\"contact-phone\">\n\r\n          </div>\r\n        \r\n        \r\n      \r\n    \r\n      \r\n        \r\n        \r\n        <div class=\"govuk-radios__item\">\r\n          <input class=\"govuk-radios__input\" id=\"how-contacted-checked-3\" name=\"how-contacted-checked\" type=\"radio\" value=\"text\" data-aria-controls=\"conditional-how-contacted-checked-3\">\r\n          <label class=\"govuk-label govuk-radios__label\" for=\"how-contacted-checked-3\">\r\n        Text message\r\n      </label>\r\n          \r\n        </div>\r\n        \r\n          <div class=\"govuk-radios__conditional govuk-radios__conditional--hidden\" id=\"conditional-how-contacted-checked-3\">\r\n            <label class=\"govuk-label\" for=\"contact-text-message\">Mobile phone number</label>\n<input class=\"govuk-input govuk-!-width-one-third\" name=\"contact-text-message\" type=\"text\" id=\"contact-text-message\">\n\r\n          </div>\r\n        \r\n        \r\n      \r\n    \r\n  </div>\r\n  \r\n\r\n</fieldset>\r\n\r\n\r\n</div>",
+            "hidden": false
+        },
+        {
+            "name": "with optional form-group classes showing group error",
+            "options": {
+                "idPrefix": "how-contacted-2",
+                "name": "how-contacted-2",
+                "formGroup": {
+                    "classes": "govuk-form-group--error"
+                },
+                "fieldset": {
+                    "legend": {
+                        "text": "How do you want to be contacted?"
+                    }
+                },
+                "items": [
+                    {
+                        "value": "email",
+                        "text": "Email",
+                        "conditional": {
+                            "html": "<label class=\"govuk-label\" for=\"context-email\">Email address</label>\n<input class=\"govuk-input govuk-!-width-one-third\" name=\"context-email\" type=\"text\" id=\"context-email\">\n"
+                        }
+                    },
+                    {
+                        "value": "phone",
+                        "text": "Phone",
+                        "checked": true,
+                        "conditional": {
+                            "html": "<label class=\"govuk-label\" for=\"contact-phone\">Phone number</label>\n<span id=\"contact-phone-error\" class=\"govuk-error-message\">Problem with input</span>\n<input class=\"govuk-input govuk-input--error govuk-!-width-one-third\" name=\"contact-phone\" type=\"text\" id=\"contact-phone\" aria-describedby=\"contact-phone-error\">\n"
+                        }
+                    },
+                    {
+                        "value": "text",
+                        "text": "Text message",
+                        "conditional": {
+                            "html": "<label class=\"govuk-label\" for=\"contact-text-message\">Mobile phone number</label>\n<input class=\"govuk-input govuk-!-width-one-third\" name=\"contact-text-message\" type=\"text\" id=\"contact-text-message\">\n"
+                        }
+                    }
+                ]
+            },
+            "html": "<div class=\"govuk-form-group govuk-form-group--error\">\r\n\r\n  <fieldset class=\"govuk-fieldset\">\r\n  \r\n  <legend class=\"govuk-fieldset__legend\">\r\n  \r\n    How do you want to be contacted?\r\n  \r\n  </legend>\r\n  \r\n\r\n  <div class=\"govuk-radios govuk-radios--conditional\" data-module=\"govuk-radios\">\r\n    \r\n      \r\n          \r\n        \r\n        \r\n        <div class=\"govuk-radios__item\">\r\n          <input class=\"govuk-radios__input\" id=\"how-contacted-2\" name=\"how-contacted-2\" type=\"radio\" value=\"email\" data-aria-controls=\"conditional-how-contacted-2\">\r\n          <label class=\"govuk-label govuk-radios__label\" for=\"how-contacted-2\">\r\n        Email\r\n      </label>\r\n          \r\n        </div>\r\n        \r\n          <div class=\"govuk-radios__conditional govuk-radios__conditional--hidden\" id=\"conditional-how-contacted-2\">\r\n            <label class=\"govuk-label\" for=\"context-email\">Email address</label>\n<input class=\"govuk-input govuk-!-width-one-third\" name=\"context-email\" type=\"text\" id=\"context-email\">\n\r\n          </div>\r\n        \r\n        \r\n      \r\n    \r\n      \r\n        \r\n        \r\n        <div class=\"govuk-radios__item\">\r\n          <input class=\"govuk-radios__input\" id=\"how-contacted-2-2\" name=\"how-contacted-2\" type=\"radio\" value=\"phone\" checked data-aria-controls=\"conditional-how-contacted-2-2\">\r\n          <label class=\"govuk-label govuk-radios__label\" for=\"how-contacted-2-2\">\r\n        Phone\r\n      </label>\r\n          \r\n        </div>\r\n        \r\n          <div class=\"govuk-radios__conditional\" id=\"conditional-how-contacted-2-2\">\r\n            <label class=\"govuk-label\" for=\"contact-phone\">Phone number</label>\n<span id=\"contact-phone-error\" class=\"govuk-error-message\">Problem with input</span>\n<input class=\"govuk-input govuk-input--error govuk-!-width-one-third\" name=\"contact-phone\" type=\"text\" id=\"contact-phone\" aria-describedby=\"contact-phone-error\">\n\r\n          </div>\r\n        \r\n        \r\n      \r\n    \r\n      \r\n        \r\n        \r\n        <div class=\"govuk-radios__item\">\r\n          <input class=\"govuk-radios__input\" id=\"how-contacted-2-3\" name=\"how-contacted-2\" type=\"radio\" value=\"text\" data-aria-controls=\"conditional-how-contacted-2-3\">\r\n          <label class=\"govuk-label govuk-radios__label\" for=\"how-contacted-2-3\">\r\n        Text message\r\n      </label>\r\n          \r\n        </div>\r\n        \r\n          <div class=\"govuk-radios__conditional govuk-radios__conditional--hidden\" id=\"conditional-how-contacted-2-3\">\r\n            <label class=\"govuk-label\" for=\"contact-text-message\">Mobile phone number</label>\n<input class=\"govuk-input govuk-!-width-one-third\" name=\"contact-text-message\" type=\"text\" id=\"contact-text-message\">\n\r\n          </div>\r\n        \r\n        \r\n      \r\n    \r\n  </div>\r\n  \r\n\r\n</fieldset>\r\n\r\n\r\n</div>",
+            "hidden": false
+        },
+        {
+            "name": "small",
+            "options": {
+                "idPrefix": "how-contacted-2",
+                "name": "how-contacted-2",
+                "formGroup": {
+                    "classes": "govuk-radios--small"
+                },
+                "fieldset": {
+                    "legend": {
+                        "text": "How do you want to be contacted?"
+                    }
+                },
+                "items": [
+                    {
+                        "value": "email",
+                        "text": "Email"
+                    },
+                    {
+                        "value": "phone",
+                        "text": "Phone"
+                    },
+                    {
+                        "value": "text",
+                        "text": "Text message"
+                    }
+                ]
+            },
+            "html": "<div class=\"govuk-form-group govuk-radios--small\">\r\n\r\n  <fieldset class=\"govuk-fieldset\">\r\n  \r\n  <legend class=\"govuk-fieldset__legend\">\r\n  \r\n    How do you want to be contacted?\r\n  \r\n  </legend>\r\n  \r\n\r\n  <div class=\"govuk-radios\">\r\n    \r\n      \r\n          \r\n        \r\n        \r\n        <div class=\"govuk-radios__item\">\r\n          <input class=\"govuk-radios__input\" id=\"how-contacted-2\" name=\"how-contacted-2\" type=\"radio\" value=\"email\">\r\n          <label class=\"govuk-label govuk-radios__label\" for=\"how-contacted-2\">\r\n        Email\r\n      </label>\r\n          \r\n        </div>\r\n        \r\n        \r\n      \r\n    \r\n      \r\n        \r\n        \r\n        <div class=\"govuk-radios__item\">\r\n          <input class=\"govuk-radios__input\" id=\"how-contacted-2-2\" name=\"how-contacted-2\" type=\"radio\" value=\"phone\">\r\n          <label class=\"govuk-label govuk-radios__label\" for=\"how-contacted-2-2\">\r\n        Phone\r\n      </label>\r\n          \r\n        </div>\r\n        \r\n        \r\n      \r\n    \r\n      \r\n        \r\n        \r\n        <div class=\"govuk-radios__item\">\r\n          <input class=\"govuk-radios__input\" id=\"how-contacted-2-3\" name=\"how-contacted-2\" type=\"radio\" value=\"text\">\r\n          <label class=\"govuk-label govuk-radios__label\" for=\"how-contacted-2-3\">\r\n        Text message\r\n      </label>\r\n          \r\n        </div>\r\n        \r\n        \r\n      \r\n    \r\n  </div>\r\n  \r\n\r\n</fieldset>\r\n\r\n\r\n</div>",
+            "hidden": false
+        },
+        {
+            "name": "small with long text",
+            "options": {
+                "idPrefix": "foo",
+                "name": "foo",
+                "classes": "govuk-radios--small",
+                "fieldset": {
+                    "legend": {
+                        "text": "Venenatis Condimentum"
+                    }
+                },
+                "items": [
+                    {
+                        "value": "nullam",
+                        "text": "Nullam id dolor id nibh ultricies vehicula ut id elit. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Maecenas faucibus mollis interdum. Donec id elit non mi porta gravida at eget metus."
+                    },
+                    {
+                        "value": "aenean",
+                        "text": "Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Donec sed odio dui. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Cras mattis consectetur purus sit amet fermentum."
+                    },
+                    {
+                        "value": "fusce",
+                        "text": "Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Etiam porta sem malesuada magna mollis euismod. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. Sed posuere consectetur est at lobortis."
+                    }
+                ]
+            },
+            "html": "<div class=\"govuk-form-group\">\r\n\r\n  <fieldset class=\"govuk-fieldset\">\r\n  \r\n  <legend class=\"govuk-fieldset__legend\">\r\n  \r\n    Venenatis Condimentum\r\n  \r\n  </legend>\r\n  \r\n\r\n  <div class=\"govuk-radios govuk-radios--small\">\r\n    \r\n      \r\n          \r\n        \r\n        \r\n        <div class=\"govuk-radios__item\">\r\n          <input class=\"govuk-radios__input\" id=\"foo\" name=\"foo\" type=\"radio\" value=\"nullam\">\r\n          <label class=\"govuk-label govuk-radios__label\" for=\"foo\">\r\n        Nullam id dolor id nibh ultricies vehicula ut id elit. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Maecenas faucibus mollis interdum. Donec id elit non mi porta gravida at eget metus.\r\n      </label>\r\n          \r\n        </div>\r\n        \r\n        \r\n      \r\n    \r\n      \r\n        \r\n        \r\n        <div class=\"govuk-radios__item\">\r\n          <input class=\"govuk-radios__input\" id=\"foo-2\" name=\"foo\" type=\"radio\" value=\"aenean\">\r\n          <label class=\"govuk-label govuk-radios__label\" for=\"foo-2\">\r\n        Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Donec sed odio dui. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Cras mattis consectetur purus sit amet fermentum.\r\n      </label>\r\n          \r\n        </div>\r\n        \r\n        \r\n      \r\n    \r\n      \r\n        \r\n        \r\n        <div class=\"govuk-radios__item\">\r\n          <input class=\"govuk-radios__input\" id=\"foo-3\" name=\"foo\" type=\"radio\" value=\"fusce\">\r\n          <label class=\"govuk-label govuk-radios__label\" for=\"foo-3\">\r\n        Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Etiam porta sem malesuada magna mollis euismod. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. Sed posuere consectetur est at lobortis.\r\n      </label>\r\n          \r\n        </div>\r\n        \r\n        \r\n      \r\n    \r\n  </div>\r\n  \r\n\r\n</fieldset>\r\n\r\n\r\n</div>",
+            "hidden": false
+        },
+        {
+            "name": "small with error",
+            "options": {
+                "idPrefix": "how-contacted-2",
+                "name": "how-contacted-2",
+                "formGroup": {
+                    "classes": "govuk-radios--small"
+                },
+                "fieldset": {
+                    "legend": {
+                        "text": "How do you want to be contacted?"
+                    }
+                },
+                "errorMessage": {
+                    "text": "Select a thing"
+                },
+                "items": [
+                    {
+                        "value": "email",
+                        "text": "Email"
+                    },
+                    {
+                        "value": "phone",
+                        "text": "Phone"
+                    },
+                    {
+                        "value": "text",
+                        "text": "Text message"
+                    }
+                ]
+            },
+            "html": "<div class=\"govuk-form-group govuk-form-group--error govuk-radios--small\">\r\n\r\n  <fieldset class=\"govuk-fieldset\" aria-describedby=\"how-contacted-2-error\">\r\n  \r\n  <legend class=\"govuk-fieldset__legend\">\r\n  \r\n    How do you want to be contacted?\r\n  \r\n  </legend>\r\n  \r\n\r\n  <span id=\"how-contacted-2-error\" class=\"govuk-error-message\">\r\n    <span class=\"govuk-visually-hidden\">Error:</span> Select a thing\r\n  </span>\r\n\r\n  <div class=\"govuk-radios\">\r\n    \r\n      \r\n          \r\n        \r\n        \r\n        <div class=\"govuk-radios__item\">\r\n          <input class=\"govuk-radios__input\" id=\"how-contacted-2\" name=\"how-contacted-2\" type=\"radio\" value=\"email\">\r\n          <label class=\"govuk-label govuk-radios__label\" for=\"how-contacted-2\">\r\n        Email\r\n      </label>\r\n          \r\n        </div>\r\n        \r\n        \r\n      \r\n    \r\n      \r\n        \r\n        \r\n        <div class=\"govuk-radios__item\">\r\n          <input class=\"govuk-radios__input\" id=\"how-contacted-2-2\" name=\"how-contacted-2\" type=\"radio\" value=\"phone\">\r\n          <label class=\"govuk-label govuk-radios__label\" for=\"how-contacted-2-2\">\r\n        Phone\r\n      </label>\r\n          \r\n        </div>\r\n        \r\n        \r\n      \r\n    \r\n      \r\n        \r\n        \r\n        <div class=\"govuk-radios__item\">\r\n          <input class=\"govuk-radios__input\" id=\"how-contacted-2-3\" name=\"how-contacted-2\" type=\"radio\" value=\"text\">\r\n          <label class=\"govuk-label govuk-radios__label\" for=\"how-contacted-2-3\">\r\n        Text message\r\n      </label>\r\n          \r\n        </div>\r\n        \r\n        \r\n      \r\n    \r\n  </div>\r\n  \r\n\r\n</fieldset>\r\n\r\n\r\n</div>",
+            "hidden": false
+        },
+        {
+            "name": "small with hint",
+            "options": {
+                "idPrefix": "how-contacted-2",
+                "name": "how-contacted-2",
+                "formGroup": {
+                    "classes": "govuk-radios--small"
+                },
+                "fieldset": {
+                    "legend": {
+                        "text": "How do you want to be contacted?"
+                    }
+                },
+                "items": [
+                    {
+                        "value": "email",
+                        "text": "Email",
+                        "hint": {
+                            "text": "Hint for email address"
+                        }
+                    },
+                    {
+                        "value": "phone",
+                        "text": "Phone"
+                    },
+                    {
+                        "value": "text",
+                        "text": "Text message"
+                    }
+                ]
+            },
+            "html": "<div class=\"govuk-form-group govuk-radios--small\">\r\n\r\n  <fieldset class=\"govuk-fieldset\">\r\n  \r\n  <legend class=\"govuk-fieldset__legend\">\r\n  \r\n    How do you want to be contacted?\r\n  \r\n  </legend>\r\n  \r\n\r\n  <div class=\"govuk-radios\">\r\n    \r\n      \r\n          \r\n        \r\n        \r\n        <div class=\"govuk-radios__item\">\r\n          <input class=\"govuk-radios__input\" id=\"how-contacted-2\" name=\"how-contacted-2\" type=\"radio\" value=\"email\" aria-describedby=\"how-contacted-2-item-hint\">\r\n          <label class=\"govuk-label govuk-radios__label\" for=\"how-contacted-2\">\r\n        Email\r\n      </label>\r\n          \r\n          <div id=\"how-contacted-2-item-hint\" class=\"govuk-hint govuk-radios__hint\">\r\n        Hint for email address\r\n      </div>\r\n          \r\n        </div>\r\n        \r\n        \r\n      \r\n    \r\n      \r\n        \r\n        \r\n        <div class=\"govuk-radios__item\">\r\n          <input class=\"govuk-radios__input\" id=\"how-contacted-2-2\" name=\"how-contacted-2\" type=\"radio\" value=\"phone\">\r\n          <label class=\"govuk-label govuk-radios__label\" for=\"how-contacted-2-2\">\r\n        Phone\r\n      </label>\r\n          \r\n        </div>\r\n        \r\n        \r\n      \r\n    \r\n      \r\n        \r\n        \r\n        <div class=\"govuk-radios__item\">\r\n          <input class=\"govuk-radios__input\" id=\"how-contacted-2-3\" name=\"how-contacted-2\" type=\"radio\" value=\"text\">\r\n          <label class=\"govuk-label govuk-radios__label\" for=\"how-contacted-2-3\">\r\n        Text message\r\n      </label>\r\n          \r\n        </div>\r\n        \r\n        \r\n      \r\n    \r\n  </div>\r\n  \r\n\r\n</fieldset>\r\n\r\n\r\n</div>",
+            "hidden": false
+        },
+        {
+            "name": "small with disabled",
+            "options": {
+                "idPrefix": "how-contacted-2",
+                "name": "how-contacted-2",
+                "formGroup": {
+                    "classes": "govuk-radios--small"
+                },
+                "fieldset": {
+                    "legend": {
+                        "text": "How do you want to be contacted?"
+                    }
+                },
+                "items": [
+                    {
+                        "value": "email",
+                        "text": "Email"
+                    },
+                    {
+                        "value": "phone",
+                        "text": "Phone"
+                    },
+                    {
+                        "value": "text",
+                        "text": "Text message",
+                        "disabled": true
+                    }
+                ]
+            },
+            "html": "<div class=\"govuk-form-group govuk-radios--small\">\r\n\r\n  <fieldset class=\"govuk-fieldset\">\r\n  \r\n  <legend class=\"govuk-fieldset__legend\">\r\n  \r\n    How do you want to be contacted?\r\n  \r\n  </legend>\r\n  \r\n\r\n  <div class=\"govuk-radios\">\r\n    \r\n      \r\n          \r\n        \r\n        \r\n        <div class=\"govuk-radios__item\">\r\n          <input class=\"govuk-radios__input\" id=\"how-contacted-2\" name=\"how-contacted-2\" type=\"radio\" value=\"email\">\r\n          <label class=\"govuk-label govuk-radios__label\" for=\"how-contacted-2\">\r\n        Email\r\n      </label>\r\n          \r\n        </div>\r\n        \r\n        \r\n      \r\n    \r\n      \r\n        \r\n        \r\n        <div class=\"govuk-radios__item\">\r\n          <input class=\"govuk-radios__input\" id=\"how-contacted-2-2\" name=\"how-contacted-2\" type=\"radio\" value=\"phone\">\r\n          <label class=\"govuk-label govuk-radios__label\" for=\"how-contacted-2-2\">\r\n        Phone\r\n      </label>\r\n          \r\n        </div>\r\n        \r\n        \r\n      \r\n    \r\n      \r\n        \r\n        \r\n        <div class=\"govuk-radios__item\">\r\n          <input class=\"govuk-radios__input\" id=\"how-contacted-2-3\" name=\"how-contacted-2\" type=\"radio\" value=\"text\" disabled>\r\n          <label class=\"govuk-label govuk-radios__label\" for=\"how-contacted-2-3\">\r\n        Text message\r\n      </label>\r\n          \r\n        </div>\r\n        \r\n        \r\n      \r\n    \r\n  </div>\r\n  \r\n\r\n</fieldset>\r\n\r\n\r\n</div>",
+            "hidden": false
+        },
+        {
+            "name": "small with conditional reveal",
+            "options": {
+                "idPrefix": "how-contacted-2",
+                "name": "how-contacted-2",
+                "formGroup": {
+                    "classes": "govuk-radios--small"
+                },
+                "fieldset": {
+                    "legend": {
+                        "text": "How do you want to be contacted?"
+                    }
+                },
+                "items": [
+                    {
+                        "value": "email",
+                        "text": "Email",
+                        "conditional": {
+                            "html": "<label class=\"govuk-label\" for=\"context-email\">Foo</label>\n<input class=\"govuk-input govuk-!-width-one-third\" name=\"context-email\" type=\"text\" id=\"context-email\">\n"
+                        }
+                    },
+                    {
+                        "value": "phone",
+                        "text": "Phone"
+                    },
+                    {
+                        "value": "text",
+                        "text": "Text message"
+                    }
+                ]
+            },
+            "html": "<div class=\"govuk-form-group govuk-radios--small\">\r\n\r\n  <fieldset class=\"govuk-fieldset\">\r\n  \r\n  <legend class=\"govuk-fieldset__legend\">\r\n  \r\n    How do you want to be contacted?\r\n  \r\n  </legend>\r\n  \r\n\r\n  <div class=\"govuk-radios govuk-radios--conditional\" data-module=\"govuk-radios\">\r\n    \r\n      \r\n          \r\n        \r\n        \r\n        <div class=\"govuk-radios__item\">\r\n          <input class=\"govuk-radios__input\" id=\"how-contacted-2\" name=\"how-contacted-2\" type=\"radio\" value=\"email\" data-aria-controls=\"conditional-how-contacted-2\">\r\n          <label class=\"govuk-label govuk-radios__label\" for=\"how-contacted-2\">\r\n        Email\r\n      </label>\r\n          \r\n        </div>\r\n        \r\n          <div class=\"govuk-radios__conditional govuk-radios__conditional--hidden\" id=\"conditional-how-contacted-2\">\r\n            <label class=\"govuk-label\" for=\"context-email\">Foo</label>\n<input class=\"govuk-input govuk-!-width-one-third\" name=\"context-email\" type=\"text\" id=\"context-email\">\n\r\n          </div>\r\n        \r\n        \r\n      \r\n    \r\n      \r\n        \r\n        \r\n        <div class=\"govuk-radios__item\">\r\n          <input class=\"govuk-radios__input\" id=\"how-contacted-2-2\" name=\"how-contacted-2\" type=\"radio\" value=\"phone\">\r\n          <label class=\"govuk-label govuk-radios__label\" for=\"how-contacted-2-2\">\r\n        Phone\r\n      </label>\r\n          \r\n        </div>\r\n        \r\n        \r\n      \r\n    \r\n      \r\n        \r\n        \r\n        <div class=\"govuk-radios__item\">\r\n          <input class=\"govuk-radios__input\" id=\"how-contacted-2-3\" name=\"how-contacted-2\" type=\"radio\" value=\"text\">\r\n          <label class=\"govuk-label govuk-radios__label\" for=\"how-contacted-2-3\">\r\n        Text message\r\n      </label>\r\n          \r\n        </div>\r\n        \r\n        \r\n      \r\n    \r\n  </div>\r\n  \r\n\r\n</fieldset>\r\n\r\n\r\n</div>",
+            "hidden": false
+        },
+        {
+            "name": "small inline",
+            "options": {
+                "idPrefix": "sort",
+                "classes": "govuk-radios--small govuk-radios--inline",
+                "name": "example",
+                "fieldset": {
+                    "legend": {
+                        "text": "Sort by"
+                    }
+                },
+                "items": [
+                    {
+                        "value": "relevance",
+                        "text": "relevance"
+                    },
+                    {
+                        "value": "title",
+                        "text": "title"
+                    },
+                    {
+                        "value": "created",
+                        "text": "created"
+                    }
+                ]
+            },
+            "html": "<div class=\"govuk-form-group\">\r\n\r\n  <fieldset class=\"govuk-fieldset\">\r\n  \r\n  <legend class=\"govuk-fieldset__legend\">\r\n  \r\n    Sort by\r\n  \r\n  </legend>\r\n  \r\n\r\n  <div class=\"govuk-radios govuk-radios--small govuk-radios--inline\">\r\n    \r\n      \r\n          \r\n        \r\n        \r\n        <div class=\"govuk-radios__item\">\r\n          <input class=\"govuk-radios__input\" id=\"sort\" name=\"example\" type=\"radio\" value=\"relevance\">\r\n          <label class=\"govuk-label govuk-radios__label\" for=\"sort\">\r\n        relevance\r\n      </label>\r\n          \r\n        </div>\r\n        \r\n        \r\n      \r\n    \r\n      \r\n        \r\n        \r\n        <div class=\"govuk-radios__item\">\r\n          <input class=\"govuk-radios__input\" id=\"sort-2\" name=\"example\" type=\"radio\" value=\"title\">\r\n          <label class=\"govuk-label govuk-radios__label\" for=\"sort-2\">\r\n        title\r\n      </label>\r\n          \r\n        </div>\r\n        \r\n        \r\n      \r\n    \r\n      \r\n        \r\n        \r\n        <div class=\"govuk-radios__item\">\r\n          <input class=\"govuk-radios__input\" id=\"sort-3\" name=\"example\" type=\"radio\" value=\"created\">\r\n          <label class=\"govuk-label govuk-radios__label\" for=\"sort-3\">\r\n        created\r\n      </label>\r\n          \r\n        </div>\r\n        \r\n        \r\n      \r\n    \r\n  </div>\r\n  \r\n\r\n</fieldset>\r\n\r\n\r\n</div>",
+            "hidden": false
+        },
+        {
+            "name": "small inline extreme",
+            "options": {
+                "idPrefix": "sort",
+                "classes": "govuk-radios--small govuk-radios--inline",
+                "name": "example",
+                "fieldset": {
+                    "legend": {
+                        "text": "Sort by"
+                    }
+                },
+                "items": [
+                    {
+                        "value": "relevance",
+                        "text": "relevance"
+                    },
+                    {
+                        "value": "title",
+                        "text": "title"
+                    },
+                    {
+                        "value": "created",
+                        "text": "created"
+                    },
+                    {
+                        "value": "modified",
+                        "text": "modified"
+                    },
+                    {
+                        "value": "category",
+                        "text": "category"
+                    },
+                    {
+                        "value": "votes",
+                        "text": "votes"
+                    },
+                    {
+                        "value": "flavour",
+                        "text": "flavour"
+                    },
+                    {
+                        "value": "hue",
+                        "text": "hue"
+                    },
+                    {
+                        "value": "happiness",
+                        "text": "happiness"
+                    },
+                    {
+                        "value": "funkiness",
+                        "text": "funkiness"
+                    }
+                ]
+            },
+            "html": "<div class=\"govuk-form-group\">\r\n\r\n  <fieldset class=\"govuk-fieldset\">\r\n  \r\n  <legend class=\"govuk-fieldset__legend\">\r\n  \r\n    Sort by\r\n  \r\n  </legend>\r\n  \r\n\r\n  <div class=\"govuk-radios govuk-radios--small govuk-radios--inline\">\r\n    \r\n      \r\n          \r\n        \r\n        \r\n        <div class=\"govuk-radios__item\">\r\n          <input class=\"govuk-radios__input\" id=\"sort\" name=\"example\" type=\"radio\" value=\"relevance\">\r\n          <label class=\"govuk-label govuk-radios__label\" for=\"sort\">\r\n        relevance\r\n      </label>\r\n          \r\n        </div>\r\n        \r\n        \r\n      \r\n    \r\n      \r\n        \r\n        \r\n        <div class=\"govuk-radios__item\">\r\n          <input class=\"govuk-radios__input\" id=\"sort-2\" name=\"example\" type=\"radio\" value=\"title\">\r\n          <label class=\"govuk-label govuk-radios__label\" for=\"sort-2\">\r\n        title\r\n      </label>\r\n          \r\n        </div>\r\n        \r\n        \r\n      \r\n    \r\n      \r\n        \r\n        \r\n        <div class=\"govuk-radios__item\">\r\n          <input class=\"govuk-radios__input\" id=\"sort-3\" name=\"example\" type=\"radio\" value=\"created\">\r\n          <label class=\"govuk-label govuk-radios__label\" for=\"sort-3\">\r\n        created\r\n      </label>\r\n          \r\n        </div>\r\n        \r\n        \r\n      \r\n    \r\n      \r\n        \r\n        \r\n        <div class=\"govuk-radios__item\">\r\n          <input class=\"govuk-radios__input\" id=\"sort-4\" name=\"example\" type=\"radio\" value=\"modified\">\r\n          <label class=\"govuk-label govuk-radios__label\" for=\"sort-4\">\r\n        modified\r\n      </label>\r\n          \r\n        </div>\r\n        \r\n        \r\n      \r\n    \r\n      \r\n        \r\n        \r\n        <div class=\"govuk-radios__item\">\r\n          <input class=\"govuk-radios__input\" id=\"sort-5\" name=\"example\" type=\"radio\" value=\"category\">\r\n          <label class=\"govuk-label govuk-radios__label\" for=\"sort-5\">\r\n        category\r\n      </label>\r\n          \r\n        </div>\r\n        \r\n        \r\n      \r\n    \r\n      \r\n        \r\n        \r\n        <div class=\"govuk-radios__item\">\r\n          <input class=\"govuk-radios__input\" id=\"sort-6\" name=\"example\" type=\"radio\" value=\"votes\">\r\n          <label class=\"govuk-label govuk-radios__label\" for=\"sort-6\">\r\n        votes\r\n      </label>\r\n          \r\n        </div>\r\n        \r\n        \r\n      \r\n    \r\n      \r\n        \r\n        \r\n        <div class=\"govuk-radios__item\">\r\n          <input class=\"govuk-radios__input\" id=\"sort-7\" name=\"example\" type=\"radio\" value=\"flavour\">\r\n          <label class=\"govuk-label govuk-radios__label\" for=\"sort-7\">\r\n        flavour\r\n      </label>\r\n          \r\n        </div>\r\n        \r\n        \r\n      \r\n    \r\n      \r\n        \r\n        \r\n        <div class=\"govuk-radios__item\">\r\n          <input class=\"govuk-radios__input\" id=\"sort-8\" name=\"example\" type=\"radio\" value=\"hue\">\r\n          <label class=\"govuk-label govuk-radios__label\" for=\"sort-8\">\r\n        hue\r\n      </label>\r\n          \r\n        </div>\r\n        \r\n        \r\n      \r\n    \r\n      \r\n        \r\n        \r\n        <div class=\"govuk-radios__item\">\r\n          <input class=\"govuk-radios__input\" id=\"sort-9\" name=\"example\" type=\"radio\" value=\"happiness\">\r\n          <label class=\"govuk-label govuk-radios__label\" for=\"sort-9\">\r\n        happiness\r\n      </label>\r\n          \r\n        </div>\r\n        \r\n        \r\n      \r\n    \r\n      \r\n        \r\n        \r\n        <div class=\"govuk-radios__item\">\r\n          <input class=\"govuk-radios__input\" id=\"sort-10\" name=\"example\" type=\"radio\" value=\"funkiness\">\r\n          <label class=\"govuk-label govuk-radios__label\" for=\"sort-10\">\r\n        funkiness\r\n      </label>\r\n          \r\n        </div>\r\n        \r\n        \r\n      \r\n    \r\n  </div>\r\n  \r\n\r\n</fieldset>\r\n\r\n\r\n</div>",
+            "hidden": false
+        },
+        {
+            "name": "small with a divider",
+            "options": {
+                "idPrefix": "example-small-divider",
+                "name": "example",
+                "fieldset": {
+                    "legend": {
+                        "text": "How do you want to sign in?"
+                    }
+                },
+                "classes": "govuk-radios--small",
+                "items": [
+                    {
+                        "value": "governement-gateway",
+                        "text": "Use Government Gateway"
+                    },
+                    {
+                        "value": "govuk-verify",
+                        "text": "Use GOV.UK Verify"
+                    },
+                    {
+                        "divider": "or"
+                    },
+                    {
+                        "value": "create-account",
+                        "text": "Create an account"
+                    }
+                ]
+            },
+            "html": "<div class=\"govuk-form-group\">\r\n\r\n  <fieldset class=\"govuk-fieldset\">\r\n  \r\n  <legend class=\"govuk-fieldset__legend\">\r\n  \r\n    How do you want to sign in?\r\n  \r\n  </legend>\r\n  \r\n\r\n  <div class=\"govuk-radios govuk-radios--small\">\r\n    \r\n      \r\n          \r\n        \r\n        \r\n        <div class=\"govuk-radios__item\">\r\n          <input class=\"govuk-radios__input\" id=\"example-small-divider\" name=\"example\" type=\"radio\" value=\"governement-gateway\">\r\n          <label class=\"govuk-label govuk-radios__label\" for=\"example-small-divider\">\r\n        Use Government Gateway\r\n      </label>\r\n          \r\n        </div>\r\n        \r\n        \r\n      \r\n    \r\n      \r\n        \r\n        \r\n        <div class=\"govuk-radios__item\">\r\n          <input class=\"govuk-radios__input\" id=\"example-small-divider-2\" name=\"example\" type=\"radio\" value=\"govuk-verify\">\r\n          <label class=\"govuk-label govuk-radios__label\" for=\"example-small-divider-2\">\r\n        Use GOV.UK Verify\r\n      </label>\r\n          \r\n        </div>\r\n        \r\n        \r\n      \r\n    \r\n      \r\n        <div class=\"govuk-radios__divider\">or</div>\r\n      \r\n    \r\n      \r\n        \r\n        \r\n        <div class=\"govuk-radios__item\">\r\n          <input class=\"govuk-radios__input\" id=\"example-small-divider-4\" name=\"example\" type=\"radio\" value=\"create-account\">\r\n          <label class=\"govuk-label govuk-radios__label\" for=\"example-small-divider-4\">\r\n        Create an account\r\n      </label>\r\n          \r\n        </div>\r\n        \r\n        \r\n      \r\n    \r\n  </div>\r\n  \r\n\r\n</fieldset>\r\n\r\n\r\n</div>",
+            "hidden": false
+        },
+        {
+            "name": "with idPrefix",
+            "options": {
+                "name": "example-radio",
+                "idPrefix": "example-id-prefix",
+                "items": [
+                    {
+                        "value": "yes",
+                        "text": "Yes"
+                    },
+                    {
+                        "value": "no",
+                        "text": "No"
+                    }
+                ]
+            },
+            "html": "<div class=\"govuk-form-group\">\r\n\r\n  <div class=\"govuk-radios\">\r\n    \r\n      \r\n          \r\n        \r\n        \r\n        <div class=\"govuk-radios__item\">\r\n          <input class=\"govuk-radios__input\" id=\"example-id-prefix\" name=\"example-radio\" type=\"radio\" value=\"yes\">\r\n          <label class=\"govuk-label govuk-radios__label\" for=\"example-id-prefix\">\r\n        Yes\r\n      </label>\r\n          \r\n        </div>\r\n        \r\n        \r\n      \r\n    \r\n      \r\n        \r\n        \r\n        <div class=\"govuk-radios__item\">\r\n          <input class=\"govuk-radios__input\" id=\"example-id-prefix-2\" name=\"example-radio\" type=\"radio\" value=\"no\">\r\n          <label class=\"govuk-label govuk-radios__label\" for=\"example-id-prefix-2\">\r\n        No\r\n      </label>\r\n          \r\n        </div>\r\n        \r\n        \r\n      \r\n    \r\n  </div>\r\n\r\n</div>",
+            "hidden": false
+        },
+        {
+            "name": "minimal items and name",
+            "options": {
+                "name": "example-name",
+                "items": [
+                    {
+                        "value": "yes",
+                        "text": "Yes"
+                    },
+                    {
+                        "value": "no",
+                        "text": "No"
+                    }
+                ]
+            },
+            "html": "<div class=\"govuk-form-group\">\r\n\r\n  <div class=\"govuk-radios\">\r\n    \r\n      \r\n          \r\n        \r\n        \r\n        <div class=\"govuk-radios__item\">\r\n          <input class=\"govuk-radios__input\" id=\"example-name\" name=\"example-name\" type=\"radio\" value=\"yes\">\r\n          <label class=\"govuk-label govuk-radios__label\" for=\"example-name\">\r\n        Yes\r\n      </label>\r\n          \r\n        </div>\r\n        \r\n        \r\n      \r\n    \r\n      \r\n        \r\n        \r\n        <div class=\"govuk-radios__item\">\r\n          <input class=\"govuk-radios__input\" id=\"example-name-2\" name=\"example-name\" type=\"radio\" value=\"no\">\r\n          <label class=\"govuk-label govuk-radios__label\" for=\"example-name-2\">\r\n        No\r\n      </label>\r\n          \r\n        </div>\r\n        \r\n        \r\n      \r\n    \r\n  </div>\r\n\r\n</div>",
+            "hidden": true
+        },
+        {
+            "name": "with falsey items",
+            "options": {
+                "name": "example-name",
+                "items": [
+                    {
+                        "value": "yes",
+                        "text": "Yes"
+                    },
+                    null,
+                    false,
+                    {
+                        "value": "no",
+                        "text": "No"
+                    }
+                ]
+            },
+            "html": "<div class=\"govuk-form-group\">\r\n\r\n  <div class=\"govuk-radios\">\r\n    \r\n      \r\n          \r\n        \r\n        \r\n        <div class=\"govuk-radios__item\">\r\n          <input class=\"govuk-radios__input\" id=\"example-name\" name=\"example-name\" type=\"radio\" value=\"yes\">\r\n          <label class=\"govuk-label govuk-radios__label\" for=\"example-name\">\r\n        Yes\r\n      </label>\r\n          \r\n        </div>\r\n        \r\n        \r\n      \r\n    \r\n      \r\n    \r\n      \r\n    \r\n      \r\n        \r\n        \r\n        <div class=\"govuk-radios__item\">\r\n          <input class=\"govuk-radios__input\" id=\"example-name-4\" name=\"example-name\" type=\"radio\" value=\"no\">\r\n          <label class=\"govuk-label govuk-radios__label\" for=\"example-name-4\">\r\n        No\r\n      </label>\r\n          \r\n        </div>\r\n        \r\n        \r\n      \r\n    \r\n  </div>\r\n\r\n</div>",
+            "hidden": true
+        },
+        {
+            "name": "fieldset with describedBy",
+            "options": {
+                "name": "example-name",
+                "fieldset": {
+                    "describedBy": "some-id"
+                },
+                "items": [
+                    {
+                        "value": "yes",
+                        "text": "Yes"
+                    },
+                    {
+                        "value": "no",
+                        "text": "No"
+                    }
+                ]
+            },
+            "html": "<div class=\"govuk-form-group\">\r\n\r\n  <fieldset class=\"govuk-fieldset\" aria-describedby=\"some-id\">\r\n  \r\n\r\n  <div class=\"govuk-radios\">\r\n    \r\n      \r\n          \r\n        \r\n        \r\n        <div class=\"govuk-radios__item\">\r\n          <input class=\"govuk-radios__input\" id=\"example-name\" name=\"example-name\" type=\"radio\" value=\"yes\">\r\n          <label class=\"govuk-label govuk-radios__label\" for=\"example-name\">\r\n        Yes\r\n      </label>\r\n          \r\n        </div>\r\n        \r\n        \r\n      \r\n    \r\n      \r\n        \r\n        \r\n        <div class=\"govuk-radios__item\">\r\n          <input class=\"govuk-radios__input\" id=\"example-name-2\" name=\"example-name\" type=\"radio\" value=\"no\">\r\n          <label class=\"govuk-label govuk-radios__label\" for=\"example-name-2\">\r\n        No\r\n      </label>\r\n          \r\n        </div>\r\n        \r\n        \r\n      \r\n    \r\n  </div>\r\n  \r\n\r\n</fieldset>\r\n\r\n\r\n</div>",
+            "hidden": true
+        },
+        {
+            "name": "attributes",
+            "options": {
+                "name": "example-name",
+                "attributes": {
+                    "data-attribute": "value",
+                    "data-second-attribute": "second-value"
+                },
+                "items": [
+                    {
+                        "value": "yes",
+                        "text": "Yes"
+                    },
+                    {
+                        "value": "no",
+                        "text": "No"
+                    }
+                ]
+            },
+            "html": "<div class=\"govuk-form-group\">\r\n\r\n  <div class=\"govuk-radios\" data-attribute=\"value\" data-second-attribute=\"second-value\">\r\n    \r\n      \r\n          \r\n        \r\n        \r\n        <div class=\"govuk-radios__item\">\r\n          <input class=\"govuk-radios__input\" id=\"example-name\" name=\"example-name\" type=\"radio\" value=\"yes\">\r\n          <label class=\"govuk-label govuk-radios__label\" for=\"example-name\">\r\n        Yes\r\n      </label>\r\n          \r\n        </div>\r\n        \r\n        \r\n      \r\n    \r\n      \r\n        \r\n        \r\n        <div class=\"govuk-radios__item\">\r\n          <input class=\"govuk-radios__input\" id=\"example-name-2\" name=\"example-name\" type=\"radio\" value=\"no\">\r\n          <label class=\"govuk-label govuk-radios__label\" for=\"example-name-2\">\r\n        No\r\n      </label>\r\n          \r\n        </div>\r\n        \r\n        \r\n      \r\n    \r\n  </div>\r\n\r\n</div>",
+            "hidden": true
+        },
+        {
+            "name": "items with attributes",
+            "options": {
+                "name": "example-name",
+                "items": [
+                    {
+                        "value": "yes",
+                        "text": "Yes",
+                        "attributes": {
+                            "data-attribute": "ABC",
+                            "data-second-attribute": "DEF"
+                        }
+                    },
+                    {
+                        "value": "no",
+                        "text": "No",
+                        "attributes": {
+                            "data-attribute": "GHI",
+                            "data-second-attribute": "JKL"
+                        }
+                    }
+                ]
+            },
+            "html": "<div class=\"govuk-form-group\">\r\n\r\n  <div class=\"govuk-radios\">\r\n    \r\n      \r\n          \r\n        \r\n        \r\n        <div class=\"govuk-radios__item\">\r\n          <input class=\"govuk-radios__input\" id=\"example-name\" name=\"example-name\" type=\"radio\" value=\"yes\" data-attribute=\"ABC\" data-second-attribute=\"DEF\">\r\n          <label class=\"govuk-label govuk-radios__label\" for=\"example-name\">\r\n        Yes\r\n      </label>\r\n          \r\n        </div>\r\n        \r\n        \r\n      \r\n    \r\n      \r\n        \r\n        \r\n        <div class=\"govuk-radios__item\">\r\n          <input class=\"govuk-radios__input\" id=\"example-name-2\" name=\"example-name\" type=\"radio\" value=\"no\" data-attribute=\"GHI\" data-second-attribute=\"JKL\">\r\n          <label class=\"govuk-label govuk-radios__label\" for=\"example-name-2\">\r\n        No\r\n      </label>\r\n          \r\n        </div>\r\n        \r\n        \r\n      \r\n    \r\n  </div>\r\n\r\n</div>",
+            "hidden": true
+        },
+        {
+            "name": "with empty conditional",
+            "options": {
+                "name": "example-conditional",
+                "items": [
+                    {
+                        "value": "yes",
+                        "text": "Yes",
+                        "conditional": {
+                            "html": false
+                        }
+                    },
+                    {
+                        "value": "no",
+                        "text": "No"
+                    }
+                ]
+            },
+            "html": "<div class=\"govuk-form-group\">\r\n\r\n  <div class=\"govuk-radios\">\r\n    \r\n      \r\n          \r\n        \r\n        \r\n        <div class=\"govuk-radios__item\">\r\n          <input class=\"govuk-radios__input\" id=\"example-conditional\" name=\"example-conditional\" type=\"radio\" value=\"yes\">\r\n          <label class=\"govuk-label govuk-radios__label\" for=\"example-conditional\">\r\n        Yes\r\n      </label>\r\n          \r\n        </div>\r\n        \r\n        \r\n      \r\n    \r\n      \r\n        \r\n        \r\n        <div class=\"govuk-radios__item\">\r\n          <input class=\"govuk-radios__input\" id=\"example-conditional-2\" name=\"example-conditional\" type=\"radio\" value=\"no\">\r\n          <label class=\"govuk-label govuk-radios__label\" for=\"example-conditional-2\">\r\n        No\r\n      </label>\r\n          \r\n        </div>\r\n        \r\n        \r\n      \r\n    \r\n  </div>\r\n\r\n</div>",
+            "hidden": true
+        },
+        {
+            "name": "label with classes",
+            "options": {
+                "name": "example-label-classes",
+                "items": [
+                    {
+                        "value": "yes",
+                        "text": "Yes",
+                        "label": {
+                            "classes": "bold"
+                        }
+                    }
+                ]
+            },
+            "html": "<div class=\"govuk-form-group\">\r\n\r\n  <div class=\"govuk-radios\">\r\n    \r\n      \r\n          \r\n        \r\n        \r\n        <div class=\"govuk-radios__item\">\r\n          <input class=\"govuk-radios__input\" id=\"example-label-classes\" name=\"example-label-classes\" type=\"radio\" value=\"yes\">\r\n          <label class=\"govuk-label govuk-radios__label bold\" for=\"example-label-classes\">\r\n        Yes\r\n      </label>\r\n          \r\n        </div>\r\n        \r\n        \r\n      \r\n    \r\n  </div>\r\n\r\n</div>",
+            "hidden": true
+        },
+        {
+            "name": "with hints on parent and items",
+            "options": {
+                "name": "example-multiple-hints",
+                "fieldset": {
+                    "legend": {
+                        "text": "Have you changed your name?"
+                    }
+                },
+                "hint": {
+                    "text": "This includes changing your last name or spelling your name differently."
+                },
+                "items": [
+                    {
+                        "value": "yes",
+                        "text": "Yes",
+                        "hint": {
+                            "text": "Hint for yes option here"
+                        }
+                    },
+                    {
+                        "value": "no",
+                        "text": "No",
+                        "hint": {
+                            "text": "Hint for no option here"
+                        }
+                    }
+                ]
+            },
+            "html": "<div class=\"govuk-form-group\">\r\n\r\n  <fieldset class=\"govuk-fieldset\" aria-describedby=\"example-multiple-hints-hint\">\r\n  \r\n  <legend class=\"govuk-fieldset__legend\">\r\n  \r\n    Have you changed your name?\r\n  \r\n  </legend>\r\n  \r\n\r\n  <div id=\"example-multiple-hints-hint\" class=\"govuk-hint\">\r\n    This includes changing your last name or spelling your name differently.\r\n  </div>\r\n\r\n\r\n  <div class=\"govuk-radios\">\r\n    \r\n      \r\n          \r\n        \r\n        \r\n        <div class=\"govuk-radios__item\">\r\n          <input class=\"govuk-radios__input\" id=\"example-multiple-hints\" name=\"example-multiple-hints\" type=\"radio\" value=\"yes\" aria-describedby=\"example-multiple-hints-item-hint\">\r\n          <label class=\"govuk-label govuk-radios__label\" for=\"example-multiple-hints\">\r\n        Yes\r\n      </label>\r\n          \r\n          <div id=\"example-multiple-hints-item-hint\" class=\"govuk-hint govuk-radios__hint\">\r\n        Hint for yes option here\r\n      </div>\r\n          \r\n        </div>\r\n        \r\n        \r\n      \r\n    \r\n      \r\n        \r\n        \r\n        <div class=\"govuk-radios__item\">\r\n          <input class=\"govuk-radios__input\" id=\"example-multiple-hints-2\" name=\"example-multiple-hints\" type=\"radio\" value=\"no\" aria-describedby=\"example-multiple-hints-2-item-hint\">\r\n          <label class=\"govuk-label govuk-radios__label\" for=\"example-multiple-hints-2\">\r\n        No\r\n      </label>\r\n          \r\n          <div id=\"example-multiple-hints-2-item-hint\" class=\"govuk-hint govuk-radios__hint\">\r\n        Hint for no option here\r\n      </div>\r\n          \r\n        </div>\r\n        \r\n        \r\n      \r\n    \r\n  </div>\r\n  \r\n\r\n</fieldset>\r\n\r\n\r\n</div>",
+            "hidden": true
+        },
+        {
+            "name": "with describedBy and hint",
+            "options": {
+                "name": "example-hint-describedby",
+                "fieldset": {
+                    "describedBy": "some-id",
+                    "legend": {
+                        "text": "Have you changed your name?"
+                    }
+                },
+                "hint": {
+                    "text": "This includes changing your last name or spelling your name differently."
+                },
+                "items": [
+                    {
+                        "value": "yes",
+                        "text": "Yes"
+                    },
+                    {
+                        "value": "no",
+                        "text": "No"
+                    }
+                ]
+            },
+            "html": "<div class=\"govuk-form-group\">\r\n\r\n  <fieldset class=\"govuk-fieldset\" aria-describedby=\"some-id example-hint-describedby-hint\">\r\n  \r\n  <legend class=\"govuk-fieldset__legend\">\r\n  \r\n    Have you changed your name?\r\n  \r\n  </legend>\r\n  \r\n\r\n  <div id=\"example-hint-describedby-hint\" class=\"govuk-hint\">\r\n    This includes changing your last name or spelling your name differently.\r\n  </div>\r\n\r\n\r\n  <div class=\"govuk-radios\">\r\n    \r\n      \r\n          \r\n        \r\n        \r\n        <div class=\"govuk-radios__item\">\r\n          <input class=\"govuk-radios__input\" id=\"example-hint-describedby\" name=\"example-hint-describedby\" type=\"radio\" value=\"yes\">\r\n          <label class=\"govuk-label govuk-radios__label\" for=\"example-hint-describedby\">\r\n        Yes\r\n      </label>\r\n          \r\n        </div>\r\n        \r\n        \r\n      \r\n    \r\n      \r\n        \r\n        \r\n        <div class=\"govuk-radios__item\">\r\n          <input class=\"govuk-radios__input\" id=\"example-hint-describedby-2\" name=\"example-hint-describedby\" type=\"radio\" value=\"no\">\r\n          <label class=\"govuk-label govuk-radios__label\" for=\"example-hint-describedby-2\">\r\n        No\r\n      </label>\r\n          \r\n        </div>\r\n        \r\n        \r\n      \r\n    \r\n  </div>\r\n  \r\n\r\n</fieldset>\r\n\r\n\r\n</div>",
+            "hidden": true
+        },
+        {
+            "name": "with error message",
+            "options": {
+                "name": "example-error-message",
+                "errorMessage": {
+                    "text": "Please select an option"
+                },
+                "items": [
+                    {
+                        "value": "yes",
+                        "text": "Yes"
+                    },
+                    {
+                        "value": "no",
+                        "text": "No"
+                    }
+                ]
+            },
+            "html": "<div class=\"govuk-form-group govuk-form-group--error\">\r\n\r\n  <span id=\"example-error-message-error\" class=\"govuk-error-message\">\r\n    <span class=\"govuk-visually-hidden\">Error:</span> Please select an option\r\n  </span>\r\n\r\n  <div class=\"govuk-radios\">\r\n    \r\n      \r\n          \r\n        \r\n        \r\n        <div class=\"govuk-radios__item\">\r\n          <input class=\"govuk-radios__input\" id=\"example-error-message\" name=\"example-error-message\" type=\"radio\" value=\"yes\">\r\n          <label class=\"govuk-label govuk-radios__label\" for=\"example-error-message\">\r\n        Yes\r\n      </label>\r\n          \r\n        </div>\r\n        \r\n        \r\n      \r\n    \r\n      \r\n        \r\n        \r\n        <div class=\"govuk-radios__item\">\r\n          <input class=\"govuk-radios__input\" id=\"example-error-message-2\" name=\"example-error-message\" type=\"radio\" value=\"no\">\r\n          <label class=\"govuk-label govuk-radios__label\" for=\"example-error-message-2\">\r\n        No\r\n      </label>\r\n          \r\n        </div>\r\n        \r\n        \r\n      \r\n    \r\n  </div>\r\n\r\n</div>",
+            "hidden": true
+        },
+        {
+            "name": "with error message and idPrefix",
+            "options": {
+                "name": "example-error-message",
+                "idPrefix": "id-prefix",
+                "errorMessage": {
+                    "text": "Please select an option"
+                },
+                "items": [
+                    {
+                        "value": "yes",
+                        "text": "Yes"
+                    },
+                    {
+                        "value": "no",
+                        "text": "No"
+                    }
+                ]
+            },
+            "html": "<div class=\"govuk-form-group govuk-form-group--error\">\r\n\r\n  <span id=\"id-prefix-error\" class=\"govuk-error-message\">\r\n    <span class=\"govuk-visually-hidden\">Error:</span> Please select an option\r\n  </span>\r\n\r\n  <div class=\"govuk-radios\">\r\n    \r\n      \r\n          \r\n        \r\n        \r\n        <div class=\"govuk-radios__item\">\r\n          <input class=\"govuk-radios__input\" id=\"id-prefix\" name=\"example-error-message\" type=\"radio\" value=\"yes\">\r\n          <label class=\"govuk-label govuk-radios__label\" for=\"id-prefix\">\r\n        Yes\r\n      </label>\r\n          \r\n        </div>\r\n        \r\n        \r\n      \r\n    \r\n      \r\n        \r\n        \r\n        <div class=\"govuk-radios__item\">\r\n          <input class=\"govuk-radios__input\" id=\"id-prefix-2\" name=\"example-error-message\" type=\"radio\" value=\"no\">\r\n          <label class=\"govuk-label govuk-radios__label\" for=\"id-prefix-2\">\r\n        No\r\n      </label>\r\n          \r\n        </div>\r\n        \r\n        \r\n      \r\n    \r\n  </div>\r\n\r\n</div>",
+            "hidden": true
+        },
+        {
+            "name": "with hint and error message",
+            "options": {
+                "name": "example-error-message-hint",
+                "errorMessage": {
+                    "text": "Please select an option"
+                },
+                "fieldset": {
+                    "legend": {
+                        "text": "Have you changed your name?"
+                    }
+                },
+                "hint": {
+                    "text": "This includes changing your last name or spelling your name differently."
+                },
+                "items": [
+                    {
+                        "value": "yes",
+                        "text": "Yes"
+                    },
+                    {
+                        "value": "no",
+                        "text": "No"
+                    }
+                ]
+            },
+            "html": "<div class=\"govuk-form-group govuk-form-group--error\">\r\n\r\n  <fieldset class=\"govuk-fieldset\" aria-describedby=\"example-error-message-hint-hint example-error-message-hint-error\">\r\n  \r\n  <legend class=\"govuk-fieldset__legend\">\r\n  \r\n    Have you changed your name?\r\n  \r\n  </legend>\r\n  \r\n\r\n  <div id=\"example-error-message-hint-hint\" class=\"govuk-hint\">\r\n    This includes changing your last name or spelling your name differently.\r\n  </div>\r\n\r\n\r\n  \r\n  \r\n  <span id=\"example-error-message-hint-error\" class=\"govuk-error-message\">\r\n    <span class=\"govuk-visually-hidden\">Error:</span> Please select an option\r\n  </span>\r\n\r\n  <div class=\"govuk-radios\">\r\n    \r\n      \r\n          \r\n        \r\n        \r\n        <div class=\"govuk-radios__item\">\r\n          <input class=\"govuk-radios__input\" id=\"example-error-message-hint\" name=\"example-error-message-hint\" type=\"radio\" value=\"yes\">\r\n          <label class=\"govuk-label govuk-radios__label\" for=\"example-error-message-hint\">\r\n        Yes\r\n      </label>\r\n          \r\n        </div>\r\n        \r\n        \r\n      \r\n    \r\n      \r\n        \r\n        \r\n        <div class=\"govuk-radios__item\">\r\n          <input class=\"govuk-radios__input\" id=\"example-error-message-hint-2\" name=\"example-error-message-hint\" type=\"radio\" value=\"no\">\r\n          <label class=\"govuk-label govuk-radios__label\" for=\"example-error-message-hint-2\">\r\n        No\r\n      </label>\r\n          \r\n        </div>\r\n        \r\n        \r\n      \r\n    \r\n  </div>\r\n  \r\n\r\n</fieldset>\r\n\r\n\r\n</div>",
+            "hidden": true
+        },
+        {
+            "name": "with hint, error message and describedBy",
+            "options": {
+                "name": "example-error-message-hint",
+                "errorMessage": {
+                    "text": "Please select an option"
+                },
+                "fieldset": {
+                    "describedBy": "some-id",
+                    "legend": {
+                        "text": "Have you changed your name?"
+                    }
+                },
+                "hint": {
+                    "text": "This includes changing your last name or spelling your name differently."
+                },
+                "items": [
+                    {
+                        "value": "yes",
+                        "text": "Yes"
+                    },
+                    {
+                        "value": "no",
+                        "text": "No"
+                    }
+                ]
+            },
+            "html": "<div class=\"govuk-form-group govuk-form-group--error\">\r\n\r\n  <fieldset class=\"govuk-fieldset\" aria-describedby=\"some-id example-error-message-hint-hint example-error-message-hint-error\">\r\n  \r\n  <legend class=\"govuk-fieldset__legend\">\r\n  \r\n    Have you changed your name?\r\n  \r\n  </legend>\r\n  \r\n\r\n  <div id=\"example-error-message-hint-hint\" class=\"govuk-hint\">\r\n    This includes changing your last name or spelling your name differently.\r\n  </div>\r\n\r\n\r\n  \r\n  \r\n  <span id=\"example-error-message-hint-error\" class=\"govuk-error-message\">\r\n    <span class=\"govuk-visually-hidden\">Error:</span> Please select an option\r\n  </span>\r\n\r\n  <div class=\"govuk-radios\">\r\n    \r\n      \r\n          \r\n        \r\n        \r\n        <div class=\"govuk-radios__item\">\r\n          <input class=\"govuk-radios__input\" id=\"example-error-message-hint\" name=\"example-error-message-hint\" type=\"radio\" value=\"yes\">\r\n          <label class=\"govuk-label govuk-radios__label\" for=\"example-error-message-hint\">\r\n        Yes\r\n      </label>\r\n          \r\n        </div>\r\n        \r\n        \r\n      \r\n    \r\n      \r\n        \r\n        \r\n        <div class=\"govuk-radios__item\">\r\n          <input class=\"govuk-radios__input\" id=\"example-error-message-hint-2\" name=\"example-error-message-hint\" type=\"radio\" value=\"no\">\r\n          <label class=\"govuk-label govuk-radios__label\" for=\"example-error-message-hint-2\">\r\n        No\r\n      </label>\r\n          \r\n        </div>\r\n        \r\n        \r\n      \r\n    \r\n  </div>\r\n  \r\n\r\n</fieldset>\r\n\r\n\r\n</div>",
+            "hidden": true
+        },
+        {
+            "name": "label with attributes",
+            "options": {
+                "name": "with-label-attributes",
+                "items": [
+                    {
+                        "value": "yes",
+                        "text": "Yes",
+                        "label": {
+                            "attributes": {
+                                "data-attribute": "value",
+                                "data-second-attribute": "second-value"
+                            }
+                        }
+                    }
+                ]
+            },
+            "html": "<div class=\"govuk-form-group\">\r\n\r\n  <div class=\"govuk-radios\">\r\n    \r\n      \r\n          \r\n        \r\n        \r\n        <div class=\"govuk-radios__item\">\r\n          <input class=\"govuk-radios__input\" id=\"with-label-attributes\" name=\"with-label-attributes\" type=\"radio\" value=\"yes\">\r\n          <label class=\"govuk-label govuk-radios__label\" data-attribute=\"value\" data-second-attribute=\"second-value\" for=\"with-label-attributes\">\r\n        Yes\r\n      </label>\r\n          \r\n        </div>\r\n        \r\n        \r\n      \r\n    \r\n  </div>\r\n\r\n</div>",
+            "hidden": true
+        },
+        {
+            "name": "fieldset params",
+            "options": {
+                "name": "example-fieldset-params",
+                "fieldset": {
+                    "classes": "app-fieldset--custom-modifier",
+                    "legend": {
+                        "text": "Have you changed your name?"
+                    },
+                    "attributes": {
+                        "data-attribute": "value",
+                        "data-second-attribute": "second-value"
+                    }
+                },
+                "hint": {
+                    "text": "This includes changing your last name or spelling your name differently."
+                },
+                "items": [
+                    {
+                        "value": "yes",
+                        "text": "Yes"
+                    },
+                    {
+                        "value": "no",
+                        "text": "No"
+                    }
+                ]
+            },
+            "html": "<div class=\"govuk-form-group\">\r\n\r\n  <fieldset class=\"govuk-fieldset app-fieldset--custom-modifier\" aria-describedby=\"example-fieldset-params-hint\" data-attribute=\"value\" data-second-attribute=\"second-value\">\r\n  \r\n  <legend class=\"govuk-fieldset__legend\">\r\n  \r\n    Have you changed your name?\r\n  \r\n  </legend>\r\n  \r\n\r\n  <div id=\"example-fieldset-params-hint\" class=\"govuk-hint\">\r\n    This includes changing your last name or spelling your name differently.\r\n  </div>\r\n\r\n\r\n  <div class=\"govuk-radios\">\r\n    \r\n      \r\n          \r\n        \r\n        \r\n        <div class=\"govuk-radios__item\">\r\n          <input class=\"govuk-radios__input\" id=\"example-fieldset-params\" name=\"example-fieldset-params\" type=\"radio\" value=\"yes\">\r\n          <label class=\"govuk-label govuk-radios__label\" for=\"example-fieldset-params\">\r\n        Yes\r\n      </label>\r\n          \r\n        </div>\r\n        \r\n        \r\n      \r\n    \r\n      \r\n        \r\n        \r\n        <div class=\"govuk-radios__item\">\r\n          <input class=\"govuk-radios__input\" id=\"example-fieldset-params-2\" name=\"example-fieldset-params\" type=\"radio\" value=\"no\">\r\n          <label class=\"govuk-label govuk-radios__label\" for=\"example-fieldset-params-2\">\r\n        No\r\n      </label>\r\n          \r\n        </div>\r\n        \r\n        \r\n      \r\n    \r\n  </div>\r\n  \r\n\r\n</fieldset>\r\n\r\n\r\n</div>",
+            "hidden": true
+        },
+        {
+            "name": "fieldset with html",
+            "options": {
+                "name": "with-fieldset-html",
+                "fieldset": {
+                    "legend": {
+                        "html": "Have <b>you</b> changed your name?"
+                    }
+                },
+                "items": [
+                    {
+                        "value": "yes",
+                        "text": "Yes"
+                    },
+                    {
+                        "value": "no",
+                        "text": "No"
+                    }
+                ]
+            },
+            "html": "<div class=\"govuk-form-group\">\r\n\r\n  <fieldset class=\"govuk-fieldset\">\r\n  \r\n  <legend class=\"govuk-fieldset__legend\">\r\n  \r\n    Have <b>you</b> changed your name?\r\n  \r\n  </legend>\r\n  \r\n\r\n  <div class=\"govuk-radios\">\r\n    \r\n      \r\n          \r\n        \r\n        \r\n        <div class=\"govuk-radios__item\">\r\n          <input class=\"govuk-radios__input\" id=\"with-fieldset-html\" name=\"with-fieldset-html\" type=\"radio\" value=\"yes\">\r\n          <label class=\"govuk-label govuk-radios__label\" for=\"with-fieldset-html\">\r\n        Yes\r\n      </label>\r\n          \r\n        </div>\r\n        \r\n        \r\n      \r\n    \r\n      \r\n        \r\n        \r\n        <div class=\"govuk-radios__item\">\r\n          <input class=\"govuk-radios__input\" id=\"with-fieldset-html-2\" name=\"with-fieldset-html\" type=\"radio\" value=\"no\">\r\n          <label class=\"govuk-label govuk-radios__label\" for=\"with-fieldset-html-2\">\r\n        No\r\n      </label>\r\n          \r\n        </div>\r\n        \r\n        \r\n      \r\n    \r\n  </div>\r\n  \r\n\r\n</fieldset>\r\n\r\n\r\n</div>",
+            "hidden": true
+        },
+        {
+            "name": "with fieldset, error message and describedBy",
+            "options": {
+                "idPrefix": "example",
+                "name": "example",
+                "errorMessage": {
+                    "text": "Please select an option"
+                },
+                "fieldset": {
+                    "describedBy": "some-id",
+                    "legend": {
+                        "text": "Have you changed your name?"
+                    }
+                },
+                "items": [
+                    {
+                        "value": "yes",
+                        "text": "Yes"
+                    },
+                    {
+                        "value": "no",
+                        "text": "No",
+                        "checked": true
+                    }
+                ]
+            },
+            "html": "<div class=\"govuk-form-group govuk-form-group--error\">\r\n\r\n  <fieldset class=\"govuk-fieldset\" aria-describedby=\"some-id example-error\">\r\n  \r\n  <legend class=\"govuk-fieldset__legend\">\r\n  \r\n    Have you changed your name?\r\n  \r\n  </legend>\r\n  \r\n\r\n  <span id=\"example-error\" class=\"govuk-error-message\">\r\n    <span class=\"govuk-visually-hidden\">Error:</span> Please select an option\r\n  </span>\r\n\r\n  <div class=\"govuk-radios\">\r\n    \r\n      \r\n          \r\n        \r\n        \r\n        <div class=\"govuk-radios__item\">\r\n          <input class=\"govuk-radios__input\" id=\"example\" name=\"example\" type=\"radio\" value=\"yes\">\r\n          <label class=\"govuk-label govuk-radios__label\" for=\"example\">\r\n        Yes\r\n      </label>\r\n          \r\n        </div>\r\n        \r\n        \r\n      \r\n    \r\n      \r\n        \r\n        \r\n        <div class=\"govuk-radios__item\">\r\n          <input class=\"govuk-radios__input\" id=\"example-2\" name=\"example\" type=\"radio\" value=\"no\" checked>\r\n          <label class=\"govuk-label govuk-radios__label\" for=\"example-2\">\r\n        No\r\n      </label>\r\n          \r\n        </div>\r\n        \r\n        \r\n      \r\n    \r\n  </div>\r\n  \r\n\r\n</fieldset>\r\n\r\n\r\n</div>",
+            "hidden": true
+        }
+    ]
+}

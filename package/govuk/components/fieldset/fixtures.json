@@ -1,0 +1,103 @@
+{
+    "component": "fieldset",
+    "fixtures": [
+        {
+            "name": "default",
+            "options": {
+                "legend": {
+                    "text": "What is your address?"
+                }
+            },
+            "html": "<fieldset class=\"govuk-fieldset\">\r\n  \r\n  <legend class=\"govuk-fieldset__legend\">\r\n  \r\n    What is your address?\r\n  \r\n  </legend>\r\n  \r\n\r\n</fieldset>",
+            "hidden": false
+        },
+        {
+            "name": "as page heading",
+            "options": {
+                "legend": {
+                    "text": "What is your address?",
+                    "classes": "govuk-fieldset__legend--xl",
+                    "isPageHeading": true
+                }
+            },
+            "html": "<fieldset class=\"govuk-fieldset\">\r\n  \r\n  <legend class=\"govuk-fieldset__legend govuk-fieldset__legend--xl\">\r\n  \r\n    <h1 class=\"govuk-fieldset__heading\">\r\n      What is your address?\r\n    </h1>\r\n  \r\n  </legend>\r\n  \r\n\r\n</fieldset>",
+            "hidden": false
+        },
+        {
+            "name": "html fieldset content",
+            "options": {
+                "legend": {
+                    "text": "What is your address?"
+                },
+                "html": "<div class=\"my-content\">\n  <p>This is some content to put inside the fieldset</p>\n</div>\n"
+            },
+            "html": "<fieldset class=\"govuk-fieldset\">\r\n  \r\n  <legend class=\"govuk-fieldset__legend\">\r\n  \r\n    What is your address?\r\n  \r\n  </legend>\r\n  \r\n\r\n  <div class=\"my-content\">\n  <p>This is some content to put inside the fieldset</p>\n</div>\n\r\n\r\n</fieldset>",
+            "hidden": true
+        },
+        {
+            "name": "with describedBy",
+            "options": {
+                "describedBy": "some-id"
+            },
+            "html": "<fieldset class=\"govuk-fieldset\" aria-describedby=\"some-id\">\r\n  \r\n\r\n</fieldset>",
+            "hidden": true
+        },
+        {
+            "name": "html as text",
+            "options": {
+                "legend": {
+                    "text": "What is <b>your</b> address?"
+                }
+            },
+            "html": "<fieldset class=\"govuk-fieldset\">\r\n  \r\n  <legend class=\"govuk-fieldset__legend\">\r\n  \r\n    What is &lt;b&gt;your&lt;/b&gt; address?\r\n  \r\n  </legend>\r\n  \r\n\r\n</fieldset>",
+            "hidden": true
+        },
+        {
+            "name": "html",
+            "options": {
+                "legend": {
+                    "html": "What is <b>your</b> address?"
+                }
+            },
+            "html": "<fieldset class=\"govuk-fieldset\">\r\n  \r\n  <legend class=\"govuk-fieldset__legend\">\r\n  \r\n    What is <b>your</b> address?\r\n  \r\n  </legend>\r\n  \r\n\r\n</fieldset>",
+            "hidden": true
+        },
+        {
+            "name": "legend classes",
+            "options": {
+                "legend": {
+                    "text": "What is your address?",
+                    "classes": "my-custom-class"
+                }
+            },
+            "html": "<fieldset class=\"govuk-fieldset\">\r\n  \r\n  <legend class=\"govuk-fieldset__legend my-custom-class\">\r\n  \r\n    What is your address?\r\n  \r\n  </legend>\r\n  \r\n\r\n</fieldset>",
+            "hidden": true
+        },
+        {
+            "name": "classes",
+            "options": {
+                "classes": "app-fieldset--custom-modifier"
+            },
+            "html": "<fieldset class=\"govuk-fieldset app-fieldset--custom-modifier\">\r\n  \r\n\r\n</fieldset>",
+            "hidden": true
+        },
+        {
+            "name": "role",
+            "options": {
+                "role": "group"
+            },
+            "html": "<fieldset class=\"govuk-fieldset\" role=\"group\">\r\n  \r\n\r\n</fieldset>",
+            "hidden": true
+        },
+        {
+            "name": "attributes",
+            "options": {
+                "attributes": {
+                    "data-attribute": "value"
+                }
+            },
+            "html": "<fieldset class=\"govuk-fieldset\" data-attribute=\"value\">\r\n  \r\n\r\n</fieldset>",
+            "hidden": true
+        }
+    ]
+}

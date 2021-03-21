@@ -1,0 +1,103 @@
+{
+    "component": "details",
+    "fixtures": [
+        {
+            "name": "default",
+            "options": {
+                "summaryText": "Help with nationality",
+                "text": "We need to know your nationality so we can work out which elections you’re entitled to vote in. If you can’t provide your nationality, you’ll have to send copies of identity documents through the post."
+            },
+            "html": "<details class=\"govuk-details\" data-module=\"govuk-details\">\r\n  <summary class=\"govuk-details__summary\">\r\n    <span class=\"govuk-details__summary-text\">\r\n      Help with nationality\r\n    </span>\r\n  </summary>\r\n  <div class=\"govuk-details__text\">\r\n    We need to know your nationality so we can work out which elections you’re entitled to vote in. If you can’t provide your nationality, you’ll have to send copies of identity documents through the post.\r\n  </div>\r\n</details>",
+            "hidden": false
+        },
+        {
+            "name": "expanded",
+            "options": {
+                "id": "help-with-nationality",
+                "summaryText": "Help with nationality",
+                "text": "We need to know your nationality so we can work out which elections you’re entitled to vote in. If you can’t provide your nationality, you’ll have to send copies of identity documents through the post.",
+                "open": true
+            },
+            "html": "<details id=\"help-with-nationality\" class=\"govuk-details\" data-module=\"govuk-details\" open>\r\n  <summary class=\"govuk-details__summary\">\r\n    <span class=\"govuk-details__summary-text\">\r\n      Help with nationality\r\n    </span>\r\n  </summary>\r\n  <div class=\"govuk-details__text\">\r\n    We need to know your nationality so we can work out which elections you’re entitled to vote in. If you can’t provide your nationality, you’ll have to send copies of identity documents through the post.\r\n  </div>\r\n</details>",
+            "hidden": false
+        },
+        {
+            "name": "with html",
+            "options": {
+                "summaryText": "Where to find your National Insurance Number",
+                "html": "Your National Insurance number can be found on\n<ul>\n  <li>your National Insurance card</li>\n  <li>your payslip</li>\n  <li>P60</li>\n  <li>benefits information</li>\n  <li>tax return</li>\n</ul>\n"
+            },
+            "html": "<details class=\"govuk-details\" data-module=\"govuk-details\">\r\n  <summary class=\"govuk-details__summary\">\r\n    <span class=\"govuk-details__summary-text\">\r\n      Where to find your National Insurance Number\r\n    </span>\r\n  </summary>\r\n  <div class=\"govuk-details__text\">\r\n    Your National Insurance number can be found on\n<ul>\n  <li>your National Insurance card</li>\n  <li>your payslip</li>\n  <li>P60</li>\n  <li>benefits information</li>\n  <li>tax return</li>\n</ul>\n\r\n  </div>\r\n</details>",
+            "hidden": false
+        },
+        {
+            "name": "id",
+            "options": {
+                "id": "my-details-element",
+                "summaryText": "Expand this section",
+                "text": "Here are some more details"
+            },
+            "html": "<details id=\"my-details-element\" class=\"govuk-details\" data-module=\"govuk-details\">\r\n  <summary class=\"govuk-details__summary\">\r\n    <span class=\"govuk-details__summary-text\">\r\n      Expand this section\r\n    </span>\r\n  </summary>\r\n  <div class=\"govuk-details__text\">\r\n    Here are some more details\r\n  </div>\r\n</details>",
+            "hidden": true
+        },
+        {
+            "name": "html as text",
+            "options": {
+                "summaryText": "Expand this section",
+                "text": "More about the greater than symbol (>)"
+            },
+            "html": "<details class=\"govuk-details\" data-module=\"govuk-details\">\r\n  <summary class=\"govuk-details__summary\">\r\n    <span class=\"govuk-details__summary-text\">\r\n      Expand this section\r\n    </span>\r\n  </summary>\r\n  <div class=\"govuk-details__text\">\r\n    More about the greater than symbol (&gt;)\r\n  </div>\r\n</details>",
+            "hidden": true
+        },
+        {
+            "name": "html",
+            "options": {
+                "summaryText": "Expand this section",
+                "html": "More about <b>bold text</b>"
+            },
+            "html": "<details class=\"govuk-details\" data-module=\"govuk-details\">\r\n  <summary class=\"govuk-details__summary\">\r\n    <span class=\"govuk-details__summary-text\">\r\n      Expand this section\r\n    </span>\r\n  </summary>\r\n  <div class=\"govuk-details__text\">\r\n    More about <b>bold text</b>\r\n  </div>\r\n</details>",
+            "hidden": true
+        },
+        {
+            "name": "summary html as text",
+            "options": {
+                "summaryText": "The greater than symbol (>) is the best",
+                "text": "Here are some more details"
+            },
+            "html": "<details class=\"govuk-details\" data-module=\"govuk-details\">\r\n  <summary class=\"govuk-details__summary\">\r\n    <span class=\"govuk-details__summary-text\">\r\n      The greater than symbol (&gt;) is the best\r\n    </span>\r\n  </summary>\r\n  <div class=\"govuk-details__text\">\r\n    Here are some more details\r\n  </div>\r\n</details>",
+            "hidden": true
+        },
+        {
+            "name": "summary html",
+            "options": {
+                "summaryHtml": "Use <b>bold text</b> sparingly",
+                "text": "Here are some more details"
+            },
+            "html": "<details class=\"govuk-details\" data-module=\"govuk-details\">\r\n  <summary class=\"govuk-details__summary\">\r\n    <span class=\"govuk-details__summary-text\">\r\n      Use <b>bold text</b> sparingly\r\n    </span>\r\n  </summary>\r\n  <div class=\"govuk-details__text\">\r\n    Here are some more details\r\n  </div>\r\n</details>",
+            "hidden": true
+        },
+        {
+            "name": "classes",
+            "options": {
+                "classes": "some-additional-class",
+                "text": "Here are some more details",
+                "summaryText": "Expand me"
+            },
+            "html": "<details class=\"govuk-details some-additional-class\" data-module=\"govuk-details\">\r\n  <summary class=\"govuk-details__summary\">\r\n    <span class=\"govuk-details__summary-text\">\r\n      Expand me\r\n    </span>\r\n  </summary>\r\n  <div class=\"govuk-details__text\">\r\n    Here are some more details\r\n  </div>\r\n</details>",
+            "hidden": true
+        },
+        {
+            "name": "attributes",
+            "options": {
+                "text": "Here are some more details",
+                "summaryText": "Expand me",
+                "attributes": {
+                    "data-some-data-attribute": "i-love-data",
+                    "another-attribute": "foo"
+                }
+            },
+            "html": "<details class=\"govuk-details\" data-module=\"govuk-details\" data-some-data-attribute=\"i-love-data\" another-attribute=\"foo\">\r\n  <summary class=\"govuk-details__summary\">\r\n    <span class=\"govuk-details__summary-text\">\r\n      Expand me\r\n    </span>\r\n  </summary>\r\n  <div class=\"govuk-details__text\">\r\n    Here are some more details\r\n  </div>\r\n</details>",
+            "hidden": true
+        }
+    ]
+}
