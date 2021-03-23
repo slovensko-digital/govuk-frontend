@@ -37,13 +37,13 @@ $govuk-use-legacy-palette: if(
 $_govuk-colour-palette-modern: (
   "red": #d4351c,
   "yellow": #ffdd00,
-  "green": #00703c,
-  "blue": #1d70b8,
+  //"green": #00703c,
+  //"blue": #1d70b8,
   "dark-blue": #003078,
   "light-blue": #5694ca,
   "purple": #4c2c92,
 
-  "black": #0b0c0c,
+  //"black": #0b0c0c,
   "dark-grey": #505a5f,
   "mid-grey": #b1b4b6,
   "light-grey": #f3f2f1,
@@ -53,10 +53,16 @@ $_govuk-colour-palette-modern: (
   "bright-purple": #912b88,
   "pink": #d53880,
   "light-pink": #f499be,
-  "orange": #f47738,
+  //"orange": #f47738,
   "brown": #b58840,
   "light-green": #85994b,
   "turquoise": #28a197,
+
+
+  "orange": #ff9120,
+  "green": #4cae18,
+  "blue": #3a67e8,
+  "black": #06070b
 );
 
 /// Legacy colour palette
