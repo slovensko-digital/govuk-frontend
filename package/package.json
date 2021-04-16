@@ -1,7 +1,7 @@
 {
   "name": "navody-digital-frontend",
   "description": "Navody.Digital Frontend contains the code you need to start building a user interface for navody.digital",
-  "version": "0.1.8",
+  "version": "0.1.8-upstream-sync",
   "main": "govuk/all.js",
   "sass": "govuk/all.scss",
   "engines": {
