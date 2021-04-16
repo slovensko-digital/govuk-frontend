@@ -6,7 +6,7 @@
             "options": {
                 "text": "alpha"
             },
-            "html": "<strong class=\"govuk-tag\">\r\n  alpha\r\n</strong>",
+            "html": "<strong class=\"govuk-tag\">\n  alpha\n</strong>",
             "hidden": false
         },
         {
@@ -15,7 +15,7 @@
                 "text": "alpha",
                 "classes": "govuk-tag--inactive"
             },
-            "html": "<strong class=\"govuk-tag govuk-tag--inactive\">\r\n  alpha\r\n</strong>",
+            "html": "<strong class=\"govuk-tag govuk-tag--inactive\">\n  alpha\n</strong>",
             "hidden": false
         },
         {
@@ -24,7 +24,7 @@
                 "text": "Grey",
                 "classes": "govuk-tag--grey"
             },
-            "html": "<strong class=\"govuk-tag govuk-tag--grey\">\r\n  Grey\r\n</strong>",
+            "html": "<strong class=\"govuk-tag govuk-tag--grey\">\n  Grey\n</strong>",
             "hidden": false
         },
         {
@@ -33,7 +33,7 @@
                 "text": "Blue",
                 "classes": "govuk-tag--blue"
             },
-            "html": "<strong class=\"govuk-tag govuk-tag--blue\">\r\n  Blue\r\n</strong>",
+            "html": "<strong class=\"govuk-tag govuk-tag--blue\">\n  Blue\n</strong>",
             "hidden": false
         },
         {
@@ -42,7 +42,7 @@
                 "text": "Turquoise",
                 "classes": "govuk-tag--turquoise"
             },
-            "html": "<strong class=\"govuk-tag govuk-tag--turquoise\">\r\n  Turquoise\r\n</strong>",
+            "html": "<strong class=\"govuk-tag govuk-tag--turquoise\">\n  Turquoise\n</strong>",
             "hidden": false
         },
         {
@@ -51,7 +51,7 @@
                 "text": "Green",
                 "classes": "govuk-tag--green"
             },
-            "html": "<strong class=\"govuk-tag govuk-tag--green\">\r\n  Green\r\n</strong>",
+            "html": "<strong class=\"govuk-tag govuk-tag--green\">\n  Green\n</strong>",
             "hidden": false
         },
         {
@@ -60,7 +60,7 @@
                 "text": "Purple",
                 "classes": "govuk-tag--purple"
             },
-            "html": "<strong class=\"govuk-tag govuk-tag--purple\">\r\n  Purple\r\n</strong>",
+            "html": "<strong class=\"govuk-tag govuk-tag--purple\">\n  Purple\n</strong>",
             "hidden": false
         },
         {
@@ -69,7 +69,7 @@
                 "text": "Pink",
                 "classes": "govuk-tag--pink"
             },
-            "html": "<strong class=\"govuk-tag govuk-tag--pink\">\r\n  Pink\r\n</strong>",
+            "html": "<strong class=\"govuk-tag govuk-tag--pink\">\n  Pink\n</strong>",
             "hidden": false
         },
         {
@@ -78,7 +78,7 @@
                 "text": "Red",
                 "classes": "govuk-tag--red"
             },
-            "html": "<strong class=\"govuk-tag govuk-tag--red\">\r\n  Red\r\n</strong>",
+            "html": "<strong class=\"govuk-tag govuk-tag--red\">\n  Red\n</strong>",
             "hidden": false
         },
         {
@@ -87,7 +87,7 @@
                 "text": "Orange",
                 "classes": "govuk-tag--orange"
             },
-            "html": "<strong class=\"govuk-tag govuk-tag--orange\">\r\n  Orange\r\n</strong>",
+            "html": "<strong class=\"govuk-tag govuk-tag--orange\">\n  Orange\n</strong>",
             "hidden": false
         },
         {
@@ -96,7 +96,7 @@
                 "text": "Yellow",
                 "classes": "govuk-tag--yellow"
             },
-            "html": "<strong class=\"govuk-tag govuk-tag--yellow\">\r\n  Yellow\r\n</strong>",
+            "html": "<strong class=\"govuk-tag govuk-tag--yellow\">\n  Yellow\n</strong>",
             "hidden": false
         },
         {
@@ -108,7 +108,7 @@
                     "id": "my-tag"
                 }
             },
-            "html": "<strong class=\"govuk-tag\" data-test=\"attribute\" id=\"my-tag\">\r\n  Tag with attributes\r\n</strong>",
+            "html": "<strong class=\"govuk-tag\" data-test=\"attribute\" id=\"my-tag\">\n  Tag with attributes\n</strong>",
             "hidden": true
         },
         {
@@ -116,7 +116,7 @@
             "options": {
                 "text": "<span>alpha</span>"
             },
-            "html": "<strong class=\"govuk-tag\">\r\n  &lt;span&gt;alpha&lt;/span&gt;\r\n</strong>",
+            "html": "<strong class=\"govuk-tag\">\n  &lt;span&gt;alpha&lt;/span&gt;\n</strong>",
             "hidden": true
         },
         {
@@ -124,7 +124,7 @@
             "options": {
                 "html": "<span>alpha</span>"
             },
-            "html": "<strong class=\"govuk-tag\">\r\n  <span>alpha</span>\r\n</strong>",
+            "html": "<strong class=\"govuk-tag\">\n  <span>alpha</span>\n</strong>",
             "hidden": true
         }
     ]

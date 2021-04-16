@@ -9,7 +9,7 @@
                 },
                 "html": "This is a new service - your <a href=\"#\" class=\"govuk-link\">feedback</a> will help us to improve it."
             },
-            "html": "<div class=\"govuk-phase-banner\">\r\n  <p class=\"govuk-phase-banner__content\">\r\n    <strong class=\"govuk-tag govuk-phase-banner__content__tag\">\r\n      alpha\r\n    </strong>\r\n    <span class=\"govuk-phase-banner__text\">\r\n      This is a new service - your <a href=\"#\" class=\"govuk-link\">feedback</a> will help us to improve it.\r\n    </span>\r\n  </p>\r\n</div>",
+            "html": "<div class=\"govuk-phase-banner\">\n  <p class=\"govuk-phase-banner__content\">\n    <strong class=\"govuk-tag govuk-phase-banner__content__tag\">\n      alpha\n    </strong>\n    <span class=\"govuk-phase-banner__text\">\n      This is a new service - your <a href=\"#\" class=\"govuk-link\">feedback</a> will help us to improve it.\n    </span>\n  </p>\n</div>",
             "hidden": false
         },
         {
@@ -18,7 +18,7 @@
                 "text": "This is a new service – your feedback will help us to improve it",
                 "classes": "extra-class one-more-class"
             },
-            "html": "<div class=\"govuk-phase-banner extra-class one-more-class\">\r\n  <p class=\"govuk-phase-banner__content\">\r\n    <strong class=\"govuk-tag govuk-phase-banner__content__tag\">\r\n      \r\n    </strong>\r\n    <span class=\"govuk-phase-banner__text\">\r\n      This is a new service – your feedback will help us to improve it\r\n    </span>\r\n  </p>\r\n</div>",
+            "html": "<div class=\"govuk-phase-banner extra-class one-more-class\">\n  <p class=\"govuk-phase-banner__content\">\n    <strong class=\"govuk-tag govuk-phase-banner__content__tag\">\n      \n    </strong>\n    <span class=\"govuk-phase-banner__text\">\n      This is a new service – your feedback will help us to improve it\n    </span>\n  </p>\n</div>",
             "hidden": true
         },
         {
@@ -26,7 +26,7 @@
             "options": {
                 "text": "This is a new service – your feedback will help us to improve it"
             },
-            "html": "<div class=\"govuk-phase-banner\">\r\n  <p class=\"govuk-phase-banner__content\">\r\n    <strong class=\"govuk-tag govuk-phase-banner__content__tag\">\r\n      \r\n    </strong>\r\n    <span class=\"govuk-phase-banner__text\">\r\n      This is a new service – your feedback will help us to improve it\r\n    </span>\r\n  </p>\r\n</div>",
+            "html": "<div class=\"govuk-phase-banner\">\n  <p class=\"govuk-phase-banner__content\">\n    <strong class=\"govuk-tag govuk-phase-banner__content__tag\">\n      \n    </strong>\n    <span class=\"govuk-phase-banner__text\">\n      This is a new service – your feedback will help us to improve it\n    </span>\n  </p>\n</div>",
             "hidden": true
         },
         {
@@ -34,7 +34,7 @@
             "options": {
                 "text": "This is a new service - your <a href=\"#\" class=\"govuk-link\">feedback</a> will help us to improve it."
             },
-            "html": "<div class=\"govuk-phase-banner\">\r\n  <p class=\"govuk-phase-banner__content\">\r\n    <strong class=\"govuk-tag govuk-phase-banner__content__tag\">\r\n      \r\n    </strong>\r\n    <span class=\"govuk-phase-banner__text\">\r\n      This is a new service - your &lt;a href=&quot;#&quot; class=&quot;govuk-link&quot;&gt;feedback&lt;/a&gt; will help us to improve it.\r\n    </span>\r\n  </p>\r\n</div>",
+            "html": "<div class=\"govuk-phase-banner\">\n  <p class=\"govuk-phase-banner__content\">\n    <strong class=\"govuk-tag govuk-phase-banner__content__tag\">\n      \n    </strong>\n    <span class=\"govuk-phase-banner__text\">\n      This is a new service - your &lt;a href=&quot;#&quot; class=&quot;govuk-link&quot;&gt;feedback&lt;/a&gt; will help us to improve it.\n    </span>\n  </p>\n</div>",
             "hidden": true
         },
         {
@@ -46,7 +46,7 @@
                     "second-attribute": "bar"
                 }
             },
-            "html": "<div class=\"govuk-phase-banner\" first-attribute=\"foo\" second-attribute=\"bar\">\r\n  <p class=\"govuk-phase-banner__content\">\r\n    <strong class=\"govuk-tag govuk-phase-banner__content__tag\">\r\n      \r\n    </strong>\r\n    <span class=\"govuk-phase-banner__text\">\r\n      This is a new service – your feedback will help us to improve it\r\n    </span>\r\n  </p>\r\n</div>",
+            "html": "<div class=\"govuk-phase-banner\" first-attribute=\"foo\" second-attribute=\"bar\">\n  <p class=\"govuk-phase-banner__content\">\n    <strong class=\"govuk-tag govuk-phase-banner__content__tag\">\n      \n    </strong>\n    <span class=\"govuk-phase-banner__text\">\n      This is a new service – your feedback will help us to improve it\n    </span>\n  </p>\n</div>",
             "hidden": true
         },
         {
@@ -57,7 +57,7 @@
                     "html": "<em>alpha</em>"
                 }
             },
-            "html": "<div class=\"govuk-phase-banner\">\r\n  <p class=\"govuk-phase-banner__content\">\r\n    <strong class=\"govuk-tag govuk-phase-banner__content__tag\">\r\n      <em>alpha</em>\r\n    </strong>\r\n    <span class=\"govuk-phase-banner__text\">\r\n      This is a new service – your feedback will help us to improve it\r\n    </span>\r\n  </p>\r\n</div>",
+            "html": "<div class=\"govuk-phase-banner\">\n  <p class=\"govuk-phase-banner__content\">\n    <strong class=\"govuk-tag govuk-phase-banner__content__tag\">\n      <em>alpha</em>\n    </strong>\n    <span class=\"govuk-phase-banner__text\">\n      This is a new service – your feedback will help us to improve it\n    </span>\n  </p>\n</div>",
             "hidden": true
         },
         {
@@ -69,7 +69,7 @@
                     "text": "alpha"
                 }
             },
-            "html": "<div class=\"govuk-phase-banner\">\r\n  <p class=\"govuk-phase-banner__content\">\r\n    <strong class=\"govuk-tag govuk-phase-banner__content__tag govuk-tag--inactive\">\r\n      alpha\r\n    </strong>\r\n    <span class=\"govuk-phase-banner__text\">\r\n      This is a new service – your feedback will help us to improve it\r\n    </span>\r\n  </p>\r\n</div>",
+            "html": "<div class=\"govuk-phase-banner\">\n  <p class=\"govuk-phase-banner__content\">\n    <strong class=\"govuk-tag govuk-phase-banner__content__tag govuk-tag--inactive\">\n      alpha\n    </strong>\n    <span class=\"govuk-phase-banner__text\">\n      This is a new service – your feedback will help us to improve it\n    </span>\n  </p>\n</div>",
             "hidden": true
         }
     ]
