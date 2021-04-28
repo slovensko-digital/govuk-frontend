@@ -46,7 +46,7 @@
                     ]
                 ]
             },
-            "html": "<table class=\"govuk-table\">\r\n  \r\n  \r\n  <tbody class=\"govuk-table__body\">\r\n    \r\n      \r\n        <tr class=\"govuk-table__row\">\r\n        \r\n          \r\n          \r\n          <td class=\"govuk-table__cell\"\r\n          >January</td>\r\n          \r\n        \r\n          \r\n          \r\n          <td class=\"govuk-table__cell govuk-table__cell--numeric\"\r\n          >£85</td>\r\n          \r\n        \r\n          \r\n          \r\n          <td class=\"govuk-table__cell govuk-table__cell--numeric\"\r\n          >£95</td>\r\n          \r\n        \r\n        </tr>\r\n      \r\n    \r\n      \r\n        <tr class=\"govuk-table__row\">\r\n        \r\n          \r\n          \r\n          <td class=\"govuk-table__cell\"\r\n          >February</td>\r\n          \r\n        \r\n          \r\n          \r\n          <td class=\"govuk-table__cell govuk-table__cell--numeric\"\r\n          >£75</td>\r\n          \r\n        \r\n          \r\n          \r\n          <td class=\"govuk-table__cell govuk-table__cell--numeric\"\r\n          >£55</td>\r\n          \r\n        \r\n        </tr>\r\n      \r\n    \r\n      \r\n        <tr class=\"govuk-table__row\">\r\n        \r\n          \r\n          \r\n          <td class=\"govuk-table__cell\"\r\n          >March</td>\r\n          \r\n        \r\n          \r\n          \r\n          <td class=\"govuk-table__cell govuk-table__cell--numeric\"\r\n          >£165</td>\r\n          \r\n        \r\n          \r\n          \r\n          <td class=\"govuk-table__cell govuk-table__cell--numeric\"\r\n          >£125</td>\r\n          \r\n        \r\n        </tr>\r\n      \r\n    \r\n  </tbody>\r\n</table>",
+            "html": "<table class=\"govuk-table\">\n  \n  \n  <tbody class=\"govuk-table__body\">\n    \n      \n        <tr class=\"govuk-table__row\">\n        \n          \n          \n          <td class=\"govuk-table__cell\"\n          >January</td>\n          \n        \n          \n          \n          <td class=\"govuk-table__cell govuk-table__cell--numeric\"\n          >£85</td>\n          \n        \n          \n          \n          <td class=\"govuk-table__cell govuk-table__cell--numeric\"\n          >£95</td>\n          \n        \n        </tr>\n      \n    \n      \n        <tr class=\"govuk-table__row\">\n        \n          \n          \n          <td class=\"govuk-table__cell\"\n          >February</td>\n          \n        \n          \n          \n          <td class=\"govuk-table__cell govuk-table__cell--numeric\"\n          >£75</td>\n          \n        \n          \n          \n          <td class=\"govuk-table__cell govuk-table__cell--numeric\"\n          >£55</td>\n          \n        \n        </tr>\n      \n    \n      \n        <tr class=\"govuk-table__row\">\n        \n          \n          \n          <td class=\"govuk-table__cell\"\n          >March</td>\n          \n        \n          \n          \n          <td class=\"govuk-table__cell govuk-table__cell--numeric\"\n          >£165</td>\n          \n        \n          \n          \n          <td class=\"govuk-table__cell govuk-table__cell--numeric\"\n          >£125</td>\n          \n        \n        </tr>\n      \n    \n  </tbody>\n</table>",
             "hidden": false
         },
         {
@@ -107,7 +107,7 @@
                     ]
                 ]
             },
-            "html": "<table class=\"govuk-table\">\r\n  \r\n  \r\n  <thead class=\"govuk-table__head\">\r\n    <tr class=\"govuk-table__row\">\r\n    \r\n      <th scope=\"col\" class=\"govuk-table__header\">Month you apply</th>\r\n    \r\n      <th scope=\"col\" class=\"govuk-table__header govuk-table__header--numeric\">Rate for bicycles</th>\r\n    \r\n      <th scope=\"col\" class=\"govuk-table__header govuk-table__header--numeric\">Rate for vehicles</th>\r\n    \r\n    </tr>\r\n  </thead>\r\n  \r\n  <tbody class=\"govuk-table__body\">\r\n    \r\n      \r\n        <tr class=\"govuk-table__row\">\r\n        \r\n          \r\n          \r\n          <td class=\"govuk-table__cell\"\r\n          >January</td>\r\n          \r\n        \r\n          \r\n          \r\n          <td class=\"govuk-table__cell govuk-table__cell--numeric\"\r\n          >£85</td>\r\n          \r\n        \r\n          \r\n          \r\n          <td class=\"govuk-table__cell govuk-table__cell--numeric\"\r\n          >£95</td>\r\n          \r\n        \r\n        </tr>\r\n      \r\n    \r\n      \r\n        <tr class=\"govuk-table__row\">\r\n        \r\n          \r\n          \r\n          <td class=\"govuk-table__cell\"\r\n          >February</td>\r\n          \r\n        \r\n          \r\n          \r\n          <td class=\"govuk-table__cell govuk-table__cell--numeric\"\r\n          >£75</td>\r\n          \r\n        \r\n          \r\n          \r\n          <td class=\"govuk-table__cell govuk-table__cell--numeric\"\r\n          >£55</td>\r\n          \r\n        \r\n        </tr>\r\n      \r\n    \r\n      \r\n        <tr class=\"govuk-table__row\">\r\n        \r\n          \r\n          \r\n          <td class=\"govuk-table__cell\"\r\n          >March</td>\r\n          \r\n        \r\n          \r\n          \r\n          <td class=\"govuk-table__cell govuk-table__cell--numeric\"\r\n          >£165</td>\r\n          \r\n        \r\n          \r\n          \r\n          <td class=\"govuk-table__cell govuk-table__cell--numeric\"\r\n          >£125</td>\r\n          \r\n        \r\n        </tr>\r\n      \r\n    \r\n  </tbody>\r\n</table>",
+            "html": "<table class=\"govuk-table\">\n  \n  \n  <thead class=\"govuk-table__head\">\n    <tr class=\"govuk-table__row\">\n    \n      <th scope=\"col\" class=\"govuk-table__header\">Month you apply</th>\n    \n      <th scope=\"col\" class=\"govuk-table__header govuk-table__header--numeric\">Rate for bicycles</th>\n    \n      <th scope=\"col\" class=\"govuk-table__header govuk-table__header--numeric\">Rate for vehicles</th>\n    \n    </tr>\n  </thead>\n  \n  <tbody class=\"govuk-table__body\">\n    \n      \n        <tr class=\"govuk-table__row\">\n        \n          \n          \n          <td class=\"govuk-table__cell\"\n          >January</td>\n          \n        \n          \n          \n          <td class=\"govuk-table__cell govuk-table__cell--numeric\"\n          >£85</td>\n          \n        \n          \n          \n          <td class=\"govuk-table__cell govuk-table__cell--numeric\"\n          >£95</td>\n          \n        \n        </tr>\n      \n    \n      \n        <tr class=\"govuk-table__row\">\n        \n          \n          \n          <td class=\"govuk-table__cell\"\n          >February</td>\n          \n        \n          \n          \n          <td class=\"govuk-table__cell govuk-table__cell--numeric\"\n          >£75</td>\n          \n        \n          \n          \n          <td class=\"govuk-table__cell govuk-table__cell--numeric\"\n          >£55</td>\n          \n        \n        </tr>\n      \n    \n      \n        <tr class=\"govuk-table__row\">\n        \n          \n          \n          <td class=\"govuk-table__cell\"\n          >March</td>\n          \n        \n          \n          \n          <td class=\"govuk-table__cell govuk-table__cell--numeric\"\n          >£165</td>\n          \n        \n          \n          \n          <td class=\"govuk-table__cell govuk-table__cell--numeric\"\n          >£125</td>\n          \n        \n        </tr>\n      \n    \n  </tbody>\n</table>",
             "hidden": false
         },
         {
@@ -171,7 +171,7 @@
                     ]
                 ]
             },
-            "html": "<table class=\"govuk-table\">\r\n  \r\n  <caption class=\"govuk-table__caption govuk-heading-m\">Caption 1: Months and rates</caption>\r\n  \r\n  \r\n  <thead class=\"govuk-table__head\">\r\n    <tr class=\"govuk-table__row\">\r\n    \r\n      <th scope=\"col\" class=\"govuk-table__header\">Month you apply</th>\r\n    \r\n      <th scope=\"col\" class=\"govuk-table__header govuk-table__header--numeric\">Rate for bicycles</th>\r\n    \r\n      <th scope=\"col\" class=\"govuk-table__header govuk-table__header--numeric\">Rate for vehicles</th>\r\n    \r\n    </tr>\r\n  </thead>\r\n  \r\n  <tbody class=\"govuk-table__body\">\r\n    \r\n      \r\n        <tr class=\"govuk-table__row\">\r\n        \r\n          \r\n          \r\n          <th scope=\"row\" class=\"govuk-table__header\"\r\n          >January</th>\r\n          \r\n        \r\n          \r\n          \r\n          <td class=\"govuk-table__cell govuk-table__cell--numeric\"\r\n          >£85</td>\r\n          \r\n        \r\n          \r\n          \r\n          <td class=\"govuk-table__cell govuk-table__cell--numeric\"\r\n          >£95</td>\r\n          \r\n        \r\n        </tr>\r\n      \r\n    \r\n      \r\n        <tr class=\"govuk-table__row\">\r\n        \r\n          \r\n          \r\n          <th scope=\"row\" class=\"govuk-table__header\"\r\n          >February</th>\r\n          \r\n        \r\n          \r\n          \r\n          <td class=\"govuk-table__cell govuk-table__cell--numeric\"\r\n          >£75</td>\r\n          \r\n        \r\n          \r\n          \r\n          <td class=\"govuk-table__cell govuk-table__cell--numeric\"\r\n          >£55</td>\r\n          \r\n        \r\n        </tr>\r\n      \r\n    \r\n      \r\n        <tr class=\"govuk-table__row\">\r\n        \r\n          \r\n          \r\n          <th scope=\"row\" class=\"govuk-table__header\"\r\n          >March</th>\r\n          \r\n        \r\n          \r\n          \r\n          <td class=\"govuk-table__cell govuk-table__cell--numeric\"\r\n          >£165</td>\r\n          \r\n        \r\n          \r\n          \r\n          <td class=\"govuk-table__cell govuk-table__cell--numeric\"\r\n          >£125</td>\r\n          \r\n        \r\n        </tr>\r\n      \r\n    \r\n  </tbody>\r\n</table>",
+            "html": "<table class=\"govuk-table\">\n  \n  <caption class=\"govuk-table__caption govuk-heading-m\">Caption 1: Months and rates</caption>\n  \n  \n  <thead class=\"govuk-table__head\">\n    <tr class=\"govuk-table__row\">\n    \n      <th scope=\"col\" class=\"govuk-table__header\">Month you apply</th>\n    \n      <th scope=\"col\" class=\"govuk-table__header govuk-table__header--numeric\">Rate for bicycles</th>\n    \n      <th scope=\"col\" class=\"govuk-table__header govuk-table__header--numeric\">Rate for vehicles</th>\n    \n    </tr>\n  </thead>\n  \n  <tbody class=\"govuk-table__body\">\n    \n      \n        <tr class=\"govuk-table__row\">\n        \n          \n          \n          <th scope=\"row\" class=\"govuk-table__header\"\n          >January</th>\n          \n        \n          \n          \n          <td class=\"govuk-table__cell govuk-table__cell--numeric\"\n          >£85</td>\n          \n        \n          \n          \n          <td class=\"govuk-table__cell govuk-table__cell--numeric\"\n          >£95</td>\n          \n        \n        </tr>\n      \n    \n      \n        <tr class=\"govuk-table__row\">\n        \n          \n          \n          <th scope=\"row\" class=\"govuk-table__header\"\n          >February</th>\n          \n        \n          \n          \n          <td class=\"govuk-table__cell govuk-table__cell--numeric\"\n          >£75</td>\n          \n        \n          \n          \n          <td class=\"govuk-table__cell govuk-table__cell--numeric\"\n          >£55</td>\n          \n        \n        </tr>\n      \n    \n      \n        <tr class=\"govuk-table__row\">\n        \n          \n          \n          <th scope=\"row\" class=\"govuk-table__header\"\n          >March</th>\n          \n        \n          \n          \n          <td class=\"govuk-table__cell govuk-table__cell--numeric\"\n          >£165</td>\n          \n        \n          \n          \n          <td class=\"govuk-table__cell govuk-table__cell--numeric\"\n          >£125</td>\n          \n        \n        </tr>\n      \n    \n  </tbody>\n</table>",
             "hidden": false
         },
         {
@@ -189,7 +189,7 @@
                     ]
                 ]
             },
-            "html": "<table class=\"govuk-table custom-class-goes-here\">\r\n  \r\n  \r\n  <tbody class=\"govuk-table__body\">\r\n    \r\n      \r\n        <tr class=\"govuk-table__row\">\r\n        \r\n          \r\n          \r\n          <td class=\"govuk-table__cell\"\r\n          >Jan</td>\r\n          \r\n        \r\n          \r\n          \r\n          <td class=\"govuk-table__cell\"\r\n          >Feb</td>\r\n          \r\n        \r\n        </tr>\r\n      \r\n    \r\n  </tbody>\r\n</table>",
+            "html": "<table class=\"govuk-table custom-class-goes-here\">\n  \n  \n  <tbody class=\"govuk-table__body\">\n    \n      \n        <tr class=\"govuk-table__row\">\n        \n          \n          \n          <td class=\"govuk-table__cell\"\n          >Jan</td>\n          \n        \n          \n          \n          <td class=\"govuk-table__cell\"\n          >Feb</td>\n          \n        \n        </tr>\n      \n    \n  </tbody>\n</table>",
             "hidden": true
         },
         {
@@ -209,7 +209,7 @@
                     ]
                 ]
             },
-            "html": "<table class=\"govuk-table\" data-foo=\"bar\">\r\n  \r\n  \r\n  <tbody class=\"govuk-table__body\">\r\n    \r\n      \r\n        <tr class=\"govuk-table__row\">\r\n        \r\n          \r\n          \r\n          <td class=\"govuk-table__cell\"\r\n          >Jan</td>\r\n          \r\n        \r\n          \r\n          \r\n          <td class=\"govuk-table__cell\"\r\n          >Feb</td>\r\n          \r\n        \r\n        </tr>\r\n      \r\n    \r\n  </tbody>\r\n</table>",
+            "html": "<table class=\"govuk-table\" data-foo=\"bar\">\n  \n  \n  <tbody class=\"govuk-table__body\">\n    \n      \n        <tr class=\"govuk-table__row\">\n        \n          \n          \n          <td class=\"govuk-table__cell\"\n          >Jan</td>\n          \n        \n          \n          \n          <td class=\"govuk-table__cell\"\n          >Feb</td>\n          \n        \n        </tr>\n      \n    \n  </tbody>\n</table>",
             "hidden": true
         },
         {
@@ -228,7 +228,7 @@
                     ]
                 ]
             },
-            "html": "<table class=\"govuk-table\">\r\n  \r\n  \r\n  <thead class=\"govuk-table__head\">\r\n    <tr class=\"govuk-table__row\">\r\n    \r\n      <th scope=\"col\" class=\"govuk-table__header\">Foo &lt;script&gt;hacking.do(1337)&lt;/script&gt;</th>\r\n    \r\n    </tr>\r\n  </thead>\r\n  \r\n  <tbody class=\"govuk-table__body\">\r\n    \r\n      \r\n        <tr class=\"govuk-table__row\">\r\n        \r\n          \r\n          \r\n          <td class=\"govuk-table__cell\"\r\n          >Foo &lt;script&gt;hacking.do(1337)&lt;/script&gt;</td>\r\n          \r\n        \r\n        </tr>\r\n      \r\n    \r\n  </tbody>\r\n</table>",
+            "html": "<table class=\"govuk-table\">\n  \n  \n  <thead class=\"govuk-table__head\">\n    <tr class=\"govuk-table__row\">\n    \n      <th scope=\"col\" class=\"govuk-table__header\">Foo &lt;script&gt;hacking.do(1337)&lt;/script&gt;</th>\n    \n    </tr>\n  </thead>\n  \n  <tbody class=\"govuk-table__body\">\n    \n      \n        <tr class=\"govuk-table__row\">\n        \n          \n          \n          <td class=\"govuk-table__cell\"\n          >Foo &lt;script&gt;hacking.do(1337)&lt;/script&gt;</td>\n          \n        \n        </tr>\n      \n    \n  </tbody>\n</table>",
             "hidden": true
         },
         {
@@ -247,7 +247,7 @@
                     ]
                 ]
             },
-            "html": "<table class=\"govuk-table\">\r\n  \r\n  \r\n  <thead class=\"govuk-table__head\">\r\n    <tr class=\"govuk-table__row\">\r\n    \r\n      <th scope=\"col\" class=\"govuk-table__header\">Foo <span>bar</span></th>\r\n    \r\n    </tr>\r\n  </thead>\r\n  \r\n  <tbody class=\"govuk-table__body\">\r\n    \r\n      \r\n        <tr class=\"govuk-table__row\">\r\n        \r\n          \r\n          \r\n          <td class=\"govuk-table__cell\"\r\n          >Foo <span>bar</span></td>\r\n          \r\n        \r\n        </tr>\r\n      \r\n    \r\n  </tbody>\r\n</table>",
+            "html": "<table class=\"govuk-table\">\n  \n  \n  <thead class=\"govuk-table__head\">\n    <tr class=\"govuk-table__row\">\n    \n      <th scope=\"col\" class=\"govuk-table__header\">Foo <span>bar</span></th>\n    \n    </tr>\n  </thead>\n  \n  <tbody class=\"govuk-table__body\">\n    \n      \n        <tr class=\"govuk-table__row\">\n        \n          \n          \n          <td class=\"govuk-table__cell\"\n          >Foo <span>bar</span></td>\n          \n        \n        </tr>\n      \n    \n  </tbody>\n</table>",
             "hidden": true
         },
         {
@@ -270,7 +270,7 @@
                     ]
                 ]
             },
-            "html": "<table class=\"govuk-table\">\r\n  \r\n  \r\n  <thead class=\"govuk-table__head\">\r\n    <tr class=\"govuk-table__row\">\r\n    \r\n      <th scope=\"col\" class=\"govuk-table__header my-custom-class\">Foo</th>\r\n    \r\n    </tr>\r\n  </thead>\r\n  \r\n  <tbody class=\"govuk-table__body\">\r\n    \r\n      \r\n        <tr class=\"govuk-table__row\">\r\n        \r\n          \r\n          \r\n          <td class=\"govuk-table__cell\"\r\n          >Jan</td>\r\n          \r\n        \r\n          \r\n          \r\n          <td class=\"govuk-table__cell\"\r\n          >Feb</td>\r\n          \r\n        \r\n        </tr>\r\n      \r\n    \r\n  </tbody>\r\n</table>",
+            "html": "<table class=\"govuk-table\">\n  \n  \n  <thead class=\"govuk-table__head\">\n    <tr class=\"govuk-table__row\">\n    \n      <th scope=\"col\" class=\"govuk-table__header my-custom-class\">Foo</th>\n    \n    </tr>\n  </thead>\n  \n  <tbody class=\"govuk-table__body\">\n    \n      \n        <tr class=\"govuk-table__row\">\n        \n          \n          \n          <td class=\"govuk-table__cell\"\n          >Jan</td>\n          \n        \n          \n          \n          <td class=\"govuk-table__cell\"\n          >Feb</td>\n          \n        \n        </tr>\n      \n    \n  </tbody>\n</table>",
             "hidden": true
         },
         {
@@ -294,7 +294,7 @@
                     ]
                 ]
             },
-            "html": "<table class=\"govuk-table\">\r\n  \r\n  \r\n  <thead class=\"govuk-table__head\">\r\n    <tr class=\"govuk-table__row\">\r\n    \r\n      <th scope=\"col\" class=\"govuk-table__header\" colspan=\"2\" rowspan=\"2\">Foo</th>\r\n    \r\n    </tr>\r\n  </thead>\r\n  \r\n  <tbody class=\"govuk-table__body\">\r\n    \r\n      \r\n        <tr class=\"govuk-table__row\">\r\n        \r\n          \r\n          \r\n          <td class=\"govuk-table__cell\"\r\n          >Jan</td>\r\n          \r\n        \r\n          \r\n          \r\n          <td class=\"govuk-table__cell\"\r\n          >Feb</td>\r\n          \r\n        \r\n        </tr>\r\n      \r\n    \r\n  </tbody>\r\n</table>",
+            "html": "<table class=\"govuk-table\">\n  \n  \n  <thead class=\"govuk-table__head\">\n    <tr class=\"govuk-table__row\">\n    \n      <th scope=\"col\" class=\"govuk-table__header\" colspan=\"2\" rowspan=\"2\">Foo</th>\n    \n    </tr>\n  </thead>\n  \n  <tbody class=\"govuk-table__body\">\n    \n      \n        <tr class=\"govuk-table__row\">\n        \n          \n          \n          <td class=\"govuk-table__cell\"\n          >Jan</td>\n          \n        \n          \n          \n          <td class=\"govuk-table__cell\"\n          >Feb</td>\n          \n        \n        </tr>\n      \n    \n  </tbody>\n</table>",
             "hidden": true
         },
         {
@@ -318,7 +318,7 @@
                     ]
                 ]
             },
-            "html": "<table class=\"govuk-table\">\r\n  \r\n  \r\n  <thead class=\"govuk-table__head\">\r\n    <tr class=\"govuk-table__row\">\r\n    \r\n      <th scope=\"col\" class=\"govuk-table__header\" data-fizz=\"buzz\"></th>\r\n    \r\n    </tr>\r\n  </thead>\r\n  \r\n  <tbody class=\"govuk-table__body\">\r\n    \r\n      \r\n        <tr class=\"govuk-table__row\">\r\n        \r\n          \r\n          \r\n          <td class=\"govuk-table__cell\"\r\n          >Jan</td>\r\n          \r\n        \r\n          \r\n          \r\n          <td class=\"govuk-table__cell\"\r\n          >Feb</td>\r\n          \r\n        \r\n        </tr>\r\n      \r\n    \r\n  </tbody>\r\n</table>",
+            "html": "<table class=\"govuk-table\">\n  \n  \n  <thead class=\"govuk-table__head\">\n    <tr class=\"govuk-table__row\">\n    \n      <th scope=\"col\" class=\"govuk-table__header\" data-fizz=\"buzz\"></th>\n    \n    </tr>\n  </thead>\n  \n  <tbody class=\"govuk-table__body\">\n    \n      \n        <tr class=\"govuk-table__row\">\n        \n          \n          \n          <td class=\"govuk-table__cell\"\n          >Jan</td>\n          \n        \n          \n          \n          <td class=\"govuk-table__cell\"\n          >Feb</td>\n          \n        \n        </tr>\n      \n    \n  </tbody>\n</table>",
             "hidden": true
         },
         {
@@ -367,7 +367,7 @@
                     ]
                 ]
             },
-            "html": "<table class=\"govuk-table\">\r\n  \r\n  \r\n  <tbody class=\"govuk-table__body\">\r\n    \r\n      \r\n        <tr class=\"govuk-table__row\">\r\n        \r\n          \r\n          \r\n          <th scope=\"row\" class=\"govuk-table__header\"\r\n          >January</th>\r\n          \r\n        \r\n          \r\n          \r\n          <td class=\"govuk-table__cell govuk-table__cell--numeric\"\r\n          >£85</td>\r\n          \r\n        \r\n          \r\n          \r\n          <td class=\"govuk-table__cell govuk-table__cell--numeric\"\r\n          >£95</td>\r\n          \r\n        \r\n        </tr>\r\n      \r\n    \r\n      \r\n        <tr class=\"govuk-table__row\">\r\n        \r\n          \r\n          \r\n          <th scope=\"row\" class=\"govuk-table__header\"\r\n          >February</th>\r\n          \r\n        \r\n          \r\n          \r\n          <td class=\"govuk-table__cell govuk-table__cell--numeric\"\r\n          >£75</td>\r\n          \r\n        \r\n          \r\n          \r\n          <td class=\"govuk-table__cell govuk-table__cell--numeric\"\r\n          >£55</td>\r\n          \r\n        \r\n        </tr>\r\n      \r\n    \r\n      \r\n        <tr class=\"govuk-table__row\">\r\n        \r\n          \r\n          \r\n          <th scope=\"row\" class=\"govuk-table__header\"\r\n          >March</th>\r\n          \r\n        \r\n          \r\n          \r\n          <td class=\"govuk-table__cell govuk-table__cell--numeric\"\r\n          >£165</td>\r\n          \r\n        \r\n          \r\n          \r\n          <td class=\"govuk-table__cell govuk-table__cell--numeric\"\r\n          >£125</td>\r\n          \r\n        \r\n        </tr>\r\n      \r\n    \r\n  </tbody>\r\n</table>",
+            "html": "<table class=\"govuk-table\">\n  \n  \n  <tbody class=\"govuk-table__body\">\n    \n      \n        <tr class=\"govuk-table__row\">\n        \n          \n          \n          <th scope=\"row\" class=\"govuk-table__header\"\n          >January</th>\n          \n        \n          \n          \n          <td class=\"govuk-table__cell govuk-table__cell--numeric\"\n          >£85</td>\n          \n        \n          \n          \n          <td class=\"govuk-table__cell govuk-table__cell--numeric\"\n          >£95</td>\n          \n        \n        </tr>\n      \n    \n      \n        <tr class=\"govuk-table__row\">\n        \n          \n          \n          <th scope=\"row\" class=\"govuk-table__header\"\n          >February</th>\n          \n        \n          \n          \n          <td class=\"govuk-table__cell govuk-table__cell--numeric\"\n          >£75</td>\n          \n        \n          \n          \n          <td class=\"govuk-table__cell govuk-table__cell--numeric\"\n          >£55</td>\n          \n        \n        </tr>\n      \n    \n      \n        <tr class=\"govuk-table__row\">\n        \n          \n          \n          <th scope=\"row\" class=\"govuk-table__header\"\n          >March</th>\n          \n        \n          \n          \n          <td class=\"govuk-table__cell govuk-table__cell--numeric\"\n          >£165</td>\n          \n        \n          \n          \n          <td class=\"govuk-table__cell govuk-table__cell--numeric\"\n          >£125</td>\n          \n        \n        </tr>\n      \n    \n  </tbody>\n</table>",
             "hidden": true
         },
         {
@@ -383,7 +383,7 @@
                     ]
                 ]
             },
-            "html": "<table class=\"govuk-table\">\r\n  \r\n  \r\n  <tbody class=\"govuk-table__body\">\r\n    \r\n      \r\n        <tr class=\"govuk-table__row\">\r\n        \r\n          \r\n          \r\n          <th scope=\"row\" class=\"govuk-table__header my-custom-class\"\r\n          >Foo</th>\r\n          \r\n        \r\n        </tr>\r\n      \r\n    \r\n  </tbody>\r\n</table>",
+            "html": "<table class=\"govuk-table\">\n  \n  \n  <tbody class=\"govuk-table__body\">\n    \n      \n        <tr class=\"govuk-table__row\">\n        \n          \n          \n          <th scope=\"row\" class=\"govuk-table__header my-custom-class\"\n          >Foo</th>\n          \n        \n        </tr>\n      \n    \n  </tbody>\n</table>",
             "hidden": true
         },
         {
@@ -398,7 +398,7 @@
                     ]
                 ]
             },
-            "html": "<table class=\"govuk-table\">\r\n  \r\n  \r\n  <tbody class=\"govuk-table__body\">\r\n    \r\n      \r\n        <tr class=\"govuk-table__row\">\r\n        \r\n          \r\n          \r\n          <th scope=\"row\" class=\"govuk-table__header\"\r\n          >Foo <span>bar</span></th>\r\n          \r\n        \r\n        </tr>\r\n      \r\n    \r\n  </tbody>\r\n</table>",
+            "html": "<table class=\"govuk-table\">\n  \n  \n  <tbody class=\"govuk-table__body\">\n    \n      \n        <tr class=\"govuk-table__row\">\n        \n          \n          \n          <th scope=\"row\" class=\"govuk-table__header\"\n          >Foo <span>bar</span></th>\n          \n        \n        </tr>\n      \n    \n  </tbody>\n</table>",
             "hidden": true
         },
         {
@@ -413,7 +413,7 @@
                     ]
                 ]
             },
-            "html": "<table class=\"govuk-table\">\r\n  \r\n  \r\n  <tbody class=\"govuk-table__body\">\r\n    \r\n      \r\n        <tr class=\"govuk-table__row\">\r\n        \r\n          \r\n          \r\n          <th scope=\"row\" class=\"govuk-table__header\"\r\n          >Foo &lt;script&gt;hacking.do(1337)&lt;/script&gt;</th>\r\n          \r\n        \r\n        </tr>\r\n      \r\n    \r\n  </tbody>\r\n</table>",
+            "html": "<table class=\"govuk-table\">\n  \n  \n  <tbody class=\"govuk-table__body\">\n    \n      \n        <tr class=\"govuk-table__row\">\n        \n          \n          \n          <th scope=\"row\" class=\"govuk-table__header\"\n          >Foo &lt;script&gt;hacking.do(1337)&lt;/script&gt;</th>\n          \n        \n        </tr>\n      \n    \n  </tbody>\n</table>",
             "hidden": true
         },
         {
@@ -430,7 +430,7 @@
                     ]
                 ]
             },
-            "html": "<table class=\"govuk-table\">\r\n  \r\n  \r\n  <tbody class=\"govuk-table__body\">\r\n    \r\n      \r\n        <tr class=\"govuk-table__row\">\r\n        \r\n          \r\n          \r\n          <th scope=\"row\" class=\"govuk-table__header\" colspan=\"2\" rowspan=\"2\"\r\n          >Foo</th>\r\n          \r\n        \r\n        </tr>\r\n      \r\n    \r\n  </tbody>\r\n</table>",
+            "html": "<table class=\"govuk-table\">\n  \n  \n  <tbody class=\"govuk-table__body\">\n    \n      \n        <tr class=\"govuk-table__row\">\n        \n          \n          \n          <th scope=\"row\" class=\"govuk-table__header\" colspan=\"2\" rowspan=\"2\"\n          >Foo</th>\n          \n        \n        </tr>\n      \n    \n  </tbody>\n</table>",
             "hidden": true
         },
         {
@@ -448,7 +448,7 @@
                     ]
                 ]
             },
-            "html": "<table class=\"govuk-table\">\r\n  \r\n  \r\n  <tbody class=\"govuk-table__body\">\r\n    \r\n      \r\n        <tr class=\"govuk-table__row\">\r\n        \r\n          \r\n          \r\n          <th scope=\"row\" class=\"govuk-table__header\" data-fizz=\"buzz\"\r\n          >Foo</th>\r\n          \r\n        \r\n        </tr>\r\n      \r\n    \r\n  </tbody>\r\n</table>",
+            "html": "<table class=\"govuk-table\">\n  \n  \n  <tbody class=\"govuk-table__body\">\n    \n      \n        <tr class=\"govuk-table__row\">\n        \n          \n          \n          <th scope=\"row\" class=\"govuk-table__header\" data-fizz=\"buzz\"\n          >Foo</th>\n          \n        \n        </tr>\n      \n    \n  </tbody>\n</table>",
             "hidden": true
         },
         {
@@ -483,7 +483,7 @@
                     ]
                 ]
             },
-            "html": "<table class=\"govuk-table\">\r\n  \r\n  \r\n  <tbody class=\"govuk-table__body\">\r\n    \r\n      \r\n        <tr class=\"govuk-table__row\">\r\n        \r\n          \r\n          \r\n          <td class=\"govuk-table__cell\"\r\n          >A</td>\r\n          \r\n        \r\n          \r\n          \r\n          <td class=\"govuk-table__cell\"\r\n          >1</td>\r\n          \r\n        \r\n        </tr>\r\n      \r\n    \r\n      \r\n    \r\n      \r\n    \r\n      \r\n        <tr class=\"govuk-table__row\">\r\n        \r\n          \r\n          \r\n          <td class=\"govuk-table__cell\"\r\n          >B</td>\r\n          \r\n        \r\n          \r\n          \r\n          <td class=\"govuk-table__cell\"\r\n          >2</td>\r\n          \r\n        \r\n        </tr>\r\n      \r\n    \r\n      \r\n        <tr class=\"govuk-table__row\">\r\n        \r\n          \r\n          \r\n          <td class=\"govuk-table__cell\"\r\n          >C</td>\r\n          \r\n        \r\n          \r\n          \r\n          <td class=\"govuk-table__cell\"\r\n          >3</td>\r\n          \r\n        \r\n        </tr>\r\n      \r\n    \r\n  </tbody>\r\n</table>",
+            "html": "<table class=\"govuk-table\">\n  \n  \n  <tbody class=\"govuk-table__body\">\n    \n      \n        <tr class=\"govuk-table__row\">\n        \n          \n          \n          <td class=\"govuk-table__cell\"\n          >A</td>\n          \n        \n          \n          \n          <td class=\"govuk-table__cell\"\n          >1</td>\n          \n        \n        </tr>\n      \n    \n      \n    \n      \n    \n      \n        <tr class=\"govuk-table__row\">\n        \n          \n          \n          <td class=\"govuk-table__cell\"\n          >B</td>\n          \n        \n          \n          \n          <td class=\"govuk-table__cell\"\n          >2</td>\n          \n        \n        </tr>\n      \n    \n      \n        <tr class=\"govuk-table__row\">\n        \n          \n          \n          <td class=\"govuk-table__cell\"\n          >C</td>\n          \n        \n          \n          \n          <td class=\"govuk-table__cell\"\n          >3</td>\n          \n        \n        </tr>\n      \n    \n  </tbody>\n</table>",
             "hidden": true
         },
         {
@@ -498,7 +498,7 @@
                     ]
                 ]
             },
-            "html": "<table class=\"govuk-table\">\r\n  \r\n  \r\n  <tbody class=\"govuk-table__body\">\r\n    \r\n      \r\n        <tr class=\"govuk-table__row\">\r\n        \r\n          \r\n          \r\n          <td class=\"govuk-table__cell my-custom-class\"\r\n          >Foo</td>\r\n          \r\n        \r\n        </tr>\r\n      \r\n    \r\n  </tbody>\r\n</table>",
+            "html": "<table class=\"govuk-table\">\n  \n  \n  <tbody class=\"govuk-table__body\">\n    \n      \n        <tr class=\"govuk-table__row\">\n        \n          \n          \n          <td class=\"govuk-table__cell my-custom-class\"\n          >Foo</td>\n          \n        \n        </tr>\n      \n    \n  </tbody>\n</table>",
             "hidden": true
         },
         {
@@ -514,7 +514,7 @@
                     ]
                 ]
             },
-            "html": "<table class=\"govuk-table\">\r\n  \r\n  \r\n  <tbody class=\"govuk-table__body\">\r\n    \r\n      \r\n        <tr class=\"govuk-table__row\">\r\n        \r\n          \r\n          \r\n          <td class=\"govuk-table__cell\" colspan=\"2\" rowspan=\"2\"\r\n          >Foo</td>\r\n          \r\n        \r\n        </tr>\r\n      \r\n    \r\n  </tbody>\r\n</table>",
+            "html": "<table class=\"govuk-table\">\n  \n  \n  <tbody class=\"govuk-table__body\">\n    \n      \n        <tr class=\"govuk-table__row\">\n        \n          \n          \n          <td class=\"govuk-table__cell\" colspan=\"2\" rowspan=\"2\"\n          >Foo</td>\n          \n        \n        </tr>\n      \n    \n  </tbody>\n</table>",
             "hidden": true
         },
         {
@@ -531,7 +531,7 @@
                     ]
                 ]
             },
-            "html": "<table class=\"govuk-table\">\r\n  \r\n  \r\n  <tbody class=\"govuk-table__body\">\r\n    \r\n      \r\n        <tr class=\"govuk-table__row\">\r\n        \r\n          \r\n          \r\n          <td class=\"govuk-table__cell\" data-fizz=\"buzz\"\r\n          >Foo</td>\r\n          \r\n        \r\n        </tr>\r\n      \r\n    \r\n  </tbody>\r\n</table>",
+            "html": "<table class=\"govuk-table\">\n  \n  \n  <tbody class=\"govuk-table__body\">\n    \n      \n        <tr class=\"govuk-table__row\">\n        \n          \n          \n          <td class=\"govuk-table__cell\" data-fizz=\"buzz\"\n          >Foo</td>\n          \n        \n        </tr>\n      \n    \n  </tbody>\n</table>",
             "hidden": true
         }
     ]
