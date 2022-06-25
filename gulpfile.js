@@ -3,20 +3,19 @@
 const paths = require('./config/paths.json')
 const gulp = require('gulp')
 const taskListing = require('gulp-task-listing')
-const runsequence = require('run-sequence')
 const taskArguments = require('./tasks/gulp/task-arguments')
-const nodemon = require('nodemon')
 const concat = require('gulp-concat')
 
 // Gulp sub-tasks
 require('./tasks/gulp/clean.js')
-require('./tasks/gulp/lint.js')
 require('./tasks/gulp/compile-assets.js')
+require('./tasks/gulp/nodemon.js')
 require('./tasks/gulp/watch.js')
 // new tasks
 require('./tasks/gulp/copy-to-destination.js')
 require('./tasks/gulp/asset-version.js')
 require('./tasks/gulp/sassdoc.js')
+require('./tasks/gulp/stylelint.js')
 
 const external = {
   scripts: [
@@ -32,16 +31,17 @@ const external = {
 // Umbrella scripts tasks for preview ---
 // Runs js lint and compilation
 // --------------------------------------
-gulp.task('scripts', cb => {
-  runsequence('js:compile', cb)
-})
+gulp.task('scripts', gulp.series(
+  'js:compile'
+))
 
 // Umbrella styles tasks for preview ----
-// Runs js lint and compilation
+// Runs scss lint and compilation
 // --------------------------------------
-gulp.task('styles', cb => {
-  runsequence('scss:lint', 'scss:compile', cb)
-})
+gulp.task('styles', gulp.series(
+  'scss:lint',
+  'scss:compile'
+))
 
 // Copy assets task ----------------------
 // Copies assets to taskArguments.destination (public)
@@ -66,74 +66,57 @@ gulp.task('external-styles', () => {
 // All test combined --------------------
 // Runs js, scss and accessibility tests
 // --------------------------------------
-gulp.task('test', cb => {
-  runsequence(
-    'scss:lint',
-    'scss:compile',
-    cb
-  )
-})
+gulp.task('test', gulp.series(
+  'scss:lint',
+  'scss:compile'
+))
 
 // Copy assets task for local & heroku --
 // Copies files to
 // taskArguments.destination (public)
 // --------------------------------------
-gulp.task('copy-assets', cb => {
-  runsequence(
-    'styles',
-    'scripts',
-    'external-scripts',
-    'external-styles',
-    cb
-  )
-})
-
-// Dev task -----------------------------
-// Runs a sequence of task on start
-// --------------------------------------
-gulp.task('dev', cb => {
-  runsequence(
-    'clean',
-    'copy-assets',
-    'sassdoc',
-    'serve',
-    cb
-  )
-})
+gulp.task('copy-assets', gulp.series(
+  'styles',
+  'scripts',
+  'external-scripts',
+  'external-styles'
+))
 
 // Serve task ---------------------------
 // Restarts node app when there is changed
 // affecting js, css or njk files
 // --------------------------------------
+gulp.task('serve', gulp.parallel(
+  'watch',
+  'nodemon'
+))
 
-gulp.task('serve', ['watch'], () => {
-  return nodemon({
-    script: 'app/start.js'
-  })
-})
+// Dev task -----------------------------
+// Runs a sequence of task on start
+// --------------------------------------
+gulp.task('dev', gulp.series(
+  'clean',
+  'copy-assets',
+  'sassdoc',
+  'serve'
+))
 
 // Build package task -----------------
 // Prepare package folder for publishing
 // -------------------------------------
-gulp.task('build:package', cb => {
-  runsequence(
-    'clean',
-    'copy-files',
-    'js:compile',
-    'external-scripts',
-    'external-styles',
-    cb
-  )
-})
-gulp.task('build:dist', cb => {
-  runsequence(
-    'clean',
-    'copy-assets',
-    'copy:assets',
-    'update-assets-version',
-    cb
-  )
-})
+gulp.task('build:package', gulp.series(
+  'clean',
+  'copy-files',
+  'js:compile',
+  'external-scripts',
+  'external-styles'
+))
+gulp.task('build:dist', gulp.series(
+  'clean',
+  'copy-assets',
+  'copy:assets',
+  'update-assets-version'
+))
 
 // Default task -------------------------
 // Lists out available tasks.

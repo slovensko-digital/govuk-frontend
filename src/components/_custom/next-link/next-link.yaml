@@ -1,8 +1,0 @@
-params:
-
-examples:
-  - name: default
-    data:
-      label: Ďalšia úloha
-      text: 2. Zaplatiť správne poplatky
-      url: #

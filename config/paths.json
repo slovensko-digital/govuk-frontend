@@ -7,12 +7,13 @@
       "layouts": "app/views/layouts/",
   "config": "config/",
   "dist": "dist/",
+  "node_modules": "node_modules/",
   "package": "package/",
   "public": "public/",
   "sassdoc": "sassdoc/",
-  "src": "src/",
-    "components": "src/components/",
-    "sdn_components": "src/components/_custom/",
+  "src": "src/govuk/",
+    "components": "src/govuk/components/",
+    "sdn_components": "src/govuk/components/_custom/",
   "ports": {
     "app": 3000,
     "test": 8888

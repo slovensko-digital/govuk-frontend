@@ -1,5 +1,4 @@
-navody.digital frontend
-=======================
+# Navody.Digital Frontend
 
 navody.digital frontend je knižnica komponentov, ktorá výchadza z open source knižnice gov.uk Frontend a pridáva k nej nové komponenty.
 

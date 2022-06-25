@@ -4,11 +4,6 @@
 
 {% block pageTitle %}GOV.UK Frontend{% endblock %}
 
-{% block head %}
-  {{ super() }}
-  {% block styles %}{% endblock %}
-{% endblock %}
-
 {# Turn the header and footer off #}
 {% block header %}
   {% include "../partials/banner.njk" %}

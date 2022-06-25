@@ -1,0 +1,20 @@
+<div class="sdn-thumbnail">
+  <div class="sdn-thumbnail-caption">
+    <h2 class="govuk-heading-m">Nefungovali vám správne e-služby, máte nápad?</h2>
+    <p class="govuk-body">
+     Našli ste chybu? Máte nápad ako ich vylepšiť? Ukážme spoločne, kde je priestor na zlepšenie.
+    </p>
+  </div>
+  <div class="sdn-thumbnail-btn">
+    <a href="{{ params.button_url }}" role="button" draggable="false" class="govuk-button govuk-button--start">
+      Zaslať podnet
+
+      {#- The SVG needs `focusable="false"` so that Internet Explorer does not
+      treat it as an interactive element - without this it will be
+      'focusable' when using the keyboard to navigate. #}
+      <svg class="govuk-button__start-icon" xmlns="http://www.w3.org/2000/svg" width="17.5" height="19" viewBox="0 0 33 40" aria-hidden="true" focusable="false">
+        <path fill="currentColor" d="M0 0h13l20 20-20 20H0l20-20z"/>
+      </svg>
+    </a>
+  </div>
+</div>
