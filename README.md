@@ -2,7 +2,7 @@
 
 navody.digital frontend je knižnica komponentov, ktorá výchadza z open source knižnice gov.uk Frontend a pridáva k nej nové komponenty.
 
-Pozrite si funkčné príklady použitia komponentov v [prehľade komponentov navody.digital frontend](http://navody-frontend.staging.slovensko.digital/).
+Pozrite si funkčné príklady použitia komponentov v [prehľade komponentov navody.digital frontend](https://frontend.staging.navody.digital/).
 
 ## Kontakt na tím
 
