@@ -69,10 +69,6 @@ $icon-youtube: url("../../../assets/images/icon-youtube.svg");
     @include govuk-responsive-padding(7, "top");
     @include govuk-responsive-padding(7, "bottom");
 
-    display: -webkit-box;
-
-    display: -webkit-flex;
-
     display: -ms-flexbox;
 
     display: flex;
@@ -81,25 +77,18 @@ $icon-youtube: url("../../../assets/images/icon-youtube.svg");
     }
 
     @include govuk-media-query($until: desktop) {
-      -webkit-box-orient: vertical;
-      -webkit-box-direction: normal;
-      -webkit-flex-direction: column;
-          -ms-flex-direction: column;
-              flex-direction: column;
+      -ms-flex-direction: column;
+          flex-direction: column;
     }
   }
 
   .sdn-footer__donate {
     @include govuk-font($size: 19);
-    display: -webkit-box;
-    display: -webkit-flex;
     display: -ms-flexbox;
     display: flex;
     padding-left: govuk-spacing(3);
-    -webkit-box-align: center;
-    -webkit-align-items: center;
-        -ms-flex-align: center;
-            align-items: center;
+    -ms-flex-align: center;
+        align-items: center;
 
     @include govuk-media-query($until: desktop) {
       padding-top: govuk-spacing(6);
@@ -140,8 +129,6 @@ $icon-youtube: url("../../../assets/images/icon-youtube.svg");
   }
 
   .sdn-footer__heart-wrapper {
-    display: -webkit-box;
-    display: -webkit-flex;
     display: -ms-flexbox;
     display: flex;
     width: 40px;
@@ -149,14 +136,10 @@ $icon-youtube: url("../../../assets/images/icon-youtube.svg");
     height: 40px;
     border-radius: 20px;
     background: $sdn-footer-heart-background;
-    -webkit-box-align: center;
-    -webkit-align-items: center;
-        -ms-flex-align: center;
-            align-items: center;
-    -webkit-box-pack: center;
-    -webkit-justify-content: center;
-        -ms-flex-pack: center;
-            justify-content: center;
+    -ms-flex-align: center;
+        align-items: center;
+    -ms-flex-pack: center;
+        justify-content: center;
   }
 
   .sdn-footer__donate-text {
@@ -173,10 +156,8 @@ $icon-youtube: url("../../../assets/images/icon-youtube.svg");
     padding-top: govuk-spacing(6);
     @include govuk-media-query($from: desktop) {
       padding-top: 0;
-      -webkit-box-flex: 0;
-      -webkit-flex: 0 0 $sdn-footer-newsletter-size;
-          -ms-flex: 0 0 $sdn-footer-newsletter-size;
-              flex: 0 0 $sdn-footer-newsletter-size;
+      -ms-flex: 0 0 $sdn-footer-newsletter-size;
+          flex: 0 0 $sdn-footer-newsletter-size;
     }
   }
 
@@ -187,14 +168,10 @@ $icon-youtube: url("../../../assets/images/icon-youtube.svg");
   }
 
   .sdn-footer__newsletter-form-group {
-    display: -webkit-box;
-    display: -webkit-flex;
     display: -ms-flexbox;
     display: flex;
-    -webkit-box-align: center;
-    -webkit-align-items: center;
-        -ms-flex-align: center;
-            align-items: center;
+    -ms-flex-align: center;
+        align-items: center;
   }
 
   .sdn-footer__newsletter-input {
@@ -223,10 +200,6 @@ $icon-youtube: url("../../../assets/images/icon-youtube.svg");
     }
 
     &:-ms-input-placeholder {
-      color: $sdn-footer-input-placeholder-color;
-    }
-
-    &::-ms-input-placeholder {
       color: $sdn-footer-input-placeholder-color;
     }
 
@@ -259,29 +232,21 @@ $icon-youtube: url("../../../assets/images/icon-youtube.svg");
     height: 100%;
 
     body {
-      display: -webkit-box;
-      display: -webkit-flex;
       display: -ms-flexbox;
       display: flex;
       height: 100%;
-      -webkit-box-orient: vertical;
-      -webkit-box-direction: normal;
-      -webkit-flex-direction: column;
-          -ms-flex-direction: column;
-              flex-direction: column;
+      -ms-flex-direction: column;
+          flex-direction: column;
     }
 
     .navody-template__content {
-      -webkit-box-flex: 1;
-      -webkit-flex: 1 0 auto;
-          -ms-flex: 1 0 auto;
-              flex: 1 0 auto;
+      -ms-flex: 1 0 auto;
+          flex: 1 0 auto;
     }
 
     .navody-template__footer {
-      -webkit-flex-shrink: 0;
-          -ms-flex-negative: 0;
-              flex-shrink: 0;
+      -ms-flex-negative: 0;
+          flex-shrink: 0;
     }
   }
 
@@ -351,22 +316,14 @@ $icon-youtube: url("../../../assets/images/icon-youtube.svg");
   }
 
   .sdn-footer__bottom-columns {
-    display: -webkit-box;
-    display: -webkit-flex;
     display: -ms-flexbox;
     display: flex;
-    -webkit-box-orient: horizontal;
-    -webkit-box-direction: normal;
-    -webkit-flex-direction: row;
-        -ms-flex-direction: row;
-            flex-direction: row;
+    -ms-flex-direction: row;
+        flex-direction: row;
 
     @include govuk-media-query($until: desktop) {
-      -webkit-box-orient: vertical;
-      -webkit-box-direction: normal;
-      -webkit-flex-direction: column;
-          -ms-flex-direction: column;
-              flex-direction: column;
+      -ms-flex-direction: column;
+          flex-direction: column;
     }
   }
 
