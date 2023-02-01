@@ -122,6 +122,7 @@
   },
   "dependencies": {
     "accessible-autocomplete": "^1.6.2",
+    "each-props": "^3.0.0",
     "express-writer": "0.0.4",
     "popper.js": "^1.14.6"
   }
