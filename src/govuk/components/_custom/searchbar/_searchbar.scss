@@ -8,7 +8,7 @@ $icon-search: url("../../../assets/images/icon-search-white.svg");
 @include govuk-exports("govuk/sdn/component/searchbar") {
   // todo replace colors from global variables
   $from: #2e3ac7;
-  $to: #448bef;
+  $to: #2e75d9;
   $search-block-bg: govuk-colour("white");
 
   .sdn-searchbar-wrapper {
