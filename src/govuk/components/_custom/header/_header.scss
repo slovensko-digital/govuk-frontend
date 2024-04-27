@@ -145,21 +145,15 @@
 
     button {
       position: absolute;
-      top: 0;
-      right: 0;
-      bottom: 0;
-      width: 40px;
+      top: 2px;
+      right: 2px;
+      bottom: 2px;
       padding: 0;
       border: 0;
-      border-radius: 3px;
-      opacity: .5;
       color: $sdn-search-button-color;
       background: $sdn-search-button-background $icon-search no-repeat center center;
       background-size: 18px 18px;
 
-      &:focus {
-        outline: transparent;
-      }
     }
 
     form {
