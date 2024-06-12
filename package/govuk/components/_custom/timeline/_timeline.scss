@@ -134,8 +134,6 @@ $icon-check-black: url("../../../assets/images/icon-check-black.svg");
   }
 
   .sdn-timeline__link {
-    display: -webkit-box;
-    display: -webkit-flex;
     display: -ms-flexbox;
     display: flex;
     color: $link-color;

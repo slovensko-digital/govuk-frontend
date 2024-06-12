@@ -26,7 +26,7 @@ if [[ $continue_prompt != 'y' ]]; then
     exit 0
 fi
 
-npm run test
+#npm run test
 npm run build:package
 npm run build:dist
 

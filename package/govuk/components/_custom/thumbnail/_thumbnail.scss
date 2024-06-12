@@ -9,8 +9,6 @@
   $sdn-thumbnail-border-top-color: #448bef;
 
   .sdn-thumbnail {
-    display: -webkit-box;
-    display: -webkit-flex;
     display: -ms-flexbox;
     display: flex;
     margin-bottom: 2rem;
@@ -18,14 +16,10 @@
     border: 2px solid $sdn-thumbnail-border-color;
     border-radius: 3px;
     border-top-color: $sdn-thumbnail-border-top-color;
-    -webkit-box-pack: center;
-    -webkit-justify-content: center;
-        -ms-flex-pack: center;
-            justify-content: center;
-    -webkit-box-align: center;
-    -webkit-align-items: center;
-        -ms-flex-align: center;
-            align-items: center;
+    -ms-flex-pack: center;
+        justify-content: center;
+    -ms-flex-align: center;
+        align-items: center;
   }
 
   .sdn-thumbnail-caption {
@@ -47,11 +41,8 @@
 
   @media (max-width: 640px) {
     .sdn-thumbnail {
-      -webkit-box-orient: vertical;
-      -webkit-box-direction: normal;
-      -webkit-flex-direction: column;
-          -ms-flex-direction: column;
-              flex-direction: column;
+      -ms-flex-direction: column;
+          flex-direction: column;
     }
 
     .sdn-thumbnail-caption,

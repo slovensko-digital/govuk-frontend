@@ -42,24 +42,15 @@ $sdn-todo-list-button-conjunction-text-color: #000000;
       .sdn-todo-list__item {
         $sdn-todo-list-item-border-bottom: 1px solid rgba(33, 33, 33, .1);
         $sdn-todo-list-item-padding: 15px 0 15px 0;
-        display: -webkit-box;
-        display: -webkit-flex;
         display: -ms-flexbox;
         display: flex;
         padding: $sdn-todo-list-item-padding;
-        -webkit-box-orient: horizontal;
-        -webkit-box-direction: normal;
-        -webkit-flex-direction: row;
-            -ms-flex-direction: row;
-                flex-direction: row;
-        -webkit-box-pack: justify;
-        -webkit-justify-content: space-between;
-            -ms-flex-pack: justify;
-                justify-content: space-between;
-        -webkit-box-align: center;
-        -webkit-align-items: center;
-            -ms-flex-align: center;
-                align-items: center;
+        -ms-flex-direction: row;
+            flex-direction: row;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+        -ms-flex-align: center;
+            align-items: center;
 
         @include mq ($until: tablet) {
           display: block;
@@ -76,14 +67,10 @@ $sdn-todo-list-button-conjunction-text-color: #000000;
         }
 
         > div {
-          display: -webkit-box;
-          display: -webkit-flex;
           display: -ms-flexbox;
           display: flex;
-          -webkit-box-align: center;
-          -webkit-align-items: center;
-              -ms-flex-align: center;
-                  align-items: center;
+          -ms-flex-align: center;
+              align-items: center;
 
           @include mq ($until: tablet) {
             display: block;

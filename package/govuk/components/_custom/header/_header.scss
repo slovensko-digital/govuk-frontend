@@ -25,7 +25,6 @@
   .sdn-header {
     @include govuk-font($size: 14);
     border-bottom: 1px solid $sdn-header-border-color;
-    background: -webkit-gradient(linear, left top, right top, from($sdn-header-background-from), to($sdn-header-background-to));
     background: linear-gradient(90deg, $sdn-header-background-from 0%, $sdn-header-background-to 100%);
   }
 
@@ -34,25 +33,17 @@
   }
 
   .sdn-header__container {
-    display: -webkit-box;
-    display: -webkit-flex;
     display: -ms-flexbox;
     display: flex;
     position: relative;
     height: $sdn-header-height;
-    -webkit-box-align: center;
-    -webkit-align-items: center;
-        -ms-flex-align: center;
-            align-items: center;
-    -webkit-box-pack: justify;
-    -webkit-justify-content: space-between;
-        -ms-flex-pack: justify;
-            justify-content: space-between;
+    -ms-flex-align: center;
+        align-items: center;
+    -ms-flex-pack: justify;
+        justify-content: space-between;
 
     &--logo {
       > a {
-        display: -webkit-box;
-        display: -webkit-flex;
         display: -ms-flexbox;
         display: flex;
 
@@ -305,9 +296,8 @@
         .sdn-header__container {
           height: auto;
           padding: 5px 0;
-          -webkit-flex-wrap: wrap;
-              -ms-flex-wrap: wrap;
-                  flex-wrap: wrap;
+          -ms-flex-wrap: wrap;
+              flex-wrap: wrap;
         }
 
         .sdn-header__menu-button {
